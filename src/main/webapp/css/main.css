@@ -1,0 +1,119 @@
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+    position: relative;
+    min-height: 100%;
+}
+body {
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+}
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: 60px;
+    line-height: 1px; /* Vertically center the text there */
+    background-color: rgb(119, 136, 153);
+    color:whitesmoke;
+}
+
+
+/* Custom page CSS
+-------------------------------------------------- */
+/* Not required for template or sticky footer method. */
+
+body > .container {
+    padding: 60px 0;
+}
+
+.footer > .container {
+    padding-right: 0px;
+    padding-left: 0px;
+}
+
+code {
+    font-size: 80%;
+}
+
+th {
+    cursor:pointer;
+}
+.btn.btn-light {
+    height: 35px;
+    width: 35px;
+
+
+}
+.btn.btn-light.icon{
+    height: 30px;
+    width: 30px;
+
+}
+.nrpp{
+    font-size: 13px;
+}
+.existencia {
+    color:red;
+
+}
+.caja {
+    display: flex;
+    flex-wrap: wrap;
+
+}
+.carrito{
+    background-color: #f5f5ef;
+    border: 5px;
+    border-color: #d8d8c0;
+    height: 200px;
+    width: 300px;
+    display: grid; 
+    margin: 0 auto;
+    grid-gap: 20px;
+    padding: 10px;
+    grid-template-columns: auto;
+    grid-template-rows: 50% 10% 40%;
+    grid-gap: 20px;
+    grid-template-areas: "arriba"
+        "centro"
+        "abajo";
+}
+
+.contenido {
+    background-color: rgb(119, 136, 153);
+    color: whitesmoke;
+    height: 200px;
+    width: 250px;
+    display: grid; 
+    margin: 10px;
+    grid-gap: 20px;
+    padding: 10px;
+    grid-template-columns: 100%;
+    grid-template-rows: 55% 5% 40%;
+
+    grid-template-areas: "arriba"
+        "centro"
+        "abajo";
+}  
+
+
+
+
+.centro {
+    font-size: 12px;
+    font-weight: bold;
+    grid-area: centro;
+    text-align: center;
+}
+.arriba {
+    grid-area: arriba;
+}
+.abajo {
+    margin-left: 20%;
+    grid-area: abajo;
+}
+
+
+
