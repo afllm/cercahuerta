@@ -15,7 +15,7 @@ moduleFactura.controller('facturaplistxusuarioController', ['$scope', '$http', '
 //        }
 
          $scope.tipousuarioID=sessionService.getTypeUserID();
-         console.log($scope.tipousuarioID);
+         //console.log($scope.tipousuarioID);
      
         
         if (!$routeParams.id) {
@@ -49,7 +49,7 @@ moduleFactura.controller('facturaplistxusuarioController', ['$scope', '$http', '
             }
         }
         $scope.linea = function (id) {
-            $location.url(`linea/plistxusuario/10/1/${id}`);
+            $location.url(`linea/plistxfactura/10/1/${id}`);
         }
 
         $scope.resetOrder = function () {

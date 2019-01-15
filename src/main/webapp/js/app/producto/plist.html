@@ -26,23 +26,7 @@
                     </button>
                 </div>
             </div>
-            <!--            <div class="row">
-                            <div class="col-6">
-                                <nav aria-label="paginacion">
-                                    <ul class="pagination">
-                                        <li class="page-item">
-                                            <a class="page-link" ng-show="page > 1" href="usuario/plist/{{rpp}}/{{page - 1}}/{{order}}/{{align}}">Previous</a>
-                                        </li>
-                                        <li class="page-item" ng-class="{'active':(p == page)}" ng-repeat="p in list">
-                                            <a class="page-link" href="usuario/plist/{{rpp}}/{{p}}/{{order}}/{{align}}">{{p}}</a>
-                                        </li>
-                                        <li class="page-item">
-                                            <a class="page-link" ng-show="page != totalPages" href="usuario/plist/{{rpp}}/{{page--1}}/{{order}}/{{align}}">Next</a>
-                                        </li>
-                                    </ul>
-                                </nav>
-                            </div>
-                        </div>-->
+            
             <div class="col-md-12 ml-sm-auto col-lg-12">
                 <div class="row d-flex justify-content-between flex-wrap align-items-center">
                     <nav aria-label="paginacion">
@@ -92,12 +76,12 @@
                             </button>
                         </th>
                         <th>
-                            Descripción
-                            <button type="button" class="btn btn-light" ng-click="ordena('desc', 'asc')">
+                            Nombre
+                            <button type="button" class="btn btn-light" ng-click="ordena('nombre', 'asc')">
                                 <a class="fas fa-long-arrow-alt-up" ></a>
 
                             </button>
-                            <button type="button" class="btn btn-light" ng-click="ordena('desc', 'desc')">
+                            <button type="button" class="btn btn-light" ng-click="ordena('nombre', 'desc')">
                                 <i class="fas fa-long-arrow-alt-down"></i>
                             </button>
                         </th>
@@ -144,7 +128,7 @@
                     <tr ng-repeat="fila in ajaxDataUsuarios">
                         <td>{{fila.id}}</td>
                         <td>{{fila.codigo}}</td>
-                        <td>{{fila.desc}}</td>
+                        <td>{{fila.nombre}}</td>
                         <td>{{fila.existencias}}</td>
                         <td>{{miFormato(fila.precio)}}</td>
                         <td>{{fila.foto}}</td>

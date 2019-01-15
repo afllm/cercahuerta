@@ -26,6 +26,8 @@ public class ProductoBean extends GenericBeanImplementation implements BeanInter
     @Expose
     private String codigo;
     @Expose
+    private String nombre;
+    @Expose
     private String desc;
     @Expose
     private int existencias;
@@ -61,6 +63,14 @@ public class ProductoBean extends GenericBeanImplementation implements BeanInter
         this.codigo = codigo;
     }
 
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+    
     public String getDesc() {
         return desc;
     }
@@ -106,6 +116,7 @@ public class ProductoBean extends GenericBeanImplementation implements BeanInter
 
         this.setId(oResultSet.getInt("id"));
         this.setCodigo(oResultSet.getString("codigo"));
+        this.setNombre(oResultSet.getString("nombre"));
         this.setDesc(oResultSet.getString("desc"));
         this.setExistencias(oResultSet.getInt("existencias"));
         this.setPrecio(oResultSet.getFloat("precio"));
@@ -126,6 +137,7 @@ public class ProductoBean extends GenericBeanImplementation implements BeanInter
         String strPairs = "";
 
         strPairs += "codigo=" + EncodingHelper.quotate(codigo) + ",";
+        strPairs += "producto.nombre=" + EncodingHelper.quotate(nombre) + ",";
         strPairs += "producto.desc=" + EncodingHelper.quotate(desc) + ",";
         strPairs += "existencias=" + existencias + ",";
         strPairs += "precio=" + precio + ",";
@@ -141,6 +153,7 @@ public class ProductoBean extends GenericBeanImplementation implements BeanInter
         String strColumns = "";
         strColumns += "id,";
         strColumns += "codigo,";
+        strColumns += "producto.nombre,";
         strColumns += "producto.desc,";
         strColumns += "existencias,";
         strColumns += "precio,";
@@ -155,6 +168,7 @@ public class ProductoBean extends GenericBeanImplementation implements BeanInter
         String strColumns = "";
         strColumns += "null,";
         strColumns += EncodingHelper.quotate(codigo) + ",";
+        strColumns += EncodingHelper.quotate(nombre) + ",";
         strColumns += EncodingHelper.quotate(desc) + ",";
         strColumns += this.getExistencias() + ",";
         strColumns += this.getPrecio() + ",";

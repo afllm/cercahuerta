@@ -1,4 +1,4 @@
-<header-component></header-component>
+<!--<header-component></header-component>
 <main role="main" class="col-md-9 ml-sm-auto col-lg-12 px-4" style="margin-top: 50px">
     <div class="d-flex justify-content-between flex-wrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h1 class="h2"><a href="usuario/view/{{ajaxDatosUsuarios.id}}">Usuario: {{ajaxDatosUsuarios.nombre}} {{ajaxDatosUsuarios.ape1}}</a></h1>
@@ -60,7 +60,7 @@
                         <th class="text-center" scope="col">Id</th>
                         <th class="text-center" scope="col">Fecha</th>
                         <th class="text-center" scope="col">IVA</th>
-                        <!--<th class="text-center" scope="col">Usuario</th>-->
+                        <th class="text-center" scope="col">Usuario</th>
                         <th class="text-center" scope="col">Acciones</th>
                         <th class="text-center" scope="col">Lineas</th>
                     </tr>
@@ -71,14 +71,14 @@
                         <td class="text-center">{{fila.fecha | date:'d-M-y'}}</td>
                         <td class="text-center">{{fila.iva}}</td>
                         
-                        <!--<td class="text-center"><a href="usuario/view/{{fila.obj_Usuario.id}}">{{fila.obj_Usuario.nombre}} {{fila.obj_Usuario.ape1}}</a></td>-->
+                        <td class="text-center"><a href="usuario/view/{{fila.obj_Usuario.id}}">{{fila.obj_Usuario.nombre}} {{fila.obj_Usuario.ape1}}</a></td>
                         <td class="text-center">
                             <a href="factura/plistlinea/{{fila.id}}">
                                 <button type="button" class="btn btn-light btn-sm">
                                     <i class="fa fa-bars"></i>
                                 </button>
                             </a>
-<!--
+
                             <a href="factura/edit/{{fila.id}}">
                                 <button type="button" class="btn btn-light btn-sm">
                                     <i class="fa fa-edit"></i>
@@ -90,7 +90,7 @@
                                     <i class="fa fa-times"></i>
                                 </button>
                             </a>
--->
+
                             <button type="button" class="btn btn-light btn-sm" ng-click="descargarPDF(fila.id)">
                                     <i class="fa fa-file-pdf"></i>
                                 </button>
@@ -129,4 +129,4 @@
 
 
 </main>
-<footer class="footer" ng-include="'js/app/footer.html'"></footer>
+<footer class="footer" ng-include="'js/app/footer.html'"></footer>-->

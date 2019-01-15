@@ -50,7 +50,7 @@ var autenticacionUsuario = function ($q, $location, $http, sessionService) {
 
 cercahuerta.config(['$routeProvider', function ($routeProvider) {
 
-        //HOOME
+        //HOME
         $routeProvider.when('/', {templateUrl: 'js/app/common/home.html', controller: 'homeController'});
 
         //USUARIO
@@ -92,8 +92,8 @@ cercahuerta.config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/linea/remove/:id', {templateUrl: 'js/app/linea/remove.html', controller: 'lineaRemoveController', resolve: { auth: autenticacionAdministrador } });
         $routeProvider.when('/linea/edit/:id', {templateUrl: 'js/app/linea/edit.html', controller: 'lineaEditController', resolve: { auth: autenticacionAdministrador } });
         $routeProvider.when('/linea/new', {templateUrl: 'js/app/linea/new.html', controller: 'lineaNewController', resolve: { auth: autenticacionAdministrador } });
-        $routeProvider.when('/linea/plistxusuario/:rpp?/:page?/:id?/:order?', {templateUrl: 'js/app/linea/plistxusuario.html', controller: 'lineaplistxusuarioController'});
-        $routeProvider.when('/linea/newxusuario/:id', {templateUrl: 'js/app/linea/newxusuario.html', controller: 'lineanewxusuarioController', resolve: { auth: autenticacionAdministrador } });
+        $routeProvider.when('/linea/plistxfactura/:rpp?/:page?/:id?/:order?', {templateUrl: 'js/app/linea/plistxfactura.html', controller: 'lineaplistxfacturaController'});
+        $routeProvider.when('/linea/newxfactura/:id', {templateUrl: 'js/app/linea/newxfactura.html', controller: 'lineanewxfacturaController', resolve: { auth: autenticacionAdministrador } });
 
         //FACTURA
         $routeProvider.when('/factura/plist/:rpp?/:page?/:order?', {templateUrl: 'js/app/factura/plist.html', controller: 'facturaPlistController', resolve: { auth: autenticacionAdministrador } });

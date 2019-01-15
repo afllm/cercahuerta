@@ -115,7 +115,7 @@ moduleFactura.controller('facturaCarritoController', ['$scope', '$http', '$locat
                 doc.rect(8, 80, 195, 210);
                 doc.setFontSize(13);
                 doc.text(12, 90, 'Codigo');
-                doc.text(50, 90, 'Descripcion');
+                doc.text(50, 90, 'Nombre');
                 doc.text(125, 90, 'Cantidad');
                 doc.text(170, 90, 'Precio');
                 doc.setFillColor(119, 136, 153);
@@ -157,7 +157,7 @@ moduleFactura.controller('facturaCarritoController', ['$scope', '$http', '$locat
                         doc.rect(8, 80, 195, 210);
                         doc.setFontSize(13);
                         doc.text(12, 90, 'Codigo');
-                        doc.text(50, 90, 'Descripcion');
+                        doc.text(50, 90, 'Nombre');
                         doc.text(125, 90, 'Cantidad');
                         doc.text(170, 90, 'Precio');
                         doc.setFillColor(119, 136, 153);
@@ -167,7 +167,7 @@ moduleFactura.controller('facturaCarritoController', ['$scope', '$http', '$locat
                         linea = 107;
                     }
                     doc.text(12, linea, $scope.ajaxLineasFactura[x].obj_Producto.codigo);
-                    doc.text(50, linea, $scope.ajaxLineasFactura[x].obj_Producto.desc);
+                    doc.text(50, linea, $scope.ajaxLineasFactura[x].obj_Producto.nombre);
                     doc.text(125, linea, ($scope.ajaxLineasFactura[x].cantidad).toString());
                     doc.text(170, linea, (parseFloat(($scope.ajaxLineasFactura[x].obj_Producto.precio)).toFixed(2).toString()));
                     linea = linea + 13;

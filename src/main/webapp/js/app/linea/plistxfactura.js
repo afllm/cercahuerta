@@ -1,16 +1,23 @@
 'use strict'
 
 moduleLinea.controller('lineaplistxfacturaController', ['$scope', '$http', '$location', 'toolService', '$routeParams', 'sessionService',
-    function ($scope, $http, $location, toolService, $routeParams, oSessionService) {
+    function ($scope, $http, $location, toolService, $routeParams, sessionService) {
 
         $scope.ob = "linea";
         $scope.totalPages = 1;
-        $scope.conectado = false;
-
+        
+        
+//      if (sessionService.getUserName() !== "") {
+//            $scope.loggeduser = sessionService.getUserName();
+//            $scope.loggeduserid = sessionService.getId();
+//            $scope.logged = true;
+//            $scope.tipousuarioID = sessionService.getTypeUserID();
+//        }
+        $scope.tipousuarioID=sessionService.getTypeUserID();
         if (!$routeParams.id) {
-            $scope.id = 1;
+            $scope.id= 1;  
         } else {
-            $scope.id = $routeParams.id;
+            $scope.id= $routeParams.id;
         }
 
 
@@ -40,7 +47,7 @@ moduleLinea.controller('lineaplistxfacturaController', ['$scope', '$http', '$loc
 
 
         $scope.resetOrder = function () {
-            $location.url($scope.ob + `/plistxfactura/` + $scope.rpp + `/` + $scope.page + `/` + $scope.id);
+        $location.url($scope.ob + `/plistxfactura/` + $scope.rpp + `/` + $scope.page + `/` + $scope.id);
         }
 
         $scope.view = function (id) {
@@ -63,13 +70,13 @@ moduleLinea.controller('lineaplistxfacturaController', ['$scope', '$http', '$loc
                 $scope.orderURLServidor = $scope.orderURLServidor + "-" + order + "," + align;
                 $scope.orderURLCliente = $scope.orderURLCliente + "-" + order + "," + align;
             }
-            $location.url($scope.ob + `/plistxfactura/` + $scope.rpp + `/` + $scope.page + `/` + $scope.id + `/` + $scope.orderURLCliente);
+           $location.url($scope.ob + `/plistxfactura/` + $scope.rpp + `/` + $scope.page + `/` + $scope.id + `/` + $scope.orderURLCliente);
         }
 
         //getcount
         $http({
             method: 'GET',
-            url: 'json?ob=' + $scope.ob + '&op=getcountxfactura&idfactura=' + $scope.id
+            url: 'json?ob=' + $scope.ob + '&op=getcountx&idajena=' + $scope.id
         }).then(function (response) {
             $scope.status = response.status;
             $scope.ajaxDataUsuariosNumber = response.data.message;
@@ -84,17 +91,13 @@ moduleLinea.controller('lineaplistxfacturaController', ['$scope', '$http', '$loc
             $scope.status = response.status;
         });
 
-
-
-
-
         $http({
             method: 'GET',
-            url: 'json?ob=' + $scope.ob + '&op=getpagexfactura&rpp=' + $scope.rpp + '&page=' + $scope.page + '&idfactura=' + $scope.id + $scope.orderURLServidor
+            url: 'json?ob=' + $scope.ob + '&op=getpagex&rpp=' + $scope.rpp + '&page=' + $scope.page + '&idajena=' + $scope.id + $scope.orderURLServidor
         }).then(function (response) {
             $scope.status = response.status;
             $scope.ajaxDataUsuarios = response.data.message;
-
+            
         }, function (response) {
             $scope.status = response.status;
             $scope.ajaxDataUsuarios = response.data.message || 'Request failed';
@@ -106,14 +109,14 @@ moduleLinea.controller('lineaplistxfacturaController', ['$scope', '$http', '$loc
         }).then(function (response) {
             $scope.status = response.status;
             $scope.idfactura = response.data.message.id;
-
+          
         }, function (response) {
             $scope.status = response.status;
-
+            
         });
 
         $scope.update = function () {
-            $location.url($scope.ob + `/plistxfactura/` + $scope.rpp + `/` + $scope.page + `/` + $scope.id + `/` + $scope.orderURLCliente);
+           $location.url($scope.ob + `/plistxfactura/` + $scope.rpp + `/` + $scope.page + `/` + $scope.id + `/` + $scope.orderURLCliente);
         }
 
 
@@ -136,13 +139,6 @@ moduleLinea.controller('lineaplistxfacturaController', ['$scope', '$http', '$loc
                     $scope.list2.push("...");
                 }
             }
-        }
-
-        if (oSessionService.getUserName() !== "") {
-            $scope.usuarioConectado = oSessionService.getUserName();
-            $scope.usuarioId = oSessionService.getUsuarioId();
-            $scope.id_tiposusario = oSessionService.getId_tipousuario();
-            $scope.conectado = true;
         }
 
         $scope.isActive = toolService.isActive;

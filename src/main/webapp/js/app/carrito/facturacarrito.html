@@ -11,7 +11,7 @@
                 <table class="table table-striped table-sm tabla">
                     <tr>
                         <th>
-                            Descripción
+                            Nombre
                         </th>
                         <th>
                             Precio
@@ -26,7 +26,7 @@
                         </th>
                     </tr>
                     <tr ng-repeat="fila in ajaxDataUsuarios">
-                        <td>{{fila.obj_Producto.desc}}</td>
+                        <td>{{fila.obj_Producto.nombre}}</td>
                         <td>{{miFormato(fila.obj_Producto.precio)}}</td> 
                         <td>{{fila.cantidad}}</td>  
                         <td>{{fila.obj_Factura.iva}}</td>

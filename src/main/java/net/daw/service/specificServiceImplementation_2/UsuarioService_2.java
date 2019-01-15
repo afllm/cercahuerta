@@ -32,66 +32,6 @@ public class UsuarioService_2 extends GenericServiceImplementation implements Se
         ob = oRequest.getParameter("ob");
     }
 
-    public ReplyBean fill() throws Exception {
-        ReplyBean oReplyBean;
-        ConnectionInterface oConnectionPool = null;
-        Connection oConnection;
-        try {
-            Integer number = Integer.parseInt(oRequest.getParameter("number"));
-            Gson oGson = (new GsonBuilder()).excludeFieldsWithoutExposeAnnotation().create();
-            oConnectionPool = ConnectionFactory.getConnection(ConnectionConstants.connectionPool);
-            oConnection = oConnectionPool.newConnection();
-            UsuarioDao_2 oUsuarioDao = new UsuarioDao_2(oConnection, ob, oUsuarioBeanSession);
-            UsuarioBean oUsuarioBean = new UsuarioBean();
-            for (int i = 1; i <= number; i++) {
-                oUsuarioBean.setDni("765934875A");
-                oUsuarioBean.setNombre("Rigoberto");
-                oUsuarioBean.setApe1("Pérez");
-                oUsuarioBean.setApe2("Gómez");
-                oUsuarioBean.setLogin("ripego");
-                oUsuarioBean.setPass("hola");
-                oUsuarioBean.setId_tipoUsuario(2);
-                oUsuarioBean = (UsuarioBean) oUsuarioDao.create(oUsuarioBean);
-            }
-            oReplyBean = new ReplyBean(200, oGson.toJson(number));
-        } catch (Exception ex) {
-            throw new Exception("ERROR: Service level: create method: " + ob + " object", ex);
-        } finally {
-            oConnectionPool.disposeConnection();
-        }
-
-        return oReplyBean;
-    }
-
-//    public ReplyBean login() throws Exception {
-//        ReplyBean oReplyBean;
-//        ConnectionInterface oConnectionPool = null;
-//        Connection oConnection;
-//        String strLogin = oRequest.getParameter("user");
-//        String strPassword = oRequest.getParameter("pass");
-//
-//        oConnectionPool = ConnectionFactory.getConnection(ConnectionConstants.connectionPool);
-//        oConnection = oConnectionPool.newConnection();
-//        UsuarioDao_0 oUsuarioDao = new UsuarioDao_0(oConnection, ob, oUsuarioBeanSession);
-//
-//        UsuarioBean oUsuarioBean = oUsuarioDao.login(strLogin, strPassword);
-//        if (oUsuarioBean != null) {
-//            if (oUsuarioBean.getId() > 0) {
-//                oRequest.getSession().setAttribute("user", oUsuarioBean);
-//                oRequest.getSession().setAttribute("user_id", oUsuarioBean.getId());
-//                Gson oGson = (new GsonBuilder()).excludeFieldsWithoutExposeAnnotation().create();
-//                oReplyBean = new ReplyBean(200, oGson.toJson(oUsuarioBean));
-//            } else {
-//                //throw new Exception("ERROR Bad Authentication: Service level: get page: " + ob + " object");
-//                oReplyBean = new ReplyBean(401, "Bad Authentication");
-//            }
-//        } else {
-//            oReplyBean = new ReplyBean(401, "Bad Authentication");
-//        }
-//        oConnectionPool.disposeConnection();
-//        return oReplyBean;
-//    }
-
     public ReplyBean logout() throws Exception {
         oRequest.getSession().invalidate();
         return new ReplyBean(200, EncodingHelper.quotate("OK"));

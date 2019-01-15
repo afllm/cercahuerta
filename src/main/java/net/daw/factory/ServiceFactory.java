@@ -86,9 +86,6 @@ public class ServiceFactory {
                             case "getpage":
                                 oReplyBean = oUsuarioService.getpage();
                                 break;
-                            case "fill":
-                                oReplyBean = oUsuarioService.fill();
-                                break;
 //                            case "login":
 //                                oReplyBean = oUsuarioService.login();
 //                                break;
@@ -189,11 +186,14 @@ public class ServiceFactory {
                             case "getpage":
                                 oReplyBean = oProductoService.getpage();
                                 break;
-                            case "loaddata":
-                                oReplyBean = oProductoService.loaddata();
-                                break;
+//                            case "loaddata":
+//                                oReplyBean = oProductoService.loaddata();
+//                                break;
                             case "loadimage":
                                 oReplyBean = oProductoService.loadimage();
+                                break;
+                            case "fillprod":
+                                oReplyBean = oProductoService.fillProd();
                                 break;
                             default:
                                 oReplyBean = new ReplyBean(500, "Operation doesn't exist");
@@ -378,7 +378,7 @@ public class ServiceFactory {
                         oReplyBean = new ReplyBean(500, "Object doesn't exist");
                         break;
                 }
-         break;
+                break;
             case 0:
                 switch (ob) {
                     case "usuario":
