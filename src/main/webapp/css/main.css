@@ -6,7 +6,7 @@ html {
 }
 body {
     /* Margin bottom by footer height */
-    margin-bottom: 60px;
+    /*margin-bottom: 60px;*/
 }
 .footer {
     position: fixed;
@@ -40,6 +40,21 @@ code {
 th {
     cursor:pointer;
 }
+
+.btn{
+    background-color: #F79135;
+    border-color: white;
+}
+.btn:hover{
+    background-color: white;
+    color: #F79135;
+    border-color: #F79135;
+}
+
+.btn:active{
+   transform: translateY(5px);
+   background-color: rgb(119, 136, 153) !important;
+}
 .btn.btn-light {
     height: 35px;
     width: 35px;
@@ -58,12 +73,12 @@ th {
     color:red;
 
 }
-.caja {
+/*.caja {
     display: flex;
     flex-wrap: wrap;
 
-}
-.carrito{
+}*/
+/*.carrito{
     background-color: #f5f5ef;
     border: 5px;
     border-color: #d8d8c0;
@@ -79,15 +94,59 @@ th {
     grid-template-areas: "arriba"
         "centro"
         "abajo";
+}*/
+
+/*Content*/
+
+.content{
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
 }
 
-.contenido {
+
+.content article{
+    background-color: rgba(119, 136, 153,0.1);
+    filter: grayscale(50%);
+    flex: 0 0 200px;
+    margin: 5px;
+    box-shadow: 2px 2px 6px 0px rgba(0,0,0,0.3);
+    filter: grayscale(50%);    
+
+}
+
+.content article:hover{
+    flex: 0 0 200px;
+    margin: 1px;
+    padding: 4px;
+    box-shadow: 2px 2px 6px 0px rgba(0,0,0,0.3);
+    filter: grayscale(0%);
+}
+
+
+.content article img{
+    min-width: 100px;
+    max-width: 320px;
+    min-height: 64px;
+    max-height: 205px;
+}
+
+
+.content article .texto{
+    padding: 0 20px 20px;
+}
+/*.contenido {
     background-color: rgb(119, 136, 153);
+    box-shadow: 2px 2px 6px 0px rgba(0,0,0,0.3);
+    filter: grayscale(50%);
     color: whitesmoke;
     height: 200px;
     width: 250px;
     display: grid; 
-    margin: 10px;
+    margin: 5px;
+    padding: 0;
     grid-gap: 20px;
     padding: 10px;
     grid-template-columns: 100%;
@@ -98,7 +157,12 @@ th {
         "abajo";
 }  
 
-
+.contenido:hover{
+    margin: 1px;
+    padding: 4px;
+    box-shadow: 2px 2px 6px 0px rgba(0,0,0,0.3);
+    filter: grayscale(0%);
+}
 
 
 .centro {
@@ -109,11 +173,33 @@ th {
 }
 .arriba {
     grid-area: arriba;
+    min-width: 100px;
+    max-width: 320px;
+    min-height: 64px;
+    max-height: 205px;
 }
 .abajo {
     margin-left: 20%;
     grid-area: abajo;
+}*/
+
+/*Responsive*/
+
+@media screen and (min-width: 769px){
+    .content article {
+       width: 24vw;
+    }
+}
+@media screen and (max-width: 768px){
+    .content article {
+       width: 49vw;
+    }
 }
 
-
+@media screen and (max-width: 480px){
+    .content article {
+        width: 100vw;
+    }
+    
+}
 

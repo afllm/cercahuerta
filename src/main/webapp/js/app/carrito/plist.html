@@ -1,16 +1,16 @@
 <header-component></header-component>
 <div class="container-fluid">
     <div class="row">
-               <main role="main" class="col-md-12 ml-sm-auto col-lg-12 px-4" style="margin-top: 50px">
+        <main role="main" class="col-md-12 ml-sm-auto col-lg-12 px-4" style="margin-top: 50px">
             <div class="d-flex justify-content-between flex-wrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                 <h1 class="h2">Productos disponibles</h1>
                 <div class="btn-toolbar mb-2 mb-md-0">
-        
-                   <a href="carrito/carrito" class="btn-lg btn-light fas fa-shopping-cart red-bar" role="button" ng-if="ajaxDataAdd!='Carrito vacio'" ng-if="showRed"></a>
-                    
+
+                    <a href="carrito/carrito" class="btn-lg btn-light fas fa-shopping-cart red-bar" role="button" ng-if="ajaxDataAdd != 'Carrito vacio'" ng-if="showRed"></a>
+
                 </div>
                 <div class="btn-toolbar mb-2 mb-md-0">
-                     
+
                     <div class="btn-group" style="width:400px;">
                         <p class="mt-2" style="width:200px;">Selecciona RPP: </p>
                         <select class="form-control" 
@@ -24,9 +24,9 @@
                     </div>
                 </div>
             </div>
-            
-        
-                <div class="row d-flex justify-content-between flex-wrap align-items-center">
+
+
+            <div class="row d-flex justify-content-between flex-wrap align-items-center">
                 <nav aria-label="paginacion">
                     <ul class="pagination">
                         <li class="page-item">
@@ -47,30 +47,36 @@
                     </ul>
                 </nav>
             </div>
-          
-      
-          
-            <div class="row d-flex justify-content-center flex-wrap align-items-center ml-5">
-    <div ng-repeat="fila in ajaxData" class="contenido border border-secundary rounded">
-            <div class="arriba"><img src="http://localhost:8081/images_server/{{fila.foto}}" class="img-fluid img-thumbnail" style="width: 220px; height: 100px; margin-top: 3%;" alt="producto 1"></div>
-           <div class="centro">{{fila.desc}}</div>
-            <div class="abajo">
-            <a href="producto/view/{{fila.id}}" class="btn btn-light fas fa-eye" role="button"></a>
-                           <button type="button" ng-click="add(fila.id)" ng-click="showRed=true" class="btn btn-light fas fa-plus" ng-disabled="fila.existencias===existencias(fila.id)"></button>
-                           <button type="button" ng-click="reduce(fila.id)" class="btn btn-light fas fa-minus" ng-disabled="existencias(fila.id)===0"></button>
-                                      <span class="btn btn-light" ng-style="fila.existencias===existencias(fila.id) && {'background-color':'#dc3545'}">{{existencias(fila.id)}}</span>
-            </div>
-       
-    </div>
-</div>
-            
-            
-            
-            
-            
-            
+
+
+
+            <section class="content row">
+                <article ng-repeat="fila in ajaxData"  class="contenido border border-secundary rounded">
+                    <img src="http://localhost:8081/images_server/{{fila.foto}}"  width="640" height="400" alt="producto 1">
+                    <div class="texto">
+                        <div>
+                            <h5>{{fila.desc}}</h5>
+                            <p>ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+                        </div>
+                        <div>
+                            <a href="producto/view/{{fila.id}}" class="btn btn-light fas fa-eye" role="button"></a>
+                            <button type="button" ng-click="add(fila.id)" ng-click="showRed = true" class="btn btn-light fas fa-plus" ng-disabled="fila.existencias === existencias(fila.id)"></button>
+                            <button type="button" ng-click="reduce(fila.id)" class="btn btn-light fas fa-minus" ng-disabled="existencias(fila.id) === 0"></button>
+                            <span class="btn btn-light" ng-style="fila.existencias===existencias(fila.id) && {'background-color':'#dc3545'}">{{existencias(fila.id)}}</span>
+                        </div>
+                    </div>
+
+                </article>
+            </section>
+
+
+
+
+
+
         </main>
-        
+
     </div>
 </div>
 <footer class="footer" ng-include="'js/app/footer.html'"></footer>
