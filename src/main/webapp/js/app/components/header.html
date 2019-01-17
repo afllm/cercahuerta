@@ -6,9 +6,9 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item" ng-show="c.tipousuarioID!=3" ng-class="{'active': c.isActive('/home')}">
+<!--            <li class="nav-item" ng-show="c.tipousuarioID!=3" ng-class="{'active': c.isActive('/home')}">
                 <a class="nav-link" href="home">Home <i class="fas fa-home"></i><span class="sr-only">(current)</span></a>
-            </li>
+            </li>-->
             <li class="nav-item" ng-show="c.limpiar && c.tipousuarioID==1" ng-class="{'active': c.isActive('/tipousuario/plist')}">
                 <a class="nav-link" href="tipousuario/plist"><i class="fas fas fa-users fa-1x"></i> Tipo Usuario</a>
             </li>
@@ -48,7 +48,7 @@
                 </div>
             </li>
             <li class="nav-item hvr-pop" ng-class="{'active': c.isActive('usuario/login')}" ng-show="!c.logged">
-                <a class="nav-link text-warning" href="usuario/login"> Login</a>
+                <a class="btn btn-primary" href="usuario/login">Iniciar sesion</a>
             </li>
         </ul>
     </div>

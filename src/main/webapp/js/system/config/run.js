@@ -17,13 +17,13 @@ cercahuerta.run(['$rootScope', 'sessionService', '$location', '$http',
                     sessionService.setTypeUserID(response.data.message.obj_tipoUsuario.id);
                 } else {
                     sessionService.setSessionInactive;
-                    if (nextUrl != '/' && nextUrl != '/home' && nextUrl != '/usuario/login') {
+                    if (nextUrl != '/' && nextUrl != '/home' && nextUrl != '/usuario/login' && nextUrl != '/usuario/registro') {
                         $location.path("/");
                     }
                 }
             }, function (response) {
                 sessionService.setSessionInactive;
-                if (nextUrl != '/' && nextUrl != '/home' && nextUrl != '/usuario/login') {
+                if (nextUrl != '/' && nextUrl != '/home' && nextUrl != '/usuario/login' && nextUrl != '/usuario/registro') {
                     $location.path("/");
                 }
             });

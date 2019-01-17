@@ -42,8 +42,23 @@ public class UsuarioDao_0  extends GenericDaoImplementation implements DaoInterf
 
     @Override
     public BeanInterface create(BeanInterface oBean) throws Exception {
-        throw new Exception("Error en Dao remove de " + ob + ": No autorizado");
+          int id=oBean.getId();
+        if (id == 0) {
+            return super.create(oBean);
+        } else {
+            throw new Exception("Error en Dao update de " + ob + ": No autorizado");
+        }
     }
+    
+//    @Override
+//    public int update(BeanInterface oBean) throws Exception {
+//        int id=oBean.getId();
+//        if (id == oUsuarioBeanSession.getId()) {
+//            return super.update(oBean);
+//        } else {
+//            throw new Exception("Error en Dao update de " + ob + ": No autorizado");
+//        }
+//    }
 
     @Override
     public int update(BeanInterface oBean) throws Exception {

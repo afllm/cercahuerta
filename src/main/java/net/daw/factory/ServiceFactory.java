@@ -384,7 +384,9 @@ public class ServiceFactory {
                     case "usuario":
                         UsuarioService_0 oUsuarioService = new UsuarioService_0(oRequest);
                         switch (op) {
-
+                            case "create":
+                                oReplyBean = oUsuarioService.create();
+                                break;
                             case "login":
                                 oReplyBean = oUsuarioService.login();
                                 break;

@@ -19,6 +19,7 @@ import net.daw.helper.EncodingHelper;
 import net.daw.dao.specificDaoImplementation_1.TipousuarioDao_1;
 import net.daw.dao.specificDaoImplementation_2.FacturaDao_2;
 import net.daw.factory.DaoFactory;
+import net.daw.helper.TokenGenerator;
 
 
 public class UsuarioBean extends GenericBeanImplementation implements BeanInterface {
@@ -32,6 +33,8 @@ public class UsuarioBean extends GenericBeanImplementation implements BeanInterf
     @Expose
     private String ape2;
     @Expose
+    private String email;
+    @Expose
     private String login;
     @Expose(serialize = false)
     private String pass;
@@ -39,6 +42,10 @@ public class UsuarioBean extends GenericBeanImplementation implements BeanInterf
     private int id_tipoUsuario;
     @Expose(deserialize = false)
     private TipousuarioBean obj_tipoUsuario;
+    @Expose(serialize = false)
+    private String token;
+    @Expose(serialize = false)
+    private Integer activo;
     @Expose(deserialize = false)
     private int link_factura;
 
@@ -82,6 +89,14 @@ public class UsuarioBean extends GenericBeanImplementation implements BeanInterf
         this.ape2 = ape2;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+    
     public String getLogin() {
         return login;
     }
@@ -106,6 +121,22 @@ public class UsuarioBean extends GenericBeanImplementation implements BeanInterf
         this.id_tipoUsuario = id_tipoUsuario;
     }
 
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
+
+    public Integer getActivo() {
+        return activo;
+    }
+
+    public void setActivo(Integer activo) {
+        this.activo = activo;
+    }
+    
     public int getLink_factura() {
         return link_factura;
     }
@@ -121,21 +152,15 @@ public class UsuarioBean extends GenericBeanImplementation implements BeanInterf
         this.setNombre(oResultSet.getString("nombre"));
         this.setApe1(oResultSet.getString("ape1"));
         this.setApe2(oResultSet.getString("ape2"));
+        this.setEmail(oResultSet.getString("email"));
         this.setLogin(oResultSet.getString("login"));
         this.setPass(oResultSet.getString("pass"));
+        this.setToken(oResultSet.getString("token"));
+        this.setActivo(oResultSet.getInt("activo"));
 
         DaoInterface oFacturaDao = DaoFactory.getDao(oConnection, "factura", oUsuarioBeanSession);
         this.setLink_factura(oFacturaDao.getcountX(oResultSet.getInt("id")));
-//        if (oFacturaDao.getClass() == FacturaDao_1.class) {
-//            FacturaDao_1 oFacturaDao_1 = (FacturaDao_1) oFacturaDao;
-//            this.setLink_factura(oFacturaDao_1.getcountXusuario(id));
-//        } else if (oFacturaDao.getClass() == FacturaDao_2.class) {
-//            FacturaDao_2 oFacturaDao_2 = (FacturaDao_2) oFacturaDao;
-//            this.setLink_factura(oFacturaDao_2.getcountXusuario(id));
-//        } else {
-//            FacturaDao_0 oFacturaDao_0 = (FacturaDao_0) oFacturaDao;
-//            this.setLink_factura(oFacturaDao_0.getcountXusuario(id));
-//        }
+
 
         if (expand > 0) {
             DaoInterface otipousuarioDao = DaoFactory.getDao(oConnection, "tipousuario", oUsuarioBeanSession);
@@ -155,9 +180,12 @@ public class UsuarioBean extends GenericBeanImplementation implements BeanInterf
         strColumns += "nombre,";
         strColumns += "ape1,";
         strColumns += "ape2,";
+        strColumns += "email,";
         strColumns += "login,";
         strColumns += "pass,";
-        strColumns += "id_tipoUsuario";
+        strColumns += "id_tipoUsuario,";
+        strColumns += "token,";
+        strColumns += "activo";
         return strColumns;
     }
 
@@ -169,9 +197,16 @@ public class UsuarioBean extends GenericBeanImplementation implements BeanInterf
         strColumns += EncodingHelper.quotate(nombre) + ",";
         strColumns += EncodingHelper.quotate(ape1) + ",";
         strColumns += EncodingHelper.quotate(ape2) + ",";
+        strColumns += EncodingHelper.quotate(email) + ",";
         strColumns += EncodingHelper.quotate(login) + ",";
-        strColumns += EncodingHelper.quotate("DA8AB09AB4889C6208116A675CAD0B13E335943BD7FC418782D054B32FDFBA04") + ",";
-        strColumns += id_tipoUsuario;
+        strColumns += EncodingHelper.quotate(pass) + ",";
+        //Si no lo crea el administrador, el tipo de usuario es 0 (cero)
+        if(this.id_tipoUsuario!=1 && this.id_tipoUsuario!=2 && this.id_tipoUsuario!=3){
+            this.id_tipoUsuario=0;
+        }
+        strColumns += id_tipoUsuario + ",";
+        strColumns += EncodingHelper.quotate(TokenGenerator.nextToken()) + ",";
+        strColumns += 0;
         return strColumns;
     }
 
@@ -183,6 +218,7 @@ public class UsuarioBean extends GenericBeanImplementation implements BeanInterf
         strPairs += "nombre=" + EncodingHelper.quotate(nombre) + ",";
         strPairs += "ape1=" + EncodingHelper.quotate(ape1) + ",";
         strPairs += "ape2=" + EncodingHelper.quotate(ape2) + ",";
+        strPairs += "email=" + EncodingHelper.quotate(email) + ",";
         strPairs += "login=" + EncodingHelper.quotate(login) + ",";
         strPairs += "id_tipoUsuario=" + id_tipoUsuario;
         strPairs += " WHERE id=" + id;

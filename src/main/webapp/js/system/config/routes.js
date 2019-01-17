@@ -64,6 +64,7 @@ cercahuerta.config(['$routeProvider', function ($routeProvider) {
         
         $routeProvider.when('/usuario/login', {templateUrl: 'js/app/usuario/login.html', controller: 'usuarioLoginController'});
         $routeProvider.when('/usuario/logout', {templateUrl: 'js/app/usuario/logout.html', controller: 'usuarioLogoutController'});
+        $routeProvider.when('/usuario/registro', {templateUrl: 'js/app/usuario/registro.html', controller: 'usuarioRegistroController'});
 
         //TIPOUSUARIO
         $routeProvider.when('/tipousuario/plist/:rpp?/:page?/:order?', {templateUrl: 'js/app/tipousuario/plist.html', controller: 'tipousuarioPlistController', resolve: { auth: autenticacionAdministrador } });

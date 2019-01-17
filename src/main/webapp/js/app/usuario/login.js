@@ -18,7 +18,8 @@ moduleUsuario.controller("usuarioLoginController", [
 
         $scope.logged = false;
         $scope.failedlogin = false;
-
+        $scope.error = "";
+        
         $scope.logging = function () {
             sessionService.setSessionInactive();
             var login = $scope.login;
@@ -45,11 +46,15 @@ moduleUsuario.controller("usuarioLoginController", [
                     $location.url('/home');
                 } else {
                     $scope.failedlogin = true;
+                    $scope.error = response.data.message;
+
+                    
                 }
    
             }, function (response) {
                 $scope.failedlogin = true;
                 $scope.logged = false;
+                $scope.error = response.data.message;
             });
         }
 

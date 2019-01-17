@@ -109,7 +109,7 @@ public class GenericServiceImplementation implements ServiceInterface {
         try {
             String strJsonFromClient = oRequest.getParameter("json");
             Gson oGson = (new GsonBuilder()).excludeFieldsWithoutExposeAnnotation().create();
-            BeanInterface oBean = BeanFactory.getBeanFromJson(ob, oGson, strJsonFromClient);
+            BeanInterface oBean = BeanFactory.getBeanFromJson(ob, oGson, strJsonFromClient);            
             oConnectionPool = ConnectionFactory.getConnection(ConnectionConstants.connectionPool);
             oConnection = oConnectionPool.newConnection();
             DaoInterface oDao = DaoFactory.getDao(oConnection, ob, oUsuarioBeanSession);
@@ -158,7 +158,7 @@ public class GenericServiceImplementation implements ServiceInterface {
             oConnectionPool = ConnectionFactory.getConnection(ConnectionConstants.connectionPool);
             oConnection = oConnectionPool.newConnection();
             DaoInterface oDao = DaoFactory.getDao(oConnection, ob, oUsuarioBeanSession);
-            ArrayList<BeanInterface> alBean = oDao.getpage(iRpp, iPage, hmOrder, 1);
+            ArrayList<BeanInterface> alBean = oDao.getpage(iRpp, iPage, hmOrder, 2);
             Gson oGson = (new GsonBuilder()).excludeFieldsWithoutExposeAnnotation().create();
             oReplyBean = new ReplyBean(200, oGson.toJson(alBean));
         } catch (Exception ex) {

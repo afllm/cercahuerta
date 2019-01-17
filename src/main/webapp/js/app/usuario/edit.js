@@ -36,6 +36,7 @@ moduleUsuario.controller("usuarioEditController", [
             $scope.nombre = response.data.message.nombre;
             $scope.ape1 = response.data.message.ape1;
             $scope.ape2 = response.data.message.ape2;
+            $scope.email = response.data.message.email;
             $scope.login = response.data.message.login;
             $scope.pass = 'pass';
             $scope.obj_tipoUsuario = {
@@ -55,6 +56,7 @@ moduleUsuario.controller("usuarioEditController", [
                 nombre: $scope.nombre,
                 ape1: $scope.ape1,
                 ape2: $scope.ape2,
+                email: $scope.email,
                 login: $scope.login,
                 pass: $scope.pass,
                 id_tipoUsuario: $scope.obj_tipoUsuario.id
