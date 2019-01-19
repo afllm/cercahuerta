@@ -11,21 +11,22 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import javax.mail.MessagingException;
 
 import net.daw.bean.beanImplementation.UsuarioBean;
 import net.daw.bean.publicBeanInterface.BeanInterface;
 import net.daw.dao.genericDaoImplementation.GenericDaoImplementation;
 import net.daw.dao.publicDaoInterface.DaoInterface;
+import net.daw.helper.UserActivationEmail;
 
+public class UsuarioDao_0 extends GenericDaoImplementation implements DaoInterface {
 
-public class UsuarioDao_0  extends GenericDaoImplementation implements DaoInterface{
-
- public UsuarioDao_0(Connection oConnection, String ob,UsuarioBean oUsuarioBeanSession) {
+    public UsuarioDao_0(Connection oConnection, String ob, UsuarioBean oUsuarioBeanSession) {
         super(oConnection, ob, oUsuarioBeanSession);
 
     }
- 
-   @Override
+
+    @Override
     public BeanInterface get(int id, Integer expand) throws Exception {
         throw new Exception("Error en Dao remove de " + ob + ": No autorizado");
     }
@@ -39,17 +40,29 @@ public class UsuarioDao_0  extends GenericDaoImplementation implements DaoInterf
 //    public int getcount() throws Exception {
 //        throw new Exception("Error en Dao remove de " + ob + ": No autorizado");
 //    }
-
     @Override
     public BeanInterface create(BeanInterface oBean) throws Exception {
-          int id=oBean.getId();
+
+        int id = oBean.getId();
         if (id == 0) {
-            return super.create(oBean);
+            UsuarioBean oBeanActivation = (UsuarioBean) super.create(oBean);
+            String email = oBeanActivation.getEmail();
+            String nombre = oBeanActivation.getNombre();
+            String token = oBeanActivation.getToken();
+            try {
+                UserActivationEmail.sendActivationEmail(email, nombre, token);
+            } catch (MessagingException mex) {
+
+                throw new Exception("Error en Dao create de : " + mex.getMessage(), mex);
+
+            }
+
+            return oBeanActivation;
         } else {
             throw new Exception("Error en Dao update de " + ob + ": No autorizado");
         }
     }
-    
+
 //    @Override
 //    public int update(BeanInterface oBean) throws Exception {
 //        int id=oBean.getId();
@@ -59,14 +72,13 @@ public class UsuarioDao_0  extends GenericDaoImplementation implements DaoInterf
 //            throw new Exception("Error en Dao update de " + ob + ": No autorizado");
 //        }
 //    }
-
     @Override
     public int update(BeanInterface oBean) throws Exception {
         throw new Exception("Error en Dao remove de " + ob + ": No autorizado");
     }
 
     @Override
-    public ArrayList<BeanInterface> getpage(int iRpp, int iPage, HashMap<String, String> hmOrder, Integer expand) throws Exception {        
+    public ArrayList<BeanInterface> getpage(int iRpp, int iPage, HashMap<String, String> hmOrder, Integer expand) throws Exception {
         throw new Exception("Error en Dao remove de " + ob + ": No autorizado");
     }
 
