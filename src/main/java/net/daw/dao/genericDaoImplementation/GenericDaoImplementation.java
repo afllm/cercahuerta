@@ -141,7 +141,7 @@ public class GenericDaoImplementation implements DaoInterface {
             oPreparedStatement.executeUpdate();
             oResultSet = oPreparedStatement.getGeneratedKeys();
             if (oResultSet.next()) {
-                oBean.setId(oResultSet.getInt(1));
+                oBean.setId(oResultSet.getInt(1));                
             } else {
                 oBean.setId(0);
             }

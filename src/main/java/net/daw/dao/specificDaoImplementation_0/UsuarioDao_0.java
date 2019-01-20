@@ -17,6 +17,8 @@ import net.daw.bean.beanImplementation.UsuarioBean;
 import net.daw.bean.publicBeanInterface.BeanInterface;
 import net.daw.dao.genericDaoImplementation.GenericDaoImplementation;
 import net.daw.dao.publicDaoInterface.DaoInterface;
+import net.daw.factory.BeanFactory;
+import net.daw.factory.DaoFactory;
 import net.daw.helper.UserActivationEmail;
 
 public class UsuarioDao_0 extends GenericDaoImplementation implements DaoInterface {
@@ -42,19 +44,18 @@ public class UsuarioDao_0 extends GenericDaoImplementation implements DaoInterfa
 //    }
     @Override
     public BeanInterface create(BeanInterface oBean) throws Exception {
-
+        UsuarioBean oBeanActivation;
         int id = oBean.getId();
         if (id == 0) {
-            UsuarioBean oBeanActivation = (UsuarioBean) super.create(oBean);
-            String email = oBeanActivation.getEmail();
-            String nombre = oBeanActivation.getNombre();
-            String token = oBeanActivation.getToken();
             try {
+                oBeanActivation = (UsuarioBean) super.create(oBean);
+                String email = oBeanActivation.getEmail();
+                String nombre = oBeanActivation.getNombre();                
+                UsuarioBean oBeanToken = (UsuarioBean) super.get(oBeanActivation.getId(), 1);
+                String token = oBeanToken.getToken();
                 UserActivationEmail.sendActivationEmail(email, nombre, token);
-            } catch (MessagingException mex) {
-
-                throw new Exception("Error en Dao create de : " + mex.getMessage(), mex);
-
+            } catch (Exception ex) {
+                throw new Exception("Error en Dao create de " + ob + ": " + ex.getMessage(), ex);
             }
 
             return oBeanActivation;
@@ -109,6 +110,35 @@ public class UsuarioDao_0 extends GenericDaoImplementation implements DaoInterfa
             }
         }
         return oUsuarioBean;
+    }
+
+    public BeanInterface activar(String token, Integer expand) throws Exception {
+        String strSQL = "SELECT * FROM " + ob + " WHERE token=?";
+        BeanInterface oBean;
+        ResultSet oResultSet = null;
+        PreparedStatement oPreparedStatement = null;
+        try {
+            oPreparedStatement = oConnection.prepareStatement(strSQL_get);
+            oPreparedStatement.setString(1, token);
+            oResultSet = oPreparedStatement.executeQuery();
+            if (oResultSet.next()) {
+                oBean = BeanFactory.getBean(ob);
+                oBean.fill(oResultSet, oConnection, expand, oUsuarioBeanSession);
+
+            } else {
+                oBean = null;
+            }
+        } catch (SQLException e) {
+            throw new Exception("Error en Dao get de " + ob, e);
+        } finally {
+            if (oResultSet != null) {
+                oResultSet.close();
+            }
+            if (oPreparedStatement != null) {
+                oPreparedStatement.close();
+            }
+        }
+        return oBean;
     }
 
 }
