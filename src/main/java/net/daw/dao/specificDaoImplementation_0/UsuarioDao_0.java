@@ -50,7 +50,7 @@ public class UsuarioDao_0 extends GenericDaoImplementation implements DaoInterfa
             try {
                 oBeanActivation = (UsuarioBean) super.create(oBean);
                 String email = oBeanActivation.getEmail();
-                String nombre = oBeanActivation.getNombre();                
+                String nombre = oBeanActivation.getNombre();
                 UsuarioBean oBeanToken = (UsuarioBean) super.get(oBeanActivation.getId(), 1);
                 String token = oBeanToken.getToken();
                 UserActivationEmail.sendActivationEmail(email, nombre, token);
@@ -112,24 +112,49 @@ public class UsuarioDao_0 extends GenericDaoImplementation implements DaoInterfa
         return oUsuarioBean;
     }
 
-    public BeanInterface activar(String token, Integer expand) throws Exception {
-        String strSQL = "SELECT * FROM " + ob + " WHERE token=?";
-        BeanInterface oBean;
+//    public BeanInterface comprobarToken(String token, Integer expand) throws Exception {
+//        strSQL_get = "SELECT * FROM " + ob + " WHERE token=?";
+//        BeanInterface oBean;
+//        ResultSet oResultSet = null;
+//        PreparedStatement oPreparedStatement = null;
+//        try {
+//            oPreparedStatement = oConnection.prepareStatement(strSQL_get);
+//            oPreparedStatement.setString(1, token);
+//            oResultSet = oPreparedStatement.executeQuery();
+//            if (oResultSet.next()) {
+//                oBean = BeanFactory.getBean(ob);
+//                oBean.fill(oResultSet, oConnection, expand, oUsuarioBeanSession);
+//            } else {
+//                oBean = null;
+//            }
+//        } catch (SQLException e) {
+//            throw new Exception("Error en Dao get de " + ob, e);
+//        } finally {
+//            if (oResultSet != null) {
+//                oResultSet.close();
+//            }
+//            if (oPreparedStatement != null) {
+//                oPreparedStatement.close();
+//            }
+//        }
+//        return oBean;
+//    }
+    
+    //Esto tiene que ser un get, para pasarle campos a sendConfirmationEmail - Corregir    
+    public int comprobarToken(String token) throws Exception {
+        strSQL_getcount = "SELECT COUNT(id) FROM " + ob + " WHERE token=?";
+        int res = 0;
         ResultSet oResultSet = null;
         PreparedStatement oPreparedStatement = null;
         try {
-            oPreparedStatement = oConnection.prepareStatement(strSQL_get);
+            oPreparedStatement = oConnection.prepareStatement(strSQL_getcount);
             oPreparedStatement.setString(1, token);
             oResultSet = oPreparedStatement.executeQuery();
             if (oResultSet.next()) {
-                oBean = BeanFactory.getBean(ob);
-                oBean.fill(oResultSet, oConnection, expand, oUsuarioBeanSession);
-
-            } else {
-                oBean = null;
+                res = oResultSet.getInt(1);
             }
         } catch (SQLException e) {
-            throw new Exception("Error en Dao get de " + ob, e);
+            throw new Exception("Error en Dao comprobarToken de " + ob + ": " + e.getMessage(), e);
         } finally {
             if (oResultSet != null) {
                 oResultSet.close();
@@ -138,7 +163,43 @@ public class UsuarioDao_0 extends GenericDaoImplementation implements DaoInterfa
                 oPreparedStatement.close();
             }
         }
-        return oBean;
+        return res;
+    }
+
+    public int activarUsuario(String token) throws Exception {
+        int iResult = 0;
+        strSQL_update = "UPDATE " + ob + " SET ";
+        strSQL_update += "id_tipoUsuario=2,activo=1 ";
+        strSQL_update += "WHERE token=?";
+
+//        UPDATE "nombre_tabla"
+//        SET colonne 1 = [[valor1], colonne 2 = [valor2]
+//        WHERE "condición";
+//        UPDATE usuario SET id=375,dni="85236987S",nombre="otromenos",ape1="otromas",ape2="otromas",
+//        email="afllm007@gmail.com",login="otromas",id_tipoUsuario=0,token="null",activo=null WHERE id=375
+        PreparedStatement oPreparedStatement = null;
+        try {
+            oPreparedStatement = oConnection.prepareStatement(strSQL_update);
+            oPreparedStatement.setString(1, token);
+            iResult = oPreparedStatement.executeUpdate();
+
+        } catch (SQLException e) {
+            throw new Exception("Error en Dao activarUsuario de " + ob + ": " + e.getMessage(), e);
+        } finally {
+            if (oPreparedStatement != null) {
+                oPreparedStatement.close();
+            }
+        }
+        return iResult;
+    }
+
+    public Integer activar(String token) throws Exception {
+        int resultadoActivacion = 0;
+        if (this.comprobarToken(token) >0) {
+            resultadoActivacion = this.activarUsuario(token);
+            UserActivationEmail.sendCofirmationEmail(email, nombre);
+        }
+        return resultadoActivacion;
     }
 
 }
