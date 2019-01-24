@@ -1,6 +1,6 @@
 <!-- Fixed navbar -->
-<nav class="navbar navbar-expand-md navbar-dark fixed-top" style="background-color: rgb(119, 136, 153)">
-    <a class="navbar-brand" href="home"><img src="./images/logo.png" alt="logo" width="50" height="50" />  Cerca de la Huerta</a>
+<nav class="navbar navbar-expand-md navbar-dark fixed-top" style="background-color: rgba(30, 130, 76, 1)">
+    <a class="navbar-brand" href="home"><img src="./images/logo.png" alt="logo" width="100" height="100" />  <span class="titulos">Cerca de la Huerta</span></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -18,7 +18,7 @@
             <li class="nav-item" ng-show="c.limpiar && c.tipousuarioID==1" ng-class="{'active': c.isActive('/factura/plist')}">
                 <a class="nav-link" href="factura/plist"><i class="fas far fa-file fa-1x"></i> Factura</a>
             </li>
-            <li class="nav-item"  ng-show=" c.limpiar && c.tipousuarioID==1" ng-class="{'active': isActive('/producto/plist')}">
+            <li class="nav-item"  ng-show=" c.limpiar && c.tipousuarioID==1" ng-class="{'active': c.isActive('/producto/plist')}">
                 <a class="nav-link" href="producto/plist"><i class="fas fas fa-cube fa-1x"></i> Producto</a>
             </li>
             <li class="nav-item" ng-show=" c.limpiar && c.tipousuarioID==1" ng-class="{'active':c.isActive('/tipoproducto/plist')}">
@@ -28,7 +28,7 @@
                 <a class="nav-link" href="linea/plist"><i class="fas fas fa-align-justify fa-1x"></i> Linea</a>
             </li>
              <li class="nav-item" ng-show="c.limpiar && c.tipousuarioID==2" ng-class="{'active': c.isActive('/carrito/plist')}">
-                <a class="nav-link" href="carrito/plist"><i class="fas fas fa-shopping-cart fa-1x"></i> Productos</a>
+                 <a class="nav-link" href="carrito/plist"><i class="fas fas fa-shopping-cart fa-1x"></i> <span class="titulos">Productos</span></a>
             </li>
 
                </ul>

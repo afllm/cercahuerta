@@ -393,6 +393,9 @@ public class ServiceFactory {
                             case "check":
                                 oReplyBean = oUsuarioService.check();
                                 break;
+                            case "activar":
+                                oReplyBean = oUsuarioService.activar();
+                                break;
                             default:
                                 oReplyBean = new ReplyBean(500, "Operation doesn't exist");
                                 break;

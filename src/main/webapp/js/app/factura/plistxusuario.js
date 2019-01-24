@@ -155,8 +155,8 @@ moduleFactura.controller('facturaplistxusuarioController', ['$scope', '$http', '
                     $scope.list2.push("...");
                 }
             }
-        }
-
+        }        
+        
         $scope.isActive = toolService.isActive;
         $scope.openModal = function () {
 

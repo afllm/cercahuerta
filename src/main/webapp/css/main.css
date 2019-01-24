@@ -3,22 +3,57 @@
 html {
     position: relative;
     min-height: 100%;
+    min-width: 100%;
+    font-family: Helvetica, Arial, sans-serif;
 }
 body {
     /* Margin bottom by footer height */
     /*margin-bottom: 60px;*/
 }
-.footer {
+footer {
     position: fixed;
     bottom: 0;
     width: 100%;
     /* Set the fixed height of the footer here */
-    height: 60px;
+    height: 100px;
     line-height: 1px; /* Vertically center the text there */
-    background-color: rgb(119, 136, 153);
+    background-color: rgba(30, 130, 76, 1);
     color:whitesmoke;
 }
 
+/*grid general*/
+principal { 
+    display: grid;
+    grid-template-areas: 
+        "header"
+        "contenedor"
+        "footer";
+    grid-template-rows: 80px 1fr 70px;  
+    grid-template-columns: 1fr;
+    grid-row-gap: 10px;
+    grid-column-gap: 10px;
+    min-height: 100vh;
+    min-width: 100vw;
+    margin: 0;
+}
+
+header, footer, .contenedor {
+    padding: 1.2em;
+}
+header-component{
+    grid-area: header;
+}
+footer {
+    grid-area: footer;
+}
+.contenedor { 
+    grid-area: contenedor;
+    margin-bottom: 100px; 
+    margin-top: 100px
+}
+.contenedor-home{
+    grid-area: contenedor;
+}
 
 /* Custom page CSS
 -------------------------------------------------- */
@@ -44,6 +79,7 @@ th {
 .btn{
     background-color: #F79135;
     border-color: white;
+    color: white;
 }
 .btn:hover{
     background-color: white;
@@ -52,8 +88,10 @@ th {
 }
 
 .btn:active{
-   transform: translateY(5px);
-   background-color: rgb(119, 136, 153) !important;
+    transform: translateY(2px);
+    background-color: rgb(119, 136, 153) !important;
+    color: #F79135;
+    border-color: #F79135;
 }
 .btn.btn-light {
     height: 35px;
@@ -73,42 +111,21 @@ th {
     color:red;
 
 }
-/*.caja {
-    display: flex;
-    flex-wrap: wrap;
-
-}*/
-/*.carrito{
-    background-color: #f5f5ef;
-    border: 5px;
-    border-color: #d8d8c0;
-    height: 200px;
-    width: 300px;
-    display: grid; 
-    margin: 0 auto;
-    grid-gap: 20px;
-    padding: 10px;
-    grid-template-columns: auto;
-    grid-template-rows: 50% 10% 40%;
-    grid-gap: 20px;
-    grid-template-areas: "arriba"
-        "centro"
-        "abajo";
-}*/
 
 /*Content*/
 
-.content{
+.producto-carrito{
     display: flex;
     flex-flow: row wrap;
     align-items: center;
     justify-content: center;
     width: 100vw;
+    margin-bottom: 20px;
 }
 
 
-.content article{
-    background-color: rgba(119, 136, 153,0.1);
+.producto-carrito article{
+    background-color: rgba(30, 130, 76, 0.2);
     filter: grayscale(50%);
     flex: 0 0 200px;
     margin: 5px;
@@ -117,7 +134,7 @@ th {
 
 }
 
-.content article:hover{
+.producto-carrito article:hover{
     flex: 0 0 200px;
     margin: 1px;
     padding: 4px;
@@ -126,7 +143,7 @@ th {
 }
 
 
-.content article img{
+.producto-carrito article img{
     min-width: 100px;
     max-width: 320px;
     min-height: 64px;
@@ -134,65 +151,127 @@ th {
 }
 
 
-.content article .texto{
+.producto-carrito article .texto{
     padding: 0 20px 20px;
 }
-/*.contenido {
-    background-color: rgb(119, 136, 153);
-    box-shadow: 2px 2px 6px 0px rgba(0,0,0,0.3);
-    filter: grayscale(50%);
-    color: whitesmoke;
-    height: 200px;
-    width: 250px;
-    display: grid; 
-    margin: 5px;
-    padding: 0;
-    grid-gap: 20px;
-    padding: 10px;
-    grid-template-columns: 100%;
-    grid-template-rows: 55% 5% 40%;
 
-    grid-template-areas: "arriba"
-        "centro"
-        "abajo";
-}  
-
-.contenido:hover{
-    margin: 1px;
-    padding: 4px;
-    box-shadow: 2px 2px 6px 0px rgba(0,0,0,0.3);
-    filter: grayscale(0%);
+/*home*/
+.home-img{
+    background: url("../images/land.jpeg") no-repeat fixed center;
+    background-size: cover;
+    background-color: rgba(30, 130, 76, 0.2);
+    width: 100vw;
+    height: 90vh;
+    display: grid;
+    /*justify-items: center;*/
+    align-items: center;
 }
 
-
-.centro {
-    font-size: 12px;
-    font-weight: bold;
-    grid-area: centro;
+.home-img-text{
     text-align: center;
+    justify-content: center;
+    color: floralwhite;
+
 }
-.arriba {
-    grid-area: arriba;
-    min-width: 100px;
-    max-width: 320px;
-    min-height: 64px;
-    max-height: 205px;
+
+/*Fuentes*/
+.titulos,h1,h2,h3,h4{
+    font-family: 'Kaushan Script', cursive;
 }
-.abajo {
-    margin-left: 20%;
-    grid-area: abajo;
+/*login*/
+.container{
+    height: 100%;
+    align-content: center;
+}
+
+.card{
+    height: 410px;
+    margin-top: 200px;
+    margin-bottom: 0px;
+    width: 400px;
+    background-color: rgba(30, 130, 76,0.2) !important;
+}
+
+.social_icon span{
+    font-size: 60px;
+    margin-left: 10px;
+    color: #F79135;
+}
+
+.social_icon span:hover{
+    color: white;
+   /*cursor: pointer;*/
+}
+
+.card-header h3{
+    color: white;
+}
+
+.social_icon{
+    position: absolute;
+    right: 20px;
+    top: -45px;
+}
+
+.input-group-prepend span{
+    width: 50px;
+    background-color: #F79135;
+    color: white;
+    border:0 !important;
+}
+
+input:focus{
+    outline: 0 0 0 0  !important;
+    box-shadow: 0 0 0 0 !important;
+
+}
+
+.remember{
+    color: white;
+}
+
+.remember input
+{
+    width: 20px;
+    height: 20px;
+    margin-left: 15px;
+    margin-right: 5px;
+}
+
+/*.login_btn{
+    color: black;
+    background-color: #FFC312;
+    width: auto;
 }*/
+
+/*.login_btn:hover{
+    color: black;
+    background-color: white;
+}*/
+
+.links{
+    color: white;
+    padding-bottom: 2em;
+}
+
+.links a{
+    margin-left: 4px;
+}
+
+.card-footer div a{
+    color: #F79135;  
+}
 
 /*Responsive*/
 
 @media screen and (min-width: 769px){
     .content article {
-       width: 24vw;
+        width: 24vw;
     }
 }
 @media screen and (max-width: 768px){
     .content article {
-       width: 49vw;
+        width: 49vw;
     }
 }
 
@@ -200,6 +279,6 @@ th {
     .content article {
         width: 100vw;
     }
-    
+
 }
 
