@@ -26,7 +26,7 @@ moduleUsuario.controller("usuarioRegistroController", [
         $scope.ob = 'usuario';
         $scope.op = 'create';
         $scope.result = null;
-        $scope.title = "Nuevo de usuario";
+        $scope.title = "Registro de usuario";
         $scope.icon = "fa-file-text-o";
 
 
@@ -46,11 +46,9 @@ moduleUsuario.controller("usuarioRegistroController", [
                 pass: forge_sha256($scope.pass)//,
                 //id_tipoUsuario: $scope.obj_tipoUsuario.id
             }
+            
             $http({
-                method: 'GET',
-                header: {
-                    'Content-Type': 'application/json;charset=utf-8'
-                },
+                method: 'POST',
                 url: 'json?ob=usuario&op=create',
                 params: {json: JSON.stringify(json)}
             }).then(function () {

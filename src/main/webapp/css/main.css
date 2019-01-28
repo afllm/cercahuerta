@@ -1,24 +1,43 @@
+/* amber = #ffa000 */
+
 /* Sticky footer styles
 -------------------------------------------------- */
+*{
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    color: dimgray;
+    background-color: floralwhite;
+    font-family: Arial, Helvetica, sans-serif;
+}
 html {
     position: relative;
-    min-height: 100%;
-    min-width: 100%;
-    font-family: Helvetica, Arial, sans-serif;
 }
-body {
+body {    
+    margin: 0 auto;
     /* Margin bottom by footer height */
     /*margin-bottom: 60px;*/
 }
-footer {
+footer, .footer {
     position: fixed;
     bottom: 0;
     width: 100%;
     /* Set the fixed height of the footer here */
     height: 100px;
     line-height: 1px; /* Vertically center the text there */
-    background-color: rgba(30, 130, 76, 1);
+    background-color: #009688;
+    background-image:  linear-gradient(to top, rgb(0,150,136) 0px, rgb(0, 0, 0) 100%);
     color:whitesmoke;
+}
+
+header-component nav{
+    grid-area: header;
+    color: floralwhite;
+    background-image:  linear-gradient(to bottom, rgb(0,150,136) 0px, rgb(0, 0, 0) 100%);
 }
 
 /*grid general*/
@@ -33,7 +52,7 @@ principal {
     grid-row-gap: 10px;
     grid-column-gap: 10px;
     min-height: 100vh;
-    min-width: 100vw;
+    min-width: 100%;
     margin: 0;
 }
 
@@ -43,13 +62,14 @@ header, footer, .contenedor {
 header-component{
     grid-area: header;
 }
-footer {
+.footer {
     grid-area: footer;
 }
 .contenedor { 
     grid-area: contenedor;
     margin-bottom: 100px; 
-    margin-top: 100px
+    margin-top: 100px;
+    max-width: 960px;
 }
 .contenedor-home{
     grid-area: contenedor;
@@ -76,7 +96,7 @@ th {
     cursor:pointer;
 }
 
-.btn{
+/*.btn{
     background-color: #F79135;
     border-color: white;
     color: white;
@@ -92,14 +112,24 @@ th {
     background-color: rgb(119, 136, 153) !important;
     color: #F79135;
     border-color: #F79135;
+}*/
+.btn.btn-dark-green {
+    height: 2em;
+    width: 2.5em;
+    padding: 0.3em 0em 1.7em 0em;
+    font-size: 1em;
+    margin:0.1em;
 }
-.btn.btn-light {
-    height: 35px;
-    width: 35px;
 
-
+ .btn-outline-dark-green {
+    height: 2em;
+    width: 2.5em;
+    padding: 0.3em 0em 1.7em 0em !important;
+    font-size: 1em;
+    margin:0.1em;
 }
-.btn.btn-light.icon{
+
+.btn.btn-dark-green.icon, .btn.btn-outline-dark-green.icon{
     height: 30px;
     width: 30px;
 
@@ -135,10 +165,8 @@ th {
 }
 
 .producto-carrito article:hover{
-    flex: 0 0 200px;
     margin: 1px;
     padding: 4px;
-    box-shadow: 2px 2px 6px 0px rgba(0,0,0,0.3);
     filter: grayscale(0%);
 }
 
@@ -156,8 +184,7 @@ th {
 }
 
 /*home*/
-.home-img{
-    background: url("../images/land.jpeg") no-repeat fixed center;
+.home-img, .login-img{
     background-size: cover;
     background-color: rgba(30, 130, 76, 0.2);
     width: 100vw;
@@ -165,6 +192,14 @@ th {
     display: grid;
     /*justify-items: center;*/
     align-items: center;
+}
+
+.home-img{
+    background: url("../images/land.jpeg") no-repeat fixed center;
+}
+
+.login-img{
+    background: url("../images/login.jpg") no-repeat fixed center;
 }
 
 .home-img-text{
@@ -180,15 +215,15 @@ th {
 }
 /*login*/
 .container{
-    height: 100%;
+    /*height: 100%;*/
     align-content: center;
 }
 
 .card{
-    height: 410px;
-    margin-top: 200px;
+    height: 50%;
+    margin-top: 140px;
     margin-bottom: 0px;
-    width: 400px;
+    width: 40%;
     background-color: rgba(30, 130, 76,0.2) !important;
 }
 
@@ -196,11 +231,6 @@ th {
     font-size: 60px;
     margin-left: 10px;
     color: #F79135;
-}
-
-.social_icon span:hover{
-    color: white;
-   /*cursor: pointer;*/
 }
 
 .card-header h3{
@@ -215,7 +245,7 @@ th {
 
 .input-group-prepend span{
     width: 50px;
-    background-color: #F79135;
+    background-color: #ffa000;
     color: white;
     border:0 !important;
 }
@@ -245,7 +275,7 @@ input:focus{
 }*/
 
 /*.login_btn:hover{
-    color: black;
+    color: #ffa000;
     background-color: white;
 }*/
 
@@ -259,7 +289,12 @@ input:focus{
 }
 
 .card-footer div a{
-    color: #F79135;  
+    color: #ffa000;  
+}
+
+.card-footer div a:hover{
+    color: white;
+    box-shadow: 2px 2px 6px 0px rgba(0,0,0,0.6);
 }
 
 /*Responsive*/
@@ -273,6 +308,9 @@ input:focus{
     .content article {
         width: 49vw;
     }
+    .card{
+        width: 70%;
+    }
 }
 
 @media screen and (max-width: 480px){
@@ -280,5 +318,8 @@ input:focus{
         width: 100vw;
     }
 
+    .card{
+        width: 100%;
+    }
 }
 

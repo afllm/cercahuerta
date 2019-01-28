@@ -23,15 +23,10 @@ public class UserActivationEmail {
         String to = email;
         String from = "info.cercahuerta@gmail.com";
         String pass = "cercahuerta2019";
-        //http://localhost:8081/cercahuerta/json?ob=usuario&op=activar&token=2V5lCaun1BtWNChMXGm3uVCMT2iH1ggn4WnYDbCwNnW3gIUeke5A7wumEyCOgGjBL8fzbP4sEOhWfWsePc8SeTgTXlYu48YZYNZ6jAG4vwdY16XbRPyNxSoaCS4UxtvPTWYIGWgBFLXOS2EIg76vkFRJdRQyh8Mv363VpD1ovh1bkYZFk0VyfbiZVCgRv5CiFxtcuTJRqgIhlVW93f4iAX6srC58ybc45w3wPDEdGQ38Oonznl2UN8mgLIszFjij
-        //Hacer pagina confirmación en cliente, que lleve a servidor
-        String link = "json?ob=usuario&op=activar&token=" + token;//Esto está mal, no se puede acceder desde el email
-        //Con lo de localhost/127.0.0.1 los enlaces no funcionan
-        //String link2 = "127.0.0.1:8081/cercahuerta/json?ob=usuario&op=activar&token=" + token;
-        //http://localhost:8081/cercahuerta/json?ob=usuario&op=activar&token=M8RXoweslPc7SJJixdX1xcnSoiuntThHPbd2JkOdZdToF6XKroNR5OIplc0tB6iX1mQsnMsHSdXrar0jeflyNxHkQzx3gbauZPR3R3Buqb6HxkBerMO0WlSs1NejhyYp69BxE0EU9l77j57T975Qrmrzjzrl4LVhXondrQVMuLppkgo6E97DKZ3XhZBMokFNkCHQSTAF0pmZLPv7bkSqBBJpXnwuaT42YmSQMiO3DxBmKJXwDQM5JGLXlBUJ221P
-        //http://json/?ob=usuario&op=activar&token=M8RXoweslPc7SJJixdX1xcnSoiuntThHPbd2JkOdZdToF6XKroNR5OIplc0tB6iX1mQsnMsHSdXrar0jeflyNxHkQzx3gbauZPR3R3Buqb6HxkBerMO0WlSs1NejhyYp69BxE0EU9l77j57T975Qrmrzjzrl4LVhXondrQVMuLppkgo6E97DKZ3XhZBMokFNkCHQSTAF0pmZLPv7bkSqBBJpXnwuaT42YmSQMiO3DxBmKJXwDQM5JGLXlBUJ221P
-        //http://json/?ob=usuario&op=activar&token=2V5lCaun1BtWNChMXGm3uVCMT2iH1ggn4WnYDbCwNnW3gIUeke5A7wumEyCOgGjBL8fzbP4sEOhWfWsePc8SeTgTXlYu48YZYNZ6jAG4vwdY16XbRPyNxSoaCS4UxtvPTWYIGWgBFLXOS2EIg76vkFRJdRQyh8Mv363VpD1ovh1bkYZFk0VyfbiZVCgRv5CiFxtcuTJRqgIhlVW93f4iAX6srC58ybc45w3wPDEdGQ38Oonznl2UN8mgLIszFjij
-        //http://localhost:8081/cercahuerta/json?ob=usuario&op=activar&token=M8RXoweslPc7SJJixdX1xcnSoiuntThHPbd2JkOdZdToF6XKroNR5OIplc0tB6iX1mQsnMsHSdXrar0jeflyNxHkQzx3gbauZPR3R3Buqb6HxkBerMO0WlSs1NejhyYp69BxE0EU9l77j57T975Qrmrzjzrl4LVhXondrQVMuLppkgo6E97DKZ3XhZBMokFNkCHQSTAF0pmZLPv7bkSqBBJpXnwuaT42YmSQMiO3DxBmKJXwDQM5JGLXlBUJ221P
+        String link = "http://localhost:8081/cercahuerta/json?ob=usuario&op=activar&token=" + token;//No se puede acceder desde el email
+        String linkTexto = "http://localhost:8081/cercahuerta/json?ob=usuario&op=activar&token=" + token;
+        //http://localhost:8081/cercahuerta/json?ob=usuario&op=activar&token=jNjbOwfLIqW84bNfEyFVhxnr4cuJUehwa6r0SoyhouRVlIVrrpLKBxee0ztt48KK4OR0yVt6mk8DyPKvbpLSX0PdSgD7HGsQlRMI78iamJBz9zp2UItSvj1HT6P9XMhNvAC2iCs3J5I9RZoHOLdjEnkruuZMNlIA1845mpvY5gQDt8yHjEN09wZliAQT4XVGrAhQsKXtdEMEjT6S5cQcWO8ehdmDACfDuvsvdLluEANOzf88jpdSWiieiuuSwUQW
+        //http://localhost:8081/cercahuerta/json?ob=usuario&op=check
         Properties properties = new Properties();
         properties.setProperty("mail.smtp.host", "smtp.gmail.com");
         properties.setProperty("mail.smtp.starttls.enable", "true");
@@ -50,8 +45,9 @@ public class UserActivationEmail {
 
             message.setSubject("confirme su alta en Cerca de la Huerta");
             message.setText("Bienvenido a Cerca de la Huerta " + nombre
-                    + ",<br> Haz click en <a href='" + link + "'>este sin lo de localhost enlace</a> para confirmar tu cuenta"
-                    //+ "<br> Haz click en <a href='" + link2 + "'>este otro enlace</a> a ver si va o que"
+                    + ",<br> Haz click en <a href='" + link + "'>este enlace</a> para confirmar tu cuenta"
+                    + "<br> Si el link no funciona o si lo prefiere, pegue esto en su navegador:"
+                    + "<br>" + linkTexto
                     + "<br><br><small>Mensaje automático; por favor, no responda este correo</small>",
                     "utf-8", "html");
             // Transport.send(message);
@@ -95,7 +91,9 @@ public class UserActivationEmail {
 
             message.setSubject("Su cuenta en Cerca de la Huerta ha sido confirmada");
             message.setText("Enahorabuena " + nombre
-                    + "<br> Haz click en <a href='#'>este enlace</a> para entrar en Cerca de la Huerta"
+                    + "<br> Haz click en <a href='http://localhost:8081/cercahuerta/'>este enlace</a> para entrar en Cerca de la Huerta"
+                    + "<br> Si el link no funciona o si lo prefiere, pegue esto en su navegador:"
+                    + "<br>http://localhost:8081/cercahuerta/"
                     + "<br>Ya puedes empezar a disfrutar de tus ventajas como usuario registrado"
                     + "<br><br><small>Mensaje automático; por favor, no responda este correo</small>",
                     "utf-8", "html");

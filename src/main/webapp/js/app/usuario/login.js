@@ -46,8 +46,9 @@ moduleUsuario.controller("usuarioLoginController", [
                     $location.url('/home');
                 } else {
                     $scope.failedlogin = true;
-                    $scope.error = response.data.message;
-
+                    if(response.data.message !=null){
+                        $scope.error = ": "+response.data.message;
+                    }
                     
                 }
    
