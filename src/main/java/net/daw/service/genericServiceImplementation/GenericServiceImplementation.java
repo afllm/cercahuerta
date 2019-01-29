@@ -24,7 +24,6 @@ import net.daw.factory.DaoFactory;
 import net.daw.helper.ParameterCook;
 import net.daw.service.publicServiceInterface.ServiceInterface;
 
-
 public class GenericServiceImplementation implements ServiceInterface {
 
     protected HttpServletRequest oRequest;
@@ -109,7 +108,7 @@ public class GenericServiceImplementation implements ServiceInterface {
         try {
             String strJsonFromClient = oRequest.getParameter("json");
             Gson oGson = (new GsonBuilder()).excludeFieldsWithoutExposeAnnotation().create();
-            BeanInterface oBean = BeanFactory.getBeanFromJson(ob, oGson, strJsonFromClient);            
+            BeanInterface oBean = BeanFactory.getBeanFromJson(ob, oGson, strJsonFromClient);
             oConnectionPool = ConnectionFactory.getConnection(ConnectionConstants.connectionPool);
             oConnection = oConnectionPool.newConnection();
             DaoInterface oDao = DaoFactory.getDao(oConnection, ob, oUsuarioBeanSession);
@@ -203,11 +202,12 @@ public class GenericServiceImplementation implements ServiceInterface {
             Integer idajena = Integer.parseInt(oRequest.getParameter("idajena"));
             Integer iRpp = Integer.parseInt(oRequest.getParameter("rpp"));
             Integer iPage = Integer.parseInt(oRequest.getParameter("page"));
+            HashMap<String, String> hmOrder = ParameterCook.getOrderParams(oRequest.getParameter("order"));
             oConnectionPool = ConnectionFactory.getConnection(ConnectionConstants.connectionPool);
             oConnection = oConnectionPool.newConnection();
             //FacturaDao_1 oFacturaDao = new FacturaDao_1(oConnection, ob, oUsuarioBeanSession);
             DaoInterface oDao = DaoFactory.getDao(oConnection, ob, oUsuarioBeanSession);
-            ArrayList<BeanInterface> alOBean = oDao.getpageX(iRpp, iPage, idajena, 2);
+            ArrayList<BeanInterface> alOBean = oDao.getpageX(iRpp, iPage, idajena, hmOrder, 2);
             Gson oGson = new Gson();
             oReplyBean = new ReplyBean(200, oGson.toJson(alOBean));
         } catch (Exception ex) {

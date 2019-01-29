@@ -113,7 +113,6 @@ moduleFactura.controller('facturaplistxusuarioController', ['$scope', '$http', '
         }).then(function (response) {
             $scope.status = response.status;
             $scope.ajaxDataUsuarios = response.data.message;
-            
         }, function (response) {
             $scope.status = response.status;
             $scope.ajaxDataUsuarios = response.data.message || 'Request failed';

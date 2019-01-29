@@ -91,9 +91,9 @@ public class LineaDao_2 extends GenericDaoImplementation implements DaoInterface
     }
     
     @Override
-    public ArrayList<BeanInterface> getpageX(int iRpp, int iPage, int idajena, Integer expand) throws Exception {
+    public ArrayList<BeanInterface> getpageX(int iRpp, int iPage, int idajena, HashMap<String, String> hmOrder, Integer expand) throws Exception {
         strSQL_WhereGetpagex = " WHERE id_factura=?";
-        return super.getpageX(iRpp, iPage, idajena, expand);
+        return super.getpageX(iRpp, iPage, idajena,hmOrder, expand);
 
     }
 

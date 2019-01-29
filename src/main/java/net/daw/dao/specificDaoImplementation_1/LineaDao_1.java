@@ -10,6 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import net.daw.bean.beanImplementation.LineaBean;
 import net.daw.bean.beanImplementation.UsuarioBean;
 import net.daw.bean.publicBeanInterface.BeanInterface;
@@ -71,9 +72,9 @@ public class LineaDao_1 extends GenericDaoImplementation implements DaoInterface
     }
 
     @Override
-    public ArrayList<BeanInterface> getpageX(int iRpp, int iPage, int idajena, Integer expand) throws Exception {
+    public ArrayList<BeanInterface> getpageX(int iRpp, int iPage, int idajena, HashMap<String, String> hmOrder, Integer expand) throws Exception {
         strSQL_WhereGetpagex = " WHERE id_factura=?";
-        return super.getpageX(iRpp, iPage, idajena, expand);
+        return super.getpageX(iRpp, iPage, idajena, hmOrder, expand);
 
     }
 

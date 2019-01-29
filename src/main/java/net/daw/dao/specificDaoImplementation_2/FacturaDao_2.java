@@ -81,9 +81,9 @@ public class FacturaDao_2 extends GenericDaoImplementation implements DaoInterfa
     }
 
     @Override
-    public ArrayList<BeanInterface> getpageX(int iRpp, int iPage, int idajena, Integer expand) throws Exception {
+    public ArrayList<BeanInterface> getpageX(int iRpp, int iPage, int idajena, HashMap<String, String> hmOrder, Integer expand) throws Exception {
         strSQL_WhereGetpagex = " WHERE id_usuario=?";
-        return super.getpageX(iRpp, iPage, idajena, expand);
+        return super.getpageX(iRpp, iPage, idajena,hmOrder, expand);
 
     }
 
