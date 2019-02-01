@@ -71,11 +71,38 @@ var autenticacionCualquieraLogueado = function ($q, $location, $http, sessionSer
 
 }
 
+var autenticacionCualquiera = function ($q, $location, $http, sessionService) {
+    var deferred = $q.defer();
+    $http({
+        method: 'GET',
+        url: 'json?ob=usuario&op=check'
+    }).then(function (response) {
+        if (response.data.message.obj_tipoUsuario.id === 2 || response.data.message.obj_tipoUsuario.id === 1) {
+            sessionService.setSesion(response.data.message);
+            sessionService.setSessionActive();
+            sessionService.setUserName(response.data.message.nombre + " " + response.data.message.ape1);
+            sessionService.setId(response.data.message.id);
+            //sessionService.setSesion(response.data.message);
+            sessionService.setTypeUserID(response.data.message.obj_tipoUsuario.id);
+            //deferred.resolve();
+        }
+        
+//        else {
+//            $location.path('/home');
+//        }
+    }, function (response) {
+        //$location.path('/home');
+    });
+    deferred.resolve();
+    return deferred.promise;
+
+}
+
 
 cercahuerta.config(['$routeProvider', function ($routeProvider) {
 
         //HOME
-        $routeProvider.when('/', {templateUrl: 'js/app/common/home.html', controller: 'homeController'});
+        $routeProvider.when('/', {templateUrl: 'js/app/common/home.html', controller: 'homeController', resolve: { auth: autenticacionCualquiera}});
 
         //USUARIO
         $routeProvider.when('/usuario/plist/:rpp?/:page?/:order?', {templateUrl: 'js/app/usuario/plist.html', controller: 'usuarioPlistController', resolve: {auth: autenticacionAdministrador}});
@@ -84,11 +111,11 @@ cercahuerta.config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/usuario/edit/:id', {templateUrl: 'js/app/usuario/edit.html', controller: 'usuarioEditController', resolve: {auth: autenticacionAdministrador}});
         $routeProvider.when('/usuario/remove/:id', {templateUrl: 'js/app/usuario/remove.html', controller: 'usuarioRemoveController', resolve: {auth: autenticacionAdministrador}});
 
-        $routeProvider.when('/usuario/editpass/:id', {templateUrl: 'js/app/usuario/editpass.html', controller: 'usuarioEditpassController'});
+        $routeProvider.when('/usuario/editpass/:id', {templateUrl: 'js/app/usuario/editpass.html', controller: 'usuarioEditpassController', resolve: { auth: autenticacionCualquieraLogueado}});
 
-        $routeProvider.when('/usuario/login', {templateUrl: 'js/app/usuario/login.html', controller: 'usuarioLoginController'});
-        $routeProvider.when('/usuario/logout', {templateUrl: 'js/app/usuario/logout.html', controller: 'usuarioLogoutController'});
-        $routeProvider.when('/usuario/registro', {templateUrl: 'js/app/usuario/registro.html', controller: 'usuarioRegistroController'});
+        $routeProvider.when('/usuario/login', {templateUrl: 'js/app/usuario/login.html', controller: 'usuarioLoginController', resolve: { auth: autenticacionCualquiera}});
+        $routeProvider.when('/usuario/logout', {templateUrl: 'js/app/usuario/logout.html', controller: 'usuarioLogoutController', resolve: { auth: autenticacionCualquieraLogueado}});
+        $routeProvider.when('/usuario/registro', {templateUrl: 'js/app/usuario/registro.html', controller: 'usuarioRegistroController', resolve: { auth: autenticacionCualquiera}});
 
         //TIPOUSUARIO
         $routeProvider.when('/tipousuario/plist/:rpp?/:page?/:order?', {templateUrl: 'js/app/tipousuario/plist.html', controller: 'tipousuarioPlistController', resolve: {auth: autenticacionAdministrador}});
@@ -109,22 +136,22 @@ cercahuerta.config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/producto/edit/:id', {templateUrl: 'js/app/producto/edit.html', controller: 'productoEditController', resolve: {auth: autenticacionAdministrador}});
         $routeProvider.when('/producto/remove/:id', {templateUrl: 'js/app/producto/remove.html', controller: 'productoRemoveController', resolve: {auth: autenticacionAdministrador}});
         $routeProvider.when('/producto/plist/:rpp?/:page?/:order?', {templateUrl: 'js/app/producto/plist.html', controller: 'productoPlistController', resolve: {auth: autenticacionAdministrador}});
-        $routeProvider.when('/producto/view/:id?', {templateUrl: 'js/app/producto/view.html', controller: 'productoViewController'});
+        $routeProvider.when('/producto/view/:id?', {templateUrl: 'js/app/producto/view.html', controller: 'productoViewController', resolve: { auth: autenticacionCualquiera}});
 
         //LINEA
         $routeProvider.when('/linea/plist/:rpp?/:page?/:order?', {templateUrl: 'js/app/linea/plist.html', controller: 'lineaPlistController', resolve: {auth: autenticacionAdministrador}});
-        $routeProvider.when('/linea/view/:id', {templateUrl: 'js/app/linea/view.html', controller: 'lineaViewController'});
+        $routeProvider.when('/linea/view/:id', {templateUrl: 'js/app/linea/view.html', controller: 'lineaViewController', resolve: { auth: autenticacionCualquieraLogueado}});
         $routeProvider.when('/linea/remove/:id', {templateUrl: 'js/app/linea/remove.html', controller: 'lineaRemoveController', resolve: {auth: autenticacionAdministrador}});
         $routeProvider.when('/linea/edit/:id', {templateUrl: 'js/app/linea/edit.html', controller: 'lineaEditController', resolve: {auth: autenticacionAdministrador}});
         $routeProvider.when('/linea/new', {templateUrl: 'js/app/linea/new.html', controller: 'lineaNewController', resolve: {auth: autenticacionAdministrador}});
-        $routeProvider.when('/linea/plistxfactura/:rpp?/:page?/:id?/:order?', {templateUrl: 'js/app/linea/plistxfactura.html', controller: 'lineaplistxfacturaController'});
+        $routeProvider.when('/linea/plistxfactura/:rpp?/:page?/:id?/:order?', {templateUrl: 'js/app/linea/plistxfactura.html', controller: 'lineaplistxfacturaController', resolve: { auth: autenticacionCualquiera}});
         $routeProvider.when('/linea/newxfactura/:id', {templateUrl: 'js/app/linea/newxfactura.html', controller: 'lineanewxfacturaController', resolve: {auth: autenticacionAdministrador}});
 
         //FACTURA
         $routeProvider.when('/factura/plist/:rpp?/:page?/:order?', {templateUrl: 'js/app/factura/plist.html', controller: 'facturaPlistController', resolve: {auth: autenticacionAdministrador}});
-        $routeProvider.when('/factura/plistxusuario/:rpp?/:page?/:id?/:order?', {templateUrl: 'js/app/factura/plistxusuario.html', controller: 'facturaplistxusuarioController'});
+        $routeProvider.when('/factura/plistxusuario/:rpp?/:page?/:id?/:order?', {templateUrl: 'js/app/factura/plistxusuario.html', controller: 'facturaplistxusuarioController', resolve: { auth: autenticacionCualquieraLogueado}});
         $routeProvider.when('/factura/remove/:id', {templateUrl: 'js/app/factura/remove.html', controller: 'facturaRemoveController', resolve: {auth: autenticacionAdministrador}});
-        $routeProvider.when('/factura/view/:id?', {templateUrl: 'js/app/factura/view.html', controller: 'facturaViewController'});
+        $routeProvider.when('/factura/view/:id?', {templateUrl: 'js/app/factura/view.html', controller: 'facturaViewController', resolve: { auth: autenticacionCualquieraLogueado}});
         $routeProvider.when('/factura/new', {templateUrl: 'js/app/factura/new.html', controller: 'facturaNewController', resolve: {auth: autenticacionAdministrador}});
         $routeProvider.when('/factura/edit/:id', {templateUrl: 'js/app/factura/edit.html', controller: 'facturaEditController', resolve: {auth: autenticacionAdministrador}});
         $routeProvider.when('/factura/newxusuario/:id', {templateUrl: 'js/app/factura/newxusuario.html', controller: 'facturanewxusuarioController', resolve: {auth: autenticacionAdministrador}});
@@ -138,5 +165,5 @@ cercahuerta.config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/noticias/plist/:page?/:order?', {templateUrl: 'js/app/noticias/plist.html', controller: 'noticiasPlistController', resolve: {auth: autenticacionUsuario}});
 
 
-        $routeProvider.otherwise({redirectTo: '/'});
+        $routeProvider.otherwise({redirectTo: '/', resolve: { auth: autenticacionCualquiera}});
     }]);
