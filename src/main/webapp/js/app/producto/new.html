@@ -1,5 +1,5 @@
 <header-component></header-component>
-<div class="container-fluid mb-5">
+<div class="contenedor container-fluid mb-5">
     <div class="row" style="margin-top: 80px">
         <div class="col-12">
             <div class="row">
@@ -8,7 +8,7 @@
                 </div>
             </div>
             <div class="row" ng-show="edited">
-                <div class="col-5 mx-auto">
+                <div class="col-5 mx-auto formulario">
                     <ng-form name="userForm" class="form" ng-show="result == null">
                         <div class="form-group">
                             <label>ID</label>
@@ -54,12 +54,12 @@
 
 
 
-                        <label for="obj_tipoProducto">Tipo de producto:</label>
+                        <label for="obj_tipoproducto">Tipo de producto:</label>
                         <div class="form-group row ml-3">
                             <tipoproducto-selection 
                                 class="modal fade" 
                                 id="cadd-location-modal" 
-                                obj="obj_tipoProducto"
+                                obj="obj_tipoproducto"
                                 on-tipoproducto-set="tipoProductoRefresh(this,false)">                          
                             </tipoproducto-selection>
 
@@ -72,31 +72,31 @@
                                             <span class="fas fa-search"></span>
                                         </span>
                                     </div>
-                                    <input ng-model="obj_tipoProducto.id"
+                                    <input ng-model="obj_tipoproducto.id"
                                            ng-change="tipoProductoRefresh(this, true)"
                                            aria-describedby="basic-addon2"
                                            class="form-control col-sm-2"
-                                           id="obj_tipoProducto"
-                                           name="obj_tipoProducto"
+                                           id="obj_tipoproducto"
+                                           name="obj_tipoproducto"
                                            type="text"
                                            ng-required
                                            ng-model-options="{debounce: 1000}"
                                            maxlength="2" />
                                     <div class="input-group-append">
                                         <span class="input-group-text">
-                                            <a href="../tipoproducto/view/{{obj_tipoProducto.id}}">
+                                            <a href="../cercahuerta/tipoproducto/view/{{obj_tipoproducto.id}}">
                                                 <span class="p-2 bd-highlight"><i class="fas fa-users fa-1x"></i></span>
-                                                Tipo de producto: {{obj_tipoProducto.desc}}
+                                                Tipo de producto: {{obj_tipoproducto.desc}}
                                             </a>
                                         </span>
                                     </div>
                                 </div>
-                                <div ng-show="!userForm.obj_tipoProducto.$valid">Tipo de producto no válido</div>
+                                <div ng-show="!userForm.obj_tipoproducto.$valid">Tipo de producto no válido</div>
                             </div>
                         </div>
                         <div class="d-flex justify-content-between flex-wrap">
-                            <button ng-click="update()" type="button" class="btn btn-primary btn-block" ng-disabled="userForm.$invalid">Crear</button>
-                            <button type="button" class="btn btn-primary btn-block" onclick="window.history.back()">Volver</button>
+                            <button ng-click="update()" type="button" class="btn btn-amber btn-block" ng-disabled="userForm.$invalid">Crear</button>
+                            <button type="button" class="btn btn-outline-elegant btn-block" onclick="window.history.back()">Volver</button>
                         </div>
                     </ng-form>
                 </div>
@@ -106,7 +106,7 @@
                     <div class="alert alert-success" role="alert">
                         <p class="text-center mt-2"> Producto creado correctamente.<p> 
                     </div>
-                    <button type="button" class="btn btn-primary btn-block mt-2" onclick="window.history.back()">Volver</button>
+                    <button type="button" class="btn btn-outline-elegant btn-block mt-2" onclick="window.history.back()">Volver</button>
                 </div>
             </div>
         </div>

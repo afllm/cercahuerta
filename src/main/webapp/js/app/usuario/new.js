@@ -12,7 +12,7 @@ moduleUsuario.controller("usuarioNewController", [
         $scope.edited = true;
         $scope.logged = false;
 
-        $scope.obj_tipoUsuario = {
+        $scope.obj_tipousuario = {
             id: null,
             desc: null
         }
@@ -44,7 +44,7 @@ moduleUsuario.controller("usuarioNewController", [
                 email: $scope.email,
                 login: $scope.login2,
                 pass: forge_sha256($scope.pass),
-                id_tipoUsuario: $scope.obj_tipoUsuario.id
+                id_tipoUsuario: $scope.obj_tipousuario.id
             }
             $http({
                 method: 'GET',
@@ -63,9 +63,9 @@ moduleUsuario.controller("usuarioNewController", [
             if (consultar) {
                 $http({
                     method: 'GET',
-                    url: 'json?ob=tipousuario&op=get&id=' + $scope.obj_tipoUsuario.id
+                    url: 'json?ob=tipousuario&op=get&id=' + $scope.obj_tipousuario.id
                 }).then(function (response) {
-                    $scope.obj_tipoUsuario = response.data.message;
+                    $scope.obj_tipousuario = response.data.message;
                     form.userForm.obj_tipousuario.$setValidity('valid', true);
                 }, function (response) {
                     //$scope.status = response.status;

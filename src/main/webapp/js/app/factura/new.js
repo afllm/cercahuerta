@@ -29,7 +29,7 @@ moduleFactura.controller("facturaNewController", [
 
 
 
-        $scope.obj_Usuario = {
+        $scope.obj_usuario = {
             id: null,
             nombre: null
 
@@ -45,7 +45,7 @@ moduleFactura.controller("facturaNewController", [
                 id: null,
                 fecha: $scope.myDate,
                 iva: $scope.iva,
-                id_usuario: $scope.obj_Usuario.id
+                id_usuario: $scope.obj_usuario.id
 
             }
             $http({

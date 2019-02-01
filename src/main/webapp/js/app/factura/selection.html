@@ -11,7 +11,7 @@
             <div class="d-flex justify-content-between flex-wrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                 <h1 class="h2">Listado de Facturas</h1>
                 <div class="btn-toolbar mb-2 mb-md-0">
-                    <button type="button" class="btn btn-light" ng-click="c.resetOrder()">
+                    <button type="button" class="btn btn-outline-dark-green" ng-click="c.resetOrder()">
                         <i class="fa fa-eye"></i>
                     </button>
                     <div class="btn-group" style="width:400px;">
@@ -56,39 +56,39 @@
                     <tr>
                             <th>
                             ID
-                            <button type="button" class="btn btn-light" ng-click="ordena('id', 'asc')">
+                            <button type="button" class="btn btn-outline-dark-green" ng-click="ordena('id', 'asc')">
                                 <i class="fas fa-long-arrow-alt-up"></i>
                             </button>
-                            <button type="button" class="btn btn-light" ng-click="ordena('id', 'desc')">
+                            <button type="button" class="btn btn-outline-dark-green" ng-click="ordena('id', 'desc')">
                                 <i class="fas fa-long-arrow-alt-down"></i>
                             </button>
                         </th>
                         <th>
                             Fecha
-                            <button type="button" class="btn btn-light" ng-click="ordena('fecha', 'asc')">
+                            <button type="button" class="btn btn-outline-dark-green" ng-click="ordena('fecha', 'asc')">
                                 <i class="fas fa-long-arrow-alt-up"></i>
                             </button>
-                            <button type="button" class="btn btn-light" ng-click="ordena('fecha', 'desc')">
+                            <button type="button" class="btn btn-outline-dark-green" ng-click="ordena('fecha', 'desc')">
                                 <i class="fas fa-long-arrow-alt-down"></i>
                             </button>
                         </th>
                         <th>
                             IVA
-                            <button type="button" class="btn btn-light" ng-click="ordena('iva', 'asc')">
+                            <button type="button" class="btn btn-outline-dark-green" ng-click="ordena('iva', 'asc')">
                                 <a class="fas fa-long-arrow-alt-up" ></a>
 
                             </button>
-                            <button type="button" class="btn btn-light" ng-click="ordena('iva', 'desc')">
+                            <button type="button" class="btn btn-outline-dark-green" ng-click="ordena('iva', 'desc')">
                                 <i class="fas fa-long-arrow-alt-down"></i>
                             </button>
                         </th>
                        
                         <th>
                             Usuario
-                            <button type="button" class="btn btn-light" ng-click="ordena('id_usuario', 'asc')">
+                            <button type="button" class="btn btn-outline-dark-green" ng-click="ordena('id_usuario', 'asc')">
                                 <i class="fas fa-long-arrow-alt-up"></i>
                             </button>
-                            <button type="button" class="btn btn-light" ng-click="ordena('id_usuario', 'desc')">
+                            <button type="button" class="btn btn-outline-dark-green" ng-click="ordena('id_usuario', 'desc')">
                                 <i class="fas fa-long-arrow-alt-down"></i>
                             </button>
                         </th>
@@ -118,7 +118,7 @@
         <div class="modal-footer">
             <button type="button" class="btn btn-danger" ng-click="c.newVariableAndValue.name = '';c.newVariableAndValue.value = ''">Reset</button>
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary" ng-click="c.save()">Save</button>
+            <button type="button" class="btn btn-amber" ng-click="c.save()">Save</button>
         </div>
     </div>
 </div>

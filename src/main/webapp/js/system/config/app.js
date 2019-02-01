@@ -12,6 +12,7 @@ var cercahuerta = angular.module('MyApp', [
     'productoControllers',
     'lineaControllers',
     'carritoControllers',
+    'noticiasControllers',
     'ngMaterial',
     'Directives'
     
@@ -51,4 +52,5 @@ var moduleFactura = angular.module ('facturaControllers',[]);
 var moduleTipoproducto = angular.module('tipoproductoControllers',[]);
 var moduleLinea = angular.module('lineaControllers',[]);
 var moduleCarrito = angular.module('carritoControllers',[]);
+var moduleNoticias = angular.module('noticiasControllers',[]);
 var moduloDirectivas = angular.module('Directives', []);

@@ -16,7 +16,7 @@ moduleProducto.controller("productoNewController", [
         } else {
             $scope.id = $routeParams.id;
         }
-        $scope.obj_tipoProducto = {
+        $scope.obj_tipoproducto = {
             id: null,
             desc: null
         }
@@ -38,9 +38,9 @@ moduleProducto.controller("productoNewController", [
 //            $scope.existencias = response.data.message.existencias;
 //            $scope.precio = response.data.message.precio;
 //            $scope.foto = response.data.message.foto;
-//            $scope.obj_tipoProducto = {
-//                id: response.data.message.obj_tipoProducto.id,
-//                desc: response.data.message.obj_tipoProducto.desc
+//            $scope.obj_tipoproducto = {
+//                id: response.data.message.obj_tipoproducto.id,
+//                desc: response.data.message.obj_tipoproducto.desc
 //            }
 //
 //        }), function (response) {
@@ -66,7 +66,7 @@ moduleProducto.controller("productoNewController", [
                 existencias: $scope.existencias,
                 precio: $scope.precio,
                 foto: nombreFoto,
-                id_tipoProducto: $scope.obj_tipoProducto.id
+                id_tipoProducto: $scope.obj_tipoproducto.id
             }
 
             $http({
@@ -86,16 +86,16 @@ moduleProducto.controller("productoNewController", [
             if (consultar) {
                 $http({
                     method: 'GET',
-                    url: 'json?ob=tipoproducto&op=get&id=' + $scope.obj_tipoProducto.id
+                    url: 'json?ob=tipoproducto&op=get&id=' + $scope.obj_tipoproducto.id
                 }).then(function (response) {
-                    $scope.obj_tipoProducto = response.data.message;
-                    form.userForm.obj_tipoProducto.$setValidity('valid', true);
+                    $scope.obj_tipoproducto = response.data.message;
+                    form.userForm.obj_tipoproducto.$setValidity('valid', true);
                 }, function (response) {
                     //$scope.status = response.status;
-                    form.userForm.obj_tipoProducto.$setValidity('valid', false);
+                    form.userForm.obj_tipoproducto.$setValidity('valid', false);
                 });
             } else {
-                form.userForm.obj_tipoProducto.$setValidity('valid', true);
+                form.userForm.obj_tipoproducto.$setValidity('valid', true);
             }
         }
 

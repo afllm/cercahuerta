@@ -44,9 +44,10 @@ public class UsuarioDao_0 extends GenericDaoImplementation implements DaoInterfa
 //    }
     @Override
     public BeanInterface create(BeanInterface oBean) throws Exception {
+        UsuarioBean oUsuarioBeancontrol=(UsuarioBean) oBean;
         UsuarioBean oBeanActivation;
-        int id = oBean.getId();
-        if (id == 0) {
+        int idtipousuario = oUsuarioBeancontrol.getId_tipoUsuario();
+        if (idtipousuario == 0) {
             try {
                 oBeanActivation = (UsuarioBean) super.create(oBean);
                 String email = oBeanActivation.getEmail();

@@ -16,7 +16,7 @@ function cController($http) {
     self.totalPages = 1;
     self.orderURLServidor = "";
     self.rpp = 10;
-   
+//    self.id = ?;
 
 
 
@@ -46,9 +46,9 @@ function cController($http) {
         self.data = response.data.message || 'Request failed';
     });
 
-    self.save = function (id, desc) {
+    self.save = function (id, nombre) {
         self.obj.id = id;
-        self.obj.desc = desc;
+        self.obj.nombre = nombre;
         self.onProductoSet();
     };
 

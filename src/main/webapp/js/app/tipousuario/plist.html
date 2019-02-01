@@ -1,5 +1,5 @@
 <header-component></header-component>
-<div class="container-fluid">
+<div class="contenedor container-fluid">
     <div class="row">
                <main role="main" class="col-md-12 ml-sm-auto col-lg-12 px-4" style="margin-top: 50px">
             <div class="d-flex justify-content-between flex-wrap align-items-center pt-3 pb-2 mb-3 border-bottom">
@@ -21,7 +21,7 @@
                         </select>
                     </div>
 
-                    <button type="button" class="btn btn-light  ml-3" ng-click="resetOrder()">
+                    <button type="button" class="btn btn-outline-dark-green  ml-3" ng-click="resetOrder()">
                         <i class="fas fa-sync-alt"></i>
                     </button>
                 </div>
@@ -66,7 +66,7 @@
                     </nav>
                 </div>
                 <div class="pb-5">
-                    <a href="{{ob}}/new/" class="btn btn-outline-secondary btn-sm active float-right" role="button" aria-pressed="true"><i class="fas fa-plus-circle fa-1x"></i> Crear nuevo Tipo de usuario</a>
+                    <a href="{{ob}}/new/" class="btn btn-outline-elegant btn-sm active float-right" role="button" aria-pressed="true"><i class="fas fa-plus-circle fa-1x"></i> Crear nuevo Tipo de usuario</a>
 
                 </div>
             </div>
@@ -79,19 +79,19 @@
                     <tr style="background-color:    #b3b6b7;">
                         <th>
                             ID
-                            <button type="button" class="btn btn-light" ng-click="ordena('id', 'asc')">
+                            <button type="button" class="btn btn-outline-dark-green" ng-click="ordena('id', 'asc')">
                                 <i class="fas fa-long-arrow-alt-up"></i>
                             </button>
-                            <button type="button" class="btn btn-light" ng-click="ordena('id', 'desc')">
+                            <button type="button" class="btn btn-outline-dark-green" ng-click="ordena('id', 'desc')">
                                 <i class="fas fa-long-arrow-alt-down"></i>
                             </button>
                         </th>
                         <th>
                             Descripción
-                            <button type="button" class="btn btn-light" ng-click="ordena('desc', 'asc')">
+                            <button type="button" class="btn btn-outline-dark-green" ng-click="ordena('desc', 'asc')">
                                 <i class="fas fa-long-arrow-alt-up"></i>
                             </button>
-                            <button type="button" class="btn btn-light" ng-click="ordena('desc', 'desc')">
+                            <button type="button" class="btn btn-outline-dark-green" ng-click="ordena('desc', 'desc')">
                                 <i class="fas fa-long-arrow-alt-down"></i>
                             </button>
                         </th>
@@ -103,13 +103,13 @@
                     <tr ng-repeat="fila in ajaxDataUsuarios">
                         <td>{{fila.id}}</td>
                         <td>{{fila.desc}}</td>
-                        <td><button type="button" class="btn btn-light" ng-click="view(fila.id)">
+                        <td><button type="button" class="btn btn-outline-dark-green" ng-click="view(fila.id)">
                                 <i class="fas fa-eye"></i>
                             </button>
-                            <button type="button" class="btn btn-light " ng-click="edit(fila.id)">
+                            <button type="button" class="btn btn-outline-dark-green " ng-click="edit(fila.id)">
                                 <i class="fas fa-edit"></i>
                             </button>
-                            <button type="button" class="btn btn-light" ng-click="remove(fila.id)">
+                            <button type="button" class="btn btn-outline-dark-green" ng-click="remove(fila.id)">
                                 <i class="fas fa-trash-alt"></i>
                             </button></td>
                     </tr>

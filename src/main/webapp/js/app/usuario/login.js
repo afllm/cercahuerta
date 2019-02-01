@@ -55,7 +55,7 @@ moduleUsuario.controller("usuarioLoginController", [
             }, function (response) {
                 $scope.failedlogin = true;
                 $scope.logged = false;
-                $scope.error = response.data.message;
+                $scope.error = ": "+response.data.message;
             });
         }
 

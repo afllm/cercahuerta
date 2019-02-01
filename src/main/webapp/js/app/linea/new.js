@@ -16,7 +16,7 @@ moduleFactura.controller("lineaNewController", [
 
         $scope.op = 'create';
         $scope.result = null;
-        $scope.title = "Edición de linea";
+        $scope.title = "Nueva linea";
         $scope.icon = "fa-file-text-o";
 
 
@@ -29,9 +29,9 @@ moduleFactura.controller("lineaNewController", [
 
             $scope.id = null;
     
-    $scope.obj_Producto = {
+    $scope.obj_producto = {
             id: null,
-            desc: null
+            nombre: null
         }
 
         $scope.isActive = toolService.isActive;
@@ -41,7 +41,7 @@ moduleFactura.controller("lineaNewController", [
             var json = {
               cantidad: $scope.cantidad,
               id_factura: $scope.id_factura,
-              id_producto:  $scope.obj_Producto.id
+              id_producto:  $scope.obj_producto.id
 
             }
             $http({
@@ -61,15 +61,15 @@ moduleFactura.controller("lineaNewController", [
             if (consultar) {
                 $http({
                     method: 'GET',
-                    url: 'json?ob=producto&op=get&id=' + $scope.obj_Producto.id
+                    url: 'json?ob=producto&op=get&id=' + $scope.obj_producto.id
                 }).then(function (response) {
-                    $scope.obj_Producto = response.data.message;
-                    form.userForm.obj_Producto.$setValidity('valid', true);
+                    $scope.obj_producto = response.data.message;
+                    form.userForm.obj_producto.$setValidity('valid', true);
                 }, function (response) {
-                    form.userForm.obj_Producto.$setValidity('valid', false);
+                    form.userForm.obj_producto.$setValidity('valid', false);
                 });
             } else {
-                form.userForm.obj_Producto.$setValidity('valid', true);
+                form.userForm.obj_producto.$setValidity('valid', true);
             }
         };
         
@@ -78,15 +78,15 @@ moduleFactura.controller("lineaNewController", [
             if (consultar) {
                 $http({
                     method: 'GET',
-                    url: 'json?ob=factura&op=get&id=' + $scope.obj_Factura.id
+                    url: 'json?ob=factura&op=get&id=' + $scope.obj_factura.id
                 }).then(function (response) {
-                    $scope.obj_Factura = response.data.message;
-                    form.userForm.obj_Factura.$setValidity('valid', true);
+                    $scope.obj_factura = response.data.message;
+                    form.userForm.obj_factura.$setValidity('valid', true);
                 }, function (response) {
-                    form.userForm.obj_Factura.$setValidity('valid', false);
+                    form.userForm.obj_factura.$setValidity('valid', false);
                 });
             } else {
-                form.userForm.obj_Factura.$setValidity('valid', true);
+                form.userForm.obj_factura.$setValidity('valid', true);
             }
         }
 

@@ -1,5 +1,5 @@
 <header-component></header-component>
-<div class="container-fluid">
+<div class="contendor container-fluid">
     <div class="row" style="margin-top: 70px">
         <div class="col-12">
             <div class="row mt-5">
@@ -8,7 +8,7 @@
                 </div>
             </div>
             <div class="row" ng-show="edited">
-                <div class="col-5 mx-auto">
+                <div class="col-5 mx-auto formulario">
 
                     <form name="userForm">
                         <div class="form-group">
@@ -74,8 +74,8 @@
                         </div>
                        
                         <div class="d-flex justify-content-between flex-wrap">
-                            <button ng-click="update()" type="button" class="btn btn-primary btn-block" ng-disabled="userForm.$invalid">Editar</button>
-                            <button type="button" class="btn btn-primary btn-block" onclick="window.history.back()">Volver</button>
+                            <button ng-click="update()" type="button" class="btn btn-amber btn-block" ng-disabled="userForm.$invalid">Editar</button>
+                            <button type="button" class="btn btn-outline-elegant btn-block" onclick="window.history.back()">Volver</button>
                         </div>
 
                 </div>
@@ -85,7 +85,7 @@
                     <div class="alert alert-success" role="alert">
                         <p class="text-center mt-2"> Factura modificada correctamente.<p> 
                     </div>
-                    <button type="button" class="btn btn-primary btn-block mt-2" onclick="window.history.back()">Volver</button>
+                    <button type="button" class="btn btn-outline-elegant btn-block mt-2" onclick="window.history.back()">Volver</button>
                 </div>
             </div>
         </div>

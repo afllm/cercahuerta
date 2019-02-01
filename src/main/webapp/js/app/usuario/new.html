@@ -1,5 +1,5 @@
 <header-component></header-component>
-<div class="container-fluid mb-5">
+<div class="contenedor container-fluid mb-5">
     <div class="row" style="margin-top: 80px">
         <div class="col-12">
             <div class="row">
@@ -8,7 +8,7 @@
                 </div>
             </div>
             <div class="row" ng-show="edited">
-                <div class="col-4 mx-auto">
+                <div class="col-4 mx-auto formulario">
                     <ng-form name="userForm" class="form" ng-show="result == null">
                         <div class="form-group">
                             <label>ID</label>
@@ -68,12 +68,12 @@
                                 La longitud de la constraseña es demasiado corta
                             </div>
                         </div>                        
-                        <label for="obj_tipoUsuario">Tipo de usuario:</label>
+                        <label for="obj_tipousuario">Tipo de usuario:</label>
                         <div class="form-group row ml-3">
                             <tipousuario-selection 
                                 class="modal fade" 
                                 id="cadd-location-modal" 
-                                obj="obj_tipoUsuario"
+                                obj="obj_tipousuario"
                                 on-tipousuario-set="tipoUsuarioRefresh(this,false)">                          
                             </tipousuario-selection>
 
@@ -86,31 +86,31 @@
                                             <span class="fas fa-search"></span>
                                         </span>
                                     </div>
-                                    <input ng-model="obj_tipoUsuario.id"
+                                    <input ng-model="obj_tipousuario.id"
                                            ng-change="tipoUsuarioRefresh(this, true)"
                                            aria-describedby="basic-addon2"
                                            class="form-control col-sm-2"
-                                           id="obj_tipoUsuario"
-                                           name="obj_tipoUsuario"
+                                           id="obj_tipousuario"
+                                           name="obj_tipousuario"
                                            type="text"
                                            ng-required
                                            ng-model-options="{debounce: 1000}"
                                            maxlength="2" />
                                     <div class="input-group-append">
                                         <span class="input-group-text">
-                                            <a href="../tipousuario/view/{{obj_tipoUsuario.id}}">
+                                            <a href="../cercahuerta/tipousuario/view/{{obj_tipousuario.id}}">
                                                 <span class="p-2 bd-highlight"><i class="fas fa-users fa-1x"></i></span>
-                                                Tipo de usuario: {{obj_tipoUsuario.desc}}
+                                                Tipo de usuario: {{obj_tipousuario.desc}}
                                             </a>
                                         </span>
                                     </div>
                                 </div>
-                                <div ng-show="!userForm.obj_tipoUsuario.$valid">Tipo de usuario no válido</div>
+                                <div ng-show="!userForm.obj_tipousuario.$valid">Tipo de usuario no válido</div>
                             </div>
                         </div>
                         <div class="d-flex justify-content-between flex-wrap">
-                            <button ng-click="update()" type="button" class="btn btn-primary btn-block" ng-disabled="userForm.$invalid">Nuevo</button>
-                            <button type="button" class="btn btn-primary btn-block" onclick="window.history.back()">Volver</button>
+                            <button ng-click="update()" type="button" class="btn btn-amber btn-block" ng-disabled="userForm.$invalid">Nuevo</button>
+                            <button type="button" class="btn btn-outline-elegant btn-block" onclick="window.history.back()">Volver</button>
                         </div>
                     </ng-form>
                 </div>
@@ -120,7 +120,7 @@
                     <div class="alert alert-success" role="alert">
                         <p class="text-center mt-2"> Usuario creado correctamente.<p> 
                     </div>
-                    <button type="button" class="btn btn-primary btn-block mt-2" onclick="window.history.back()">Volver</button>
+                    <button type="button" class="btn btn-outline-elegant btn-block mt-2" onclick="window.history.back()">Volver</button>
                 </div>
             </div>
         </div>

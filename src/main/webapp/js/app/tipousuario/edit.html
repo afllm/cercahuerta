@@ -1,5 +1,5 @@
 <header-component></header-component>
-<div class="container-fluid">
+<div class="contenedor container-fluid">
   <div class="row" style="margin-top: 70px">
     <div class="col-12">
       <div class="row mt-5">
@@ -8,7 +8,7 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-5 mx-auto">
+        <div class="col-5 mx-auto formulario">
                <div class="alert alert-success" role="alert" ng-show="(visualizar)">
                 Tipo de Usuario modificado correctamente.
             </div>
@@ -26,13 +26,13 @@
               </div>
             </div>
    
-            <button ng-click="update()" type="button" class="btn btn-primary btn-block" ng-disabled="userForm.$invalid">Modificar usuario</button>
+            <button ng-click="update()" type="button" class="btn btn-amber btn-block" ng-disabled="userForm.$invalid">Modificar usuario</button>
          
           </form> 
              <div class="alert alert-success" role="alert" ng-show="(error)">
                 Error al editar Tipo de Usuario.
             </div>
-            <button type="button" class="btn btn-primary btn-block mt-2" ng-click="volver()">Volver</button>
+            <button type="button" class="btn btn-outline-elegant btn-block mt-2" ng-click="volver()">Volver</button>
 
           
         </div>
