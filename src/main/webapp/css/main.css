@@ -1,4 +1,4 @@
-/* amber = #ffa000 */
+/* amber = #ffa000 /255,160,0 */
 
 /* Sticky footer styles
 -------------------------------------------------- */
@@ -24,7 +24,7 @@ body {
 }
 footer, .footer {
     /*position: absolute;*/
-    bottom: 0;
+    margin-bottom: 0;
     width: 100%;
     /* Set the fixed height of the footer here */
     height: 100px;
@@ -48,7 +48,7 @@ principal {
         "header"
         "contenedor"
         "footer";
-    grid-template-rows: 80px auto 70px;  
+    grid-template-rows: auto auto 70px;  
     grid-template-columns: 1fr;
     grid-row-gap: 10px;
     grid-column-gap: 10px;
@@ -66,17 +66,41 @@ header-component{
 .footer {
     grid-area: footer;
 }
-.contenedor { 
+.contenedor,  .contenedor-noticias { 
     grid-area: contenedor;
     margin-bottom: 100px; 
-    margin-top: 100px;
+    margin-top: 150px;
     height: 100%;
+    width: 100%;
     min-height: 80vh;
 }
 .contenedor-home{
     grid-area: contenedor;
 }
+.contenedor-noticias{
+    display: grid;
+    grid-template-areas: "nav main aside";
+    grid-template-rows: 1fr;
+    grid-template-columns: 18% 60% 15%;
+}
 
+.noticias-nav{
+    grid-area: nav;
+    text-align: center;
+    position: fixed;
+    left: 1em;
+}
+
+.noticias-main{
+    grid-area: main;
+}
+
+.noticias-aside{
+    grid-area: aside;
+    position: fixed;
+    right: 1em;
+
+}
 /* Custom page CSS
 -------------------------------------------------- */
 /* Not required for template or sticky footer method. */
@@ -129,6 +153,15 @@ th {
     padding: 0.3em 0em 1.7em 0em !important;
     font-size: 1em;
     margin:0.1em;
+}
+
+.menu-acciones .btn-dark-green{
+    height: 2em;
+    width: 2.5em;
+    padding: 0.3em 1.8em 2em 1.2em !important;
+    font-size: 1em;
+    margin:0.1em;
+    display: inline;
 }
 
 .btn.btn-dark-green.icon, .btn.btn-outline-dark-green.icon{
@@ -325,11 +358,28 @@ th{
     font-weight: bold !important;
 }
 
-menu-acciones{
-
-    width: 40px !important; /*no va*/
+.menu-acciones{
+    min-width: 3rem !important;
+    padding: 0.5rem !important;
+    background-color: rgba(255,255,255, 0.8) !important;
 }
 
+.menu-listados{
+    min-width: 3rem !important;
+    padding: 0.5rem !important;
+    background-color: rgba(255,255,255, 0.9) !important;
+}
+
+.activo{
+    background-color: rgba(255,160,0, 0.9);
+}
+
+
+#Logo{
+  transition: all 0.3s;
+}
+.largeLogo{width: 100px;}
+.smallLogo{width: 50px;}
 
 /*Responsive*/
 

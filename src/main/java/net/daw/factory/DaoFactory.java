@@ -17,6 +17,7 @@ import net.daw.dao.publicDaoInterface.DaoInterface;
 import net.daw.dao.specificDaoImplementation_0.FacturaDao_0;
 import net.daw.dao.specificDaoImplementation_0.TipousuarioDao_0;
 import net.daw.dao.specificDaoImplementation_0.UsuarioDao_0;
+import net.daw.dao.specificDaoImplementation_1.NoticiasDao_1;
 import net.daw.dao.specificDaoImplementation_2.FacturaDao_2;
 import net.daw.dao.specificDaoImplementation_2.LineaDao_2;
 import net.daw.dao.specificDaoImplementation_2.ProductoDao_2;
@@ -24,18 +25,16 @@ import net.daw.dao.specificDaoImplementation_2.TipoproductoDao_2;
 import net.daw.dao.specificDaoImplementation_2.TipousuarioDao_2;
 import net.daw.dao.specificDaoImplementation_2.UsuarioDao_2;
 
-
 public class DaoFactory {
 
     public static DaoInterface getDao(Connection oConnection, String ob, UsuarioBean oUsuarioBeanSession) throws Exception {
         DaoInterface oDao = null;
         int idSessionUserTipe;
-        if(oUsuarioBeanSession !=null){
+        if (oUsuarioBeanSession != null) {
             idSessionUserTipe = oUsuarioBeanSession.getObj_tipoUsuario().getId();
-        }else{
-           idSessionUserTipe = 0; 
+        } else {
+            idSessionUserTipe = 0;
         }
-        
 
         switch (idSessionUserTipe) {
             case 1:
@@ -57,6 +56,9 @@ public class DaoFactory {
                         break;
                     case "linea":
                         oDao = new LineaDao_1(oConnection, ob, oUsuarioBeanSession);
+                        break;
+                    case "noticias":
+                        oDao = new NoticiasDao_1(oConnection, ob, oUsuarioBeanSession);
                         break;
                 }
                 break;
@@ -82,7 +84,7 @@ public class DaoFactory {
                         break;
                 }
                 break;
-                 case 0:
+            case 0:
                 switch (ob) {
                     case "usuario":
                         oDao = new UsuarioDao_0(oConnection, ob, oUsuarioBeanSession);
