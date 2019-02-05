@@ -11,7 +11,7 @@
         <div class="col-5 mx-auto">
    
            <div class="table-responsive">
-               <table class="table table-striped table-sm">
+               <table class="table table-hover table-sm">
                     <tr>
                         <th>ID</th><td>{{ajaxDataUsuarios.id}}</td>
                     </tr>
@@ -34,7 +34,7 @@
                         <th>Foto </th> <td><image style="width:50xp;height:50px" src="http://localhost:8081/images_server/productos/{{ajaxDataUsuarios.foto}}"/></td>
                     </tr>
            <tr>
-                    <th>Tipo producto </th><td><a class="text-secondary" href="tipoproducto/view/{{ajaxDataUsuarios.obj_tipoProducto.id}}">{{ajaxDataUsuarios.obj_tipoProducto.desc}}</a></td>
+                    <th>Tipo producto </th><td><a href="tipoproducto/view/{{ajaxDataUsuarios.obj_tipoProducto.id}}">{{ajaxDataUsuarios.obj_tipoProducto.desc}}</a></td>
                     </tr>
                     
                 </table>

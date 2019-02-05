@@ -374,6 +374,12 @@ th{
     background-color: rgba(255,160,0, 0.9);
 }
 
+select{
+  width: auto !important;
+margin-left: 0.5em;  
+}
+
+
 
 #Logo{
   transition: all 0.3s;
