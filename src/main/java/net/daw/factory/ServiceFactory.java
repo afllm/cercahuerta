@@ -7,6 +7,7 @@ import net.daw.bean.beanImplementation.UsuarioBean;
 import net.daw.service.specificServiceImplementation_0.UsuarioService_0;
 import net.daw.service.specificServiceImplementation_1.FacturaService_1;
 import net.daw.service.specificServiceImplementation_1.LineaService_1;
+import net.daw.service.specificServiceImplementation_1.NoticiasService_1;
 import net.daw.service.specificServiceImplementation_1.ProductoService_1;
 import net.daw.service.specificServiceImplementation_1.TipoproductoService_1;
 import net.daw.service.specificServiceImplementation_1.TipousuarioService_1;
@@ -220,6 +221,41 @@ public class ServiceFactory {
                                 break;
                             case "getpage":
                                 oReplyBean = oTipoproductoService.getpage();
+                                break;
+                            default:
+                                oReplyBean = new ReplyBean(500, "Operation doesn't exist");
+                                break;
+                        }
+                        break;
+                    case "noticias":
+                        NoticiasService_1 oNoticiasService = new NoticiasService_1(oRequest);
+                        switch (op) {
+                            case "get":
+                                oReplyBean = oNoticiasService.get();
+                                break;
+                            case "create":
+                                oReplyBean = oNoticiasService.create();
+                                break;
+                            case "update":
+                                oReplyBean = oNoticiasService.update();
+                                break;
+                            case "remove":
+                                oReplyBean = oNoticiasService.remove();
+                                break;
+                            case "getcount":
+                                oReplyBean = oNoticiasService.getcount();
+                                break;
+                            case "getpage":
+                                oReplyBean = oNoticiasService.getpage();
+                                break;
+//                            case "loaddata":
+//                                oReplyBean = oProductoService.loaddata();
+//                                break;
+                            case "loadimage":
+                                oReplyBean = oNoticiasService.loadimage();
+                                break;
+                            case "fillnoticias":
+                                oReplyBean = oNoticiasService.fillNoticias();
                                 break;
                             default:
                                 oReplyBean = new ReplyBean(500, "Operation doesn't exist");

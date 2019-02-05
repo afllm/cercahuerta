@@ -23,6 +23,8 @@ public class NoticiasBean extends GenericBeanImplementation implements BeanInter
 //    @Expose
 //    private int id;
     @Expose
+    private String titulo;
+    @Expose
     private String mensaje;
     @Expose
     private String foto;
@@ -39,6 +41,15 @@ public class NoticiasBean extends GenericBeanImplementation implements BeanInter
 //        this.id = id;
 //    }
 
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    
     public String getMensaje() {
         return mensaje;
     }
@@ -76,6 +87,7 @@ public class NoticiasBean extends GenericBeanImplementation implements BeanInter
     public NoticiasBean fill(ResultSet oResultSet, Connection oConnection, Integer expand, UsuarioBean oUsuarioBeanSession) throws Exception {
 
         this.setId(oResultSet.getInt("id"));
+        this.setTitulo(oResultSet.getString("titulo"));
         this.setMensaje(oResultSet.getString("mensaje"));
         this.setFoto(oResultSet.getString("foto"));
         this.setId_usuario(oResultSet.getInt("id_usuario"));
@@ -92,6 +104,7 @@ public class NoticiasBean extends GenericBeanImplementation implements BeanInter
     @Override
     public String getPairs() {
         String strPairs = "";
+        strPairs += "titulo=" + EncodingHelper.quotate(titulo) + ",";
         strPairs += "mensaje=" + EncodingHelper.quotate(mensaje) + ",";
         strPairs += "foto=" + EncodingHelper.quotate(foto) + ",";
         strPairs += "id_usuario=" + id_usuario;
@@ -104,6 +117,7 @@ public class NoticiasBean extends GenericBeanImplementation implements BeanInter
     public String getColumns() {
         String strColumns = "";
         strColumns += "id,";
+        strColumns += "titulo,";
         strColumns += "mensaje,";
         strColumns += "foto,";
         strColumns += "id_usuario";
@@ -115,6 +129,7 @@ public class NoticiasBean extends GenericBeanImplementation implements BeanInter
 
         String strColumns = "";
         strColumns += "null,";
+        strColumns += EncodingHelper.quotate(titulo) + ",";
         strColumns += EncodingHelper.quotate(mensaje) + ",";
         strColumns += EncodingHelper.quotate(foto) + ",";
         strColumns += this.getId_usuario();

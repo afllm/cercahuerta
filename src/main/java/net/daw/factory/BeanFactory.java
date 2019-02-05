@@ -10,10 +10,10 @@ import net.daw.bean.publicBeanInterface.BeanInterface;
 import net.daw.bean.beanImplementation.TipoproductoBean;
 import net.daw.bean.beanImplementation.LineaBean;
 import net.daw.bean.beanImplementation.FacturaBean;
+import net.daw.bean.beanImplementation.NoticiasBean;
 import net.daw.bean.beanImplementation.ProductoBean;
 import net.daw.bean.beanImplementation.TipousuarioBean;
 import net.daw.bean.beanImplementation.UsuarioBean;
-
 
 public class BeanFactory {
 
@@ -38,11 +38,14 @@ public class BeanFactory {
             case "linea":
                 oBean = (BeanInterface) new LineaBean();
                 break;
+            case "noticias":
+                oBean = (BeanInterface) new NoticiasBean();
+                break;
         }
         return oBean;
     }
-    
-     public static BeanInterface getBeanFromJson(String ob, Gson oGson, String strJsonFromClient) {
+
+    public static BeanInterface getBeanFromJson(String ob, Gson oGson, String strJsonFromClient) {
         BeanInterface oBean = null;
         switch (ob) {
             case "usuario":
@@ -63,7 +66,10 @@ public class BeanFactory {
             case "linea":
                 oBean = oGson.fromJson(strJsonFromClient, LineaBean.class);
                 break;
+            case "noticias":
+                oBean = oGson.fromJson(strJsonFromClient, NoticiasBean.class);
+                break;
         }
         return oBean;
-}
+    }
 }
