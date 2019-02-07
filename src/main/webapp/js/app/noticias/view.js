@@ -1,6 +1,6 @@
 'use strict'
 
-moduleNoticias.controller("noticiasViewController", ['$scope', '$http', '$routeParams', '$window', 'sessionService','$location',
+moduleNoticias.controller("noticiasViewController", ['$scope', '$http', '$routeParams', '$window', 'sessionService', '$location',
     function ($scope, $http, $routeParams, $window, sessionService, $location) {
 
         $scope.ob = "noticias";
@@ -10,12 +10,22 @@ moduleNoticias.controller("noticiasViewController", ['$scope', '$http', '$routeP
 //            $scope.logged = true;
 //            $scope.tipousuarioID = sessionService.getTypeUserID();
 //        }
-        
-        
+
+
         if (!$routeParams.id) {
             $scope.id = 1;
         } else {
             $scope.id = $routeParams.id;
+        }
+        
+        if (!$routeParams.page) {
+            $scope.page = 1;
+        } else {
+            if ($routeParams.page >= 1) {
+                $scope.page = $routeParams.page;
+            } else {
+                $scope.page = 1;
+            }
         }
 
         $http({
@@ -34,10 +44,15 @@ moduleNoticias.controller("noticiasViewController", ['$scope', '$http', '$routeP
         $scope.volver = function () {
             $window.history.back();
         };
-        
-           $scope.editar = function () {
-            $location.path('noticias/edit/'+$scope.id);
+
+        $scope.editar = function () {
+            $location.path('noticias/edit/' + $scope.id);
         };
+
+        $scope.eliminar = function () {
+            $location.path('noticias/remove/' + $scope.id+"/"+$scope.page);
+        };
+
 
 
     }

@@ -14,7 +14,7 @@ moduleNoticias.controller('noticiasPlistController', ['$scope', '$http', '$locat
 //        }
 
         if (!$routeParams.order) {
-            $scope.orderURLServidor = "";
+            $scope.orderURLServidor = "&order=id,desc";
             $scope.orderURLCliente = "";
         } else {
             $scope.orderURLServidor = "&order=" + $routeParams.order;
