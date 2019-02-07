@@ -31,6 +31,7 @@ moduleProducto.controller("productoEditController", [
 //            $scope.status = response.status;
             $scope.id = response.data.message.id;
             $scope.codigo = response.data.message.codigo;
+            $scope.nombre = response.data.message.nombre;
             $scope.desc = response.data.message.desc;
             $scope.existencias = response.data.message.existencias;
             $scope.precio = response.data.message.precio;
@@ -48,14 +49,13 @@ moduleProducto.controller("productoEditController", [
 
         $scope.update = function () {
             var nombreFoto;
-            console.log($scope.foto);
 
-            if ($scope.foto !== undefined) {
-                nombreFoto = $scope.foto.name;
+            if ($scope.fotoNueva !== undefined) {
+                nombreFoto = $scope.fotoNueva.name;
                 $scope.uploadFile(nombreFoto);
             } else {
-                if ($scope.ajaxDatoProducto.foto != '' || $scope.ajaxDatoProducto.foto != null) {
-                    nombreFoto = $scope.ajaxDatoProducto.foto;
+                if ($scope.foto != '' || $scope.foto != null) {
+                    nombreFoto = $scope.foto;
                 } else {
                     nombreFoto = "default.jpeg";
                 }
@@ -64,6 +64,7 @@ moduleProducto.controller("productoEditController", [
             var json = {
                 id: $scope.id,
                 codigo: $scope.codigo,
+                nombre: $scope.nombre,
                 desc: $scope.desc,
                 existencias: $scope.existencias,
                 precio: $scope.precio,
@@ -114,11 +115,11 @@ moduleProducto.controller("productoEditController", [
         $scope.uploadFile = function (nombreFoto) {
             //Solucion mas cercana
             //https://stackoverflow.com/questions/37039852/send-formdata-with-other-field-in-angular
-            var file = $scope.foto;
+            var file = $scope.fotoNueva;
             //Cambiar el nombre del archivo
             //https://stackoverflow.com/questions/30733904/renaming-a-file-object-in-javascript
             file = new File([file], nombreFoto, {type: file.type});
-            console.log(file)
+            //console.log(file)
             //Api FormData 
             //https://developer.mozilla.org/es/docs/Web/API/XMLHttpRequest/FormData
             var oFormData = new FormData();

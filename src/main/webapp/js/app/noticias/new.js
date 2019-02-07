@@ -27,7 +27,9 @@ moduleNoticias.controller("noticiasNewController", [
 
 
         $scope.isActive = toolService.isActive;
-
+        
+         $scope.foto = "default.jpeg";
+         
         $scope.update = function () {
             $scope.uploadFile();
             var nombreFoto;

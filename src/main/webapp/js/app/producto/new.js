@@ -48,20 +48,23 @@ moduleProducto.controller("productoNewController", [
 //        };
 
         $scope.isActive = toolService.isActive;
-
+        
+        $scope.foto = "default.jpeg";
+        
         $scope.update = function () {
             $scope.uploadFile();
             var nombreFoto;
             if ($scope.myFile === undefined) {
                 nombreFoto = "default.jpeg";
             } else {
-                nombreFoto = $scope.myFile.name
+                nombreFoto = $scope.myFile.name;
             }
 
 
             var json = {
                 id: null,
                 codigo: $scope.codigo,
+                nombre: $scope.nombre,
                 desc: $scope.desc,
                 existencias: $scope.existencias,
                 precio: $scope.precio,

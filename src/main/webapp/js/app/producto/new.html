@@ -22,6 +22,13 @@
                             </div>
                         </div>
                         <div class="form-group">
+                            <label>Nombre</label>
+                            <input type="text" class="form-control" id="nombre" name="nombre" ng-model="nombre" ng-required="true" />
+                            <div ng-show="!userForm.nombre.$valid && !userForm.nombre.$pristine" class="alert alert-danger" role="alert">
+                                Nombre obligatorio
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <label>Descripción</label>
                             <input type="text" class="form-control" id="desc" name="desc" ng-model="desc" ng-required="true" placeholder="Descripción"/>
                             <div ng-show="!userForm.desc.$valid && !userForm.desc.$pristine" class="alert alert-danger" role="alert">
@@ -44,11 +51,11 @@
                         </div>
                         <div class="form-group">
                             <label>Foto</label>
-                            <!--<input type="text" class="form-control" id="foto" name="foto" ng-model="ajaxDatoProducto.foto" ng-required="true" />
-                            <div ng-show="!userForm.foto.$valid && !userForm.foto.$pristine" class="alert alert-danger" role="alert">
-                                Foto obligatoria
-                            </div>-->
-                            <input type = "file" file-model = "myFile"/>
+                            <div>
+                                <image id="output" style="width:80xp;height:60px" ng-src="http://localhost:8081/images_server/productos/{{foto}}" />
+                            </div>
+
+                            <input type="file" class="form-control-file mt-2" file-model="myFile" onchange="document.getElementById('output').src = window.URL.createObjectURL(this.files[0])">
                         </div>
 
 
