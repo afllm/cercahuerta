@@ -1,0 +1,36 @@
+<header-component></header-component>
+<div class="contenedor container-fluid">
+    <div class="row" style="margin-top: 70px">
+        <div class="col-12">
+            <div class="row mt-5">
+                <div class="col-5 mx-auto">
+                    <h2 class="text-center mb-3"><i></i> {{ajaxData.titulo}} </h2>
+                    <small>{{ajaxData.obj_usuario.nombre}} {{ajaxData.obj_usuario.ape1}}</small>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-5 mx-auto">
+                    <section class="noticias-view row">
+                        <article class="border border-secundary rounded">
+                            <img src="http://localhost:8081/images_server/noticias/{{ajaxData.foto}}"  width="640" height="400" alt="foto noticia {{ajaxData.id}}">
+                            <div class="texto">
+                                <div>
+                                    <p>{{ajaxData.mensaje}}</p>
+                                </div>
+                                
+                            </div>
+
+                        </article>
+                    </section>
+
+                    <div class="button_edit">
+                        <button type="button" class="btn btn-outline-elegant btn-block" ng-click="volver()">Volver</button>
+                        <button type="button" class="btn btn-outline-elegant btn-block" ng-click="editar()">Editar</button>
+                    </div>   
+                </div> 
+
+            </div>
+        </div>
+    </div>
+</div>
+<footer class="footer" ng-include="'js/app/footer.html'"></footer>

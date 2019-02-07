@@ -30,6 +30,10 @@ public class json extends HttpServlet {
     }
 
     /**
+     * @param request
+     * @param response
+     * @throws javax.servlet.ServletException
+     * @throws java.io.IOException
      * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
      * response)
      */

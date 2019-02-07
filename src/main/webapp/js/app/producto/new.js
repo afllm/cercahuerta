@@ -53,7 +53,7 @@ moduleProducto.controller("productoNewController", [
             $scope.uploadFile();
             var nombreFoto;
             if ($scope.myFile === undefined) {
-                nombreFoto = "default.jpg";
+                nombreFoto = "default.jpeg";
             } else {
                 nombreFoto = $scope.myFile.name
             }

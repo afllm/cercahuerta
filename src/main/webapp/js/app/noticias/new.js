@@ -16,9 +16,10 @@ moduleNoticias.controller("noticiasNewController", [
         } else {
             $scope.id = $routeParams.id;
         }
-        $scope.obj_tipoproducto = {
+        $scope.obj_usuario = {
             id: null,
-            desc: null
+            nombre: null,
+            ape1:null
         }
         $scope.mostrar = false;
         $scope.activar = true;
@@ -31,7 +32,7 @@ moduleNoticias.controller("noticiasNewController", [
             $scope.uploadFile();
             var nombreFoto;
             if ($scope.myFile === undefined) {
-                nombreFoto = "default.jpg";
+                nombreFoto = "default.jpeg";
             } else {
                 nombreFoto = $scope.myFile.name;
             }
@@ -39,9 +40,10 @@ moduleNoticias.controller("noticiasNewController", [
 
             var json = {
                 id: null,
+                titulo: $scope.titulo,
                 mensaje: $scope.mensaje,
                 foto: nombreFoto,
-                id_usuario: $scope.obj_tipoproducto.id_usuario
+                id_usuario: $scope.obj_usuario.id //cambiar a usuario activo
             }
 
             $http({
@@ -56,21 +58,20 @@ moduleNoticias.controller("noticiasNewController", [
             })
         }
 
-        $scope.tipoProductoRefresh = function (f, consultar) {
+     $scope.usuarioRefresh = function (f, consultar) {
             var form = f;
             if (consultar) {
                 $http({
                     method: 'GET',
-                    url: 'json?ob=tipoproducto&op=get&id=' + $scope.obj_tipoproducto.id
+                    url: 'json?ob=usuario&op=get&id=' + $scope.obj_usuario.id
                 }).then(function (response) {
-                    $scope.obj_tipoproducto = response.data.message;
-                    form.userForm.obj_tipoproducto.$setValidity('valid', true);
+                    $scope.obj_usuario = response.data.message;
+                    form.userForm.obj_usuario.$setValidity('valid', true);
                 }, function (response) {
-                    //$scope.status = response.status;
-                    form.userForm.obj_tipoproducto.$setValidity('valid', false);
+                    form.userForm.obj_usuario.$setValidity('valid', false);
                 });
             } else {
-                form.userForm.obj_tipoproducto.$setValidity('valid', true);
+                form.userForm.obj_usuario.$setValidity('valid', true);
             }
         }
 
@@ -97,7 +98,7 @@ moduleNoticias.controller("noticiasNewController", [
                 headers: {'Content-Type': undefined},
                 method: 'POST',
                 data: oFormData,
-                url: `json?ob=producto&op=loadimage`
+                url: `json?ob=noticias&op=loadimage`
             })
             /*.then(function (response) {
              console.log(response);

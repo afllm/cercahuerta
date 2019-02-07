@@ -13,32 +13,6 @@ moduleNoticias.controller('noticiasPlistController', ['$scope', '$http', '$locat
 //            $scope.tipousuarioID = sessionService.getTypeUserID();
 //        }
 
-
-        $http({
-            method: 'GET',
-            url: 'json?ob=carrito&op=show'
-        }).then(function (response) {
-            $scope.status = response.status;
-            $scope.ajaxDataAdd = response.data.message;
-        }, function (response) {
-            $scope.status = response.status;
-            $scope.ajaxDataAdd = response.data.message || 'Request failed';
-        });
-
-        function show() {
-
-            $http({
-                method: 'GET',
-                url: 'json?ob=carrito&op=show'
-            }).then(function (response) {
-                $scope.status = response.status;
-                $scope.ajaxDataAdd = response.data.message;
-            }, function (response) {
-                $scope.status = response.status;
-                $scope.ajaxDataAdd = response.data.message || 'Request failed';
-            });
-        }
-
         if (!$routeParams.order) {
             $scope.orderURLServidor = "";
             $scope.orderURLCliente = "";
@@ -47,11 +21,9 @@ moduleNoticias.controller('noticiasPlistController', ['$scope', '$http', '$locat
             $scope.orderURLCliente = $routeParams.order;
         }
 
-        if (!$routeParams.rpp) {
-            $scope.rpp = "12";
-        } else {
-            $scope.rpp = $routeParams.rpp;
-        }
+       
+            $scope.rpp = "5";
+        
 
         if (!$routeParams.page) {
             $scope.page = 1;
@@ -63,74 +35,32 @@ moduleNoticias.controller('noticiasPlistController', ['$scope', '$http', '$locat
             }
         }
 
-        $scope.stock = false;
-        $scope.add = function (id) {
-
-            $http({
-                method: 'GET',
-                url: 'json?ob=carrito&op=add&prod=' + id
-            }).then(function (response) {
-                $scope.status = response.status;
-
-                if ($scope.status == 400) {
-
-                    $scope.stock = true;
-                }
-
-                $scope.ajaxDataAdd = response.data.message;
-                show();
-            }, function (response) {
-                $scope.status = response.status;
-                $scope.ajaxDataAdd = response.data.message || 'Request failed';
-            });
-            
-            //animacion
-            
-//            https://css-tricks.com/animations-the-angular-way/
-            
-            
-            
-            
-            
-            
-        };
-
-        $scope.reduce = function (id) {
-
-            $http({
-                method: 'GET',
-                url: 'json?ob=carrito&op=reduce&prod=' + id
-            }).then(function (response) {
-                $scope.status = response.status;
-                $scope.ajaxDataAdd = response.data.message;
-                show();
-            }, function (response) {
-                $scope.status = response.status;
-                $scope.ajaxDataAdd = response.data.message || 'Request failed';
-            });
-        };
+        
 
 
-        $scope.resetOrder = function () {
-            $location.url(`producto/plist/` + $scope.rpp + `/` + $scope.page);
-        }
+   
+
+//
+//        $scope.resetOrder = function () {
+//            $location.url(`noticias/plist/` + $scope.rpp + `/` + $scope.page);
+//        }
 
 
-        $scope.ordena = function (order, align) {
-            if ($scope.orderURLServidor == "") {
-                $scope.orderURLServidor = "&order=" + order + "," + align;
-                $scope.orderURLCliente = order + "," + align;
-            } else {
-                $scope.orderURLServidor = $scope.orderURLServidor + "-" + order + "," + align;
-                $scope.orderURLCliente = $scope.orderURLCliente + "-" + order + "," + align;
-            }
-            $location.url(`producto/plist/` + $scope.rpp + `/` + $scope.page + `/` + $scope.orderURLCliente);
-        }
+//        $scope.ordena = function (order, align) {
+//            if ($scope.orderURLServidor == "") {
+//                $scope.orderURLServidor = "&order=" + order + "," + align;
+//                $scope.orderURLCliente = order + "," + align;
+//            } else {
+//                $scope.orderURLServidor = $scope.orderURLServidor + "-" + order + "," + align;
+//                $scope.orderURLCliente = $scope.orderURLCliente + "-" + order + "," + align;
+//            }
+//            $location.url(`noticias/plist/` + $scope.rpp + `/` + $scope.page + `/` + $scope.orderURLCliente);
+//        }
 
         //getcount
         $http({
             method: 'GET',
-            url: 'json?ob=producto&op=getcount'
+            url: 'json?ob=noticias&op=getcount'
         }).then(function (response) {
             $scope.status = response.status;
             $scope.ajaxDataNum = response.data.message;
@@ -147,7 +77,7 @@ moduleNoticias.controller('noticiasPlistController', ['$scope', '$http', '$locat
 
         $http({
             method: 'GET',
-            url: 'json?ob=producto&op=getpage&rpp=' + $scope.rpp + '&page=' + $scope.page + $scope.orderURLServidor
+            url: 'json?ob=noticias&op=getpage&rpp=' + $scope.rpp + '&page=' + $scope.page + $scope.orderURLServidor
         }).then(function (response) {
             $scope.status = response.status;
             $scope.ajaxData = response.data.message;
@@ -159,13 +89,11 @@ moduleNoticias.controller('noticiasPlistController', ['$scope', '$http', '$locat
 
 
         $scope.update = function () {
-            $location.url(`carrito/plist/` + $scope.rpp + `/` + $scope.page + '/' + $scope.orderURLCliente);
+            $location.url(`noticias/plist/` + $scope.rpp + `/` + $scope.page + '/' + $scope.orderURLCliente);
         };
 
 
-        $scope.carrito = function () {
-            $location.url(`carrito/carrito`);
-        };
+      
 
         //paginacion neighbourhood
         function pagination2() {
@@ -191,18 +119,7 @@ moduleNoticias.controller('noticiasPlistController', ['$scope', '$http', '$locat
 
 
 
-        $scope.existencias = function (idProd) {
-            var arrayLength = $scope.ajaxDataAdd.length;
-            for (var i = 0; i < arrayLength; i++) {
-                if ($scope.ajaxDataAdd !== null && $scope.ajaxDataAdd !== "Carrito vacio") {
-                    if ($scope.ajaxDataAdd[i].obj_producto.id === idProd) {
-                        return $scope.ajaxDataAdd[i].cantidad;
-                    }
-                }
-            }
-            return 0;
 
-        }
 
 
 

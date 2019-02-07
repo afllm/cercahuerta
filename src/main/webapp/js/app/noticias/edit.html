@@ -4,47 +4,45 @@
         <div class="col-12">
             <div class="row">
                 <div class="mx-auto col-5 text-center">
-                    <h3><i class="fas fa-cube fa-1x"></i> Nuevo producto</h3>
+                    <h3>Editar producto</h3>
                 </div>
             </div>
             <div class="row" ng-show="edited">
                 <div class="col-5 mx-auto formulario">
-                    <ng-form name="userForm" class="form" ng-show="result == null">
-                       
+                    <ng-form name="userForm" class="form" ng-show="result == null">                       
                         <div class="form-group">
                             <label>Título</label>
-                            <input type="text" class="form-control" id="titulo" name="titulo" ng-model="titulo" ng-required="true" placeholder="Titulo"/>
+                            <input type="text" class="form-control" id="titulo" name="titulo" ng-model="titulo" ng-required="true" />
                             <div ng-show="!userForm.titulo.$valid && !userForm.titulo.$pristine" class="alert alert-danger" role="alert">
-                                Titulo obligatorio
+                                Título obligatorio
                             </div>
                         </div>
                         <div class="form-group">
                             <label>Mensaje</label>
-                            <input type="text" class="form-control" id="mensaje" name="mensaje" ng-model="mensaje" ng-required="true" placeholder="Mensaje"/>
+                            <input type="text" class="form-control" id="mensaje" name="mensaje" ng-model="mensaje" ng-required="true" />
                             <div ng-show="!userForm.mensaje.$valid && !userForm.mensaje.$pristine" class="alert alert-danger" role="alert">
                                 Mensaje obligatorio
                             </div>
                         </div>
-                        
                         <div class="form-group">
                             <label>Foto</label>
-                            <!--<input type="text" class="form-control" id="foto" name="foto" ng-model="ajaxDatoProducto.foto" ng-required="true" />
-                            <div ng-show="!userForm.foto.$valid && !userForm.foto.$pristine" class="alert alert-danger" role="alert">
-                                Foto obligatoria
-                            </div>-->
-                            <input type = "file" file-model = "myFile"/>
+                            <!-- <input type="text" class="form-control" id="foto" name="foto" ng-model="ajaxDatoProducto.foto" ng-required="true" />
+                             <div ng-show="!userForm.foto.$valid" class="alert alert-danger" role="alert">
+                                 Foto obligatoria
+                             </div>-->
+                            <input type="file" file-model="foto"/>
                         </div>
 
 
 
 
-                        <label for="obj_usuario">Usuario:</label>
+                        <label for="obj_usuario">Tipo de producto:</label>
                         <div class="form-group row ml-3">
                             <usuario-selection 
                                 class="modal fade" 
                                 id="cadd-location-modal" 
                                 obj="obj_usuario"
-                                on-usuario-set="tipoProductoRefresh(this,false)">                          
+                                on-usuario-set="usuarioRefresh(this,false)">                          
                             </usuario-selection>
 
                             <div class="control">
@@ -57,7 +55,7 @@
                                         </span>
                                     </div>
                                     <input ng-model="obj_usuario.id"
-                                           ng-change="tipoProductoRefresh(this, true)"
+                                           ng-change="usuarioRefresh(this, true)"
                                            aria-describedby="basic-addon2"
                                            class="form-control col-sm-2"
                                            id="obj_usuario"
@@ -68,9 +66,9 @@
                                            maxlength="2" />
                                     <div class="input-group-append">
                                         <span class="input-group-text">
-                                            <a href="../cercahuerta/usuario/view/{{obj_usuario.id}}">
+                                            <a href="../usuario/view/{{obj_usuario.id}}">
                                                 <span class="p-2 bd-highlight"><i class="fas fa-users fa-1x"></i></span>
-                                                Usuario: {{obj_usuario.desc}}
+                                                Usuario: {{obj_usuario.Nombre}}
                                             </a>
                                         </span>
                                     </div>
@@ -79,7 +77,7 @@
                             </div>
                         </div>
                         <div class="d-flex justify-content-between flex-wrap">
-                            <button ng-click="update()" type="button" class="btn btn-amber btn-block" ng-disabled="userForm.$invalid">Crear</button>
+                            <button ng-click="update()" type="button" class="btn btn-amber btn-block" ng-disabled="userForm.$invalid">Editar</button>
                             <button type="button" class="btn btn-outline-elegant btn-block" onclick="window.history.back()">Volver</button>
                         </div>
                     </ng-form>
@@ -88,7 +86,7 @@
             <div class="row" ng-show="!edited">
                 <div class="col-5 mx-auto">
                     <div class="alert alert-success" role="alert">
-                        <p class="text-center mt-2"> Mensaje creado correctamente.<p> 
+                        <p class="text-center mt-2"> Producto modificado correctamente.<p> 
                     </div>
                     <button type="button" class="btn btn-outline-elegant btn-block mt-2" onclick="window.history.back()">Volver</button>
                 </div>

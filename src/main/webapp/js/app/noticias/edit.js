@@ -1,12 +1,14 @@
 "use strict";
 
-moduleProducto.controller("productoEditController", [
+moduleNoticias.controller("noticiasEditController", [
     "$scope",
     "$http",
     "$routeParams",
     "toolService",
     'sessionService',
-    function ($scope, $http, $routeParams, toolService, sessionService) {
+    '$window',
+    '$location',
+    function ($scope, $http, $routeParams, toolService, sessionService, $window, $location) {
 
         $scope.edited = true;
         $scope.logged = false;
@@ -21,54 +23,47 @@ moduleProducto.controller("productoEditController", [
         $scope.activar = true;
         $scope.ajaxData = "";
 
-   
+    $scope.isActive = toolService.isActive;
 
         $http({
             method: "GET",
-            url: 'json?ob=producto&op=get&id=' + $scope.id
+            url: 'json?ob=noticias&op=get&id=' + $scope.id
         }).then(function (response) {
             console.log(response);
 //            $scope.status = response.status;
             $scope.id = response.data.message.id;
-            $scope.codigo = response.data.message.codigo;
-            $scope.desc = response.data.message.desc;
-            $scope.existencias = response.data.message.existencias;
-            $scope.precio = response.data.message.precio;
+            $scope.titulo = response.data.message.titulo;
+            $scope.mensaje = response.data.message.mensaje;
             $scope.foto = response.data.message.foto;
-            $scope.obj_tipoProducto = {
-                id: response.data.message.obj_tipoProducto.id,
-                desc: response.data.message.obj_tipoProducto.desc
+            $scope.obj_usuario = {
+                id: response.data.message.obj_usuario.id,
+                nombre: response.data.message.obj_usuario.nombre,
+                ape1: response.data.message.obj_usuario.ape1
             }
 
         }), function (response) {
             console.log(response);
         };
 
-        $scope.isActive = toolService.isActive;
+       
 
         $scope.update = function () {
             var nombreFoto;
             console.log($scope.foto);
 
             if ($scope.foto !== undefined) {
-                nombreFoto = $scope.foto.name;
+                nombreFoto = $scope.foto;
                 $scope.uploadFile(nombreFoto);
             } else {
-                if ($scope.ajaxDatoProducto.foto != '' || $scope.ajaxDatoProducto.foto != null) {
-                    nombreFoto = $scope.ajaxDatoProducto.foto;
-                } else {
                     nombreFoto = "default.jpeg";
-                }
             }
 
             var json = {
                 id: $scope.id,
-                codigo: $scope.codigo,
-                desc: $scope.desc,
-                existencias: $scope.existencias,
-                precio: $scope.precio,
+                titulo: $scope.titulo,
+                mensaje: $scope.mensaje,
                 foto: nombreFoto,
-                id_tipoProducto: $scope.obj_tipoProducto.id
+                id_usuario: $scope.obj_usuario.id
             }
 
             $http({
@@ -76,33 +71,33 @@ moduleProducto.controller("productoEditController", [
                 header: {
                     'Content-Type': 'application/json;charset=utf-8'
                 },
-                url: 'json?ob=producto&op=update',
+                url: 'json?ob=noticias&op=update',
                 params: {json: JSON.stringify(json)}
             }).then(function () {
                 $scope.edited = false;
             })
         }
 
-        $scope.tipoProductoRefresh = function (f, consultar) {
+        $scope.usuarioRefresh = function (f, consultar) {
             var form = f;
             if (consultar) {
                 $http({
                     method: 'GET',
-                    url: 'json?ob=tipoproducto&op=get&id=' + $scope.obj_tipoProducto.id
+                    url: 'json?ob=usuario&op=get&id=' + $scope.obj_usuario.id
                 }).then(function (response) {
-                    $scope.obj_tipoProducto = response.data.message;
-                    form.userForm.obj_tipoProducto.$setValidity('valid', true);
+                    $scope.obj_usuario = response.data.message;
+                    form.userForm.obj_usuario.$setValidity('valid', true);
                 }, function (response) {
                     //$scope.status = response.status;
-                    form.userForm.obj_tipoProducto.$setValidity('valid', false);
+                    form.userForm.obj_usuario.$setValidity('valid', false);
                 });
             } else {
-                form.userForm.obj_tipoProducto.$setValidity('valid', true);
+                form.userForm.obj_usuario.$setValidity('valid', true);
             }
         }
 
         $scope.back = function () {
-            window.history.back();
+            $window.history.back();
         };
         $scope.close = function () {
             $location.path('/home');
@@ -127,7 +122,7 @@ moduleProducto.controller("productoEditController", [
                 headers: {'Content-Type': undefined},
                 method: 'POST',
                 data: oFormData,
-                url: `json?ob=producto&op=loadimage`
+                url: `json?ob=noticias&op=loadimage`
             })
             /*.then(function (response) {
              console.log(response);
