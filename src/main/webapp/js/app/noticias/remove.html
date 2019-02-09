@@ -1,54 +1,53 @@
 <header-component></header-component>
 <div class="contenedor container-fluid">
-  <div class="row" style="margin-top: 70px">
-    <div class="col-12">
-      <div class="row mt-5">
-        <div class="col-5 mx-auto">
-          <h4 class="text-center mb-3"><i class="fas fa-trash-alt fa-1x"></i> Borrar producto</h4>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-5 mx-auto">
-                           <div class="alert alert-success" role="alert" ng-show="(visualizar)">
-                Noticia eliminada correctamente.
+    <div class="row">
+        <div class="col-12">
+            <div class="row mt-5">
+                <div class="col-5 mx-auto">
+                    <h4 class="text-center mb-3"><i class="fas fa-trash-alt fa-1x"></i> Borrar producto</h4>
+                </div>
             </div>
-            <div class="table-responsive" ng-show="(!visualizar)">
-              <div class="table-responsive">
-               <table class="table table-hover table-sm">
-                    <tr>
-                        <th>ID</th><td>{{ajaxData.id}}</td>
-                    </tr>
-                    <tr>
-                        <th>Titulo</th><td>{{ajaxData.titulo}}</td>
-                    </tr>
-                    <tr>
-                        <th>Mensaje</th><td>{{ajaxData.mensaje}}</td>
-                    </tr>
-                    <tr>
-                        <th>Foto </th><td>{{ajaxData.foto}}</td>
-                    </tr>
-                    <tr>
-                        <th>Usuario </th><td><a class="page-link" href="usuario/view/{{ajaxData.obj_usuario.id}}">{{ajaxData.obj_usuario.nombre}} {{ajaxData.obj_usuario.ape1}}</a></td>
-                    </tr>
+            <div class="row">
+                <div class="col-5 mx-auto">
+                    <div class="table-responsive" >
+                        <div class="table-responsive" ng-show="tabla">
+                            <table class="table table-hover table-sm">
+                                <tr>
+                                    <th>ID</th><td>{{ajaxData.id}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Titulo</th><td>{{ajaxData.titulo}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Mensaje</th><td>{{ajaxData.mensaje}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Foto </th><td>{{ajaxData.foto}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Usuario </th><td><a class="page-link" href="usuario/view/{{ajaxData.obj_usuario.id}}">{{ajaxData.obj_usuario.nombre}} {{ajaxData.obj_usuario.ape1}}</a></td>
+                                </tr>
+
+                            </table>
+                        </div>
+                        <div ng-show="msgopcioneliminar">
+                            <h6 style="text-align: center">¿Estas seguro de eliminar el registro?</h6>
+                            <button class="btn btn-amber btn-block" ng-click="eliminar('eliminar')">Si</button>
+                            <button class="btn btn-danger btn-block" ng-click="eliminar('noeliminar')">No</button>
+                        </div>
+
+                        <div class="alert alert-success btn-block" style="margin-top: 20px;" ng-show="eliminarok">
+                            <p>Noticia eliminada</p>
+                        </div>
+
+                        <div class="alert alert-danger btn-block" style="margin-top: 20px;" ng-show="eliminarerror">
+                            <p>Noticia no eliminada</p>
+                        </div>
+                        <button type="button" class="btn btn-outline-elegant btn-block" ng-click="volver()">Volver</button>
+
+
+                    </div>
                     
-                </table>
-                    </div>
-                    <div ng-show="msgopcioneliminar">
-                        <h6 style="text-align: center">¿Estas seguro de eliminar el registro?</h6>
-                        <button class="btn btn-amber btn-block" ng-click="eliminar('eliminar')">Si</button>
-                        <button class="btn btn-danger btn-block" ng-click="eliminar('noeliminar')">No</button>
-                    </div>
-
-                    <div class="alert alert-success btn-block" style="margin-top: 20px;" ng-show="eliminarok">
-                         <p>Noticia eliminada: {{ajaxDataEliminar}}</p>
-                    </div>
-
-                    <div class="alert alert-danger btn-block" style="margin-top: 20px;" ng-show="eliminarerror">
-                        Noticia no eliminada: {{ajaxDataEliminar}}
-                    </div>
-                    <button type="button" class="btn btn-outline-elegant btn-block" ng-click="volver()">Volver</button>
-
-
                 </div>
             </div>
         </div>

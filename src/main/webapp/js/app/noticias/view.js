@@ -42,7 +42,7 @@ moduleNoticias.controller("noticiasViewController", ['$scope', '$http', '$routeP
 
 
         $scope.volver = function () {
-            $window.history.back();
+            $location.path("noticias/plist/"+$scope.page);
         };
 
         $scope.editar = function () {

@@ -17,6 +17,6 @@ function js(toolService, sessionService, $http, $route) {
     self.tipousuarioID = sessionService.getTypeUserID();
     self.isActive = toolService.isActive;
     self.limpiar = sessionService.isSessionActive();
-
+    
 
 }
