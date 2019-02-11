@@ -17,7 +17,7 @@ ng-class="autoScroll ? 'icon-autoscroll' : 'icon-autoscroll-disabled'"
                 <a class="nav-link" href="carrito/plist"><i class="fas fas fa-shopping-cart fa-1x"></i> <span class="titulos">Productos</span></a>
             </li>
              <li class="nav-item" ng-show="c.limpiar && (c.tipousuarioID == 2 || c.tipousuarioID == 1)" ng-class="{'active': c.isActive('/noticias/plist')}">
-                <a class="nav-link" href="noticias/plist"><i class="fas fas fa-shopping-cart fa-1x"></i> <span class="titulos">Noticias</span></a>
+                <a class="nav-link" href="noticias/plist"><i class="far fa-newspaper"></i> <span class="titulos">Noticias</span></a>
             </li>
             <li class="nav-item dropdown" ng-show="c.limpiar && c.tipousuarioID == 1" ng-class="{'active': c.isActive('/tipousuario/plist') || c.isActive('/usuario/plist')
             || c.isActive('/factura/plist')|| c.isActive('/producto/plist')|| c.isActive('/tipoproducto/plist')|| c.isActive('/linea/plist')}">

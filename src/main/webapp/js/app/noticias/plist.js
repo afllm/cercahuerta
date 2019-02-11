@@ -5,14 +5,13 @@ moduleNoticias.controller('noticiasPlistController', ['$scope', '$http', '$locat
 
         $scope.totalPages = 1;
         $scope.conectado = false;
-
-//        if (sessionService.getUserName() !== "") {
-//            $scope.loggeduser = sessionService.getUserName();
-//            $scope.loggeduserid = sessionService.getId();
-//            $scope.logged = true;
-//            $scope.tipousuarioID = sessionService.getTypeUserID();
-//        }
-
+        
+        console.log("usuario name: "+sessionService.getUserName());
+        console.log("usuario idType: "+sessionService.getTypeUserID());
+        if (sessionService.getUserName() !== "") {
+            $scope.id_tiposusario = sessionService.getTypeUserID();
+        }
+        console.log("usuario idType del scope: "+$scope.id_tiposusario);
         if (!$routeParams.order) {
             $scope.orderURLServidor = "&order=id,desc";
             $scope.orderURLCliente = "";

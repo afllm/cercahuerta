@@ -2,18 +2,18 @@ package net.daw.service.specificServiceImplementation_1;
 
 import net.daw.bean.beanImplementation.ReplyBean;
 import net.daw.bean.beanImplementation.NoticiasBean;
-import net.daw.dao.specificDaoImplementation_1.ProductoDao_1;
 import net.daw.service.genericServiceImplementation.GenericServiceImplementation;
 import net.daw.service.publicServiceInterface.ServiceInterface;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.thedeanda.lorem.Lorem;
+import com.thedeanda.lorem.LoremIpsum;
 import java.io.File;
 import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
-import net.daw.bean.publicBeanInterface.BeanInterface;
 import net.daw.connection.publicinterface.ConnectionInterface;
 import net.daw.constant.ConnectionConstants;
 import net.daw.dao.publicDaoInterface.DaoInterface;
@@ -72,6 +72,7 @@ public class NoticiasService_1 extends GenericServiceImplementation implements S
         ReplyBean oReplyBean;
         ConnectionInterface oConnectionPool = null;
         Connection oConnection;
+        Lorem lorem = LoremIpsum.getInstance();
         try {
             int numero = Integer.parseInt(oRequest.getParameter("num"));
             Gson oGson = (new GsonBuilder()).excludeFieldsWithoutExposeAnnotation().create();
@@ -79,7 +80,7 @@ public class NoticiasService_1 extends GenericServiceImplementation implements S
             oConnection = oConnectionPool.newConnection();
             String[] titulo1 = {"La huerta", "El campo", "La cosecha", "El clima"};
             String[] titulo2 = {"de hoy", "este año", "mejora", "empeora", "en la ciudad"};
-            String mensaje = "Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.";
+            String mensaje = lorem.getParagraphs(3, 3);
             String[] foto = {"noticias1.jpeg", "noticias2.jpeg", "noticias3.jpeg", "noticias4.jpeg", "noticias5.jpeg"};
             int[] id_usuario = {52, 53, 54, 55, 56};
 

@@ -82,6 +82,9 @@ public class DaoFactory {
                     case "linea":
                         oDao = new LineaDao_2(oConnection, ob, oUsuarioBeanSession);
                         break;
+                    case "noticias":
+                        oDao = new NoticiasDao_1(oConnection, ob, oUsuarioBeanSession);
+                        break;
                 }
                 break;
             case 0:

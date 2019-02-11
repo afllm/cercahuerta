@@ -25,16 +25,16 @@ public class UsuarioDao_2 extends GenericDaoImplementation implements DaoInterfa
 
     }
     
-    @Override
-    public BeanInterface get(int id, Integer expand) throws Exception {
-
-        if (id == oUsuarioBeanSession.getId()) {
-            return (UsuarioBean) super.get(id, expand);
-        } else {
-            throw new Exception("Error en Dao get de " + ob + ": No autorizado");
-        }
-
-    }
+//    @Override
+//    public BeanInterface get(int id, Integer expand) throws Exception {
+//
+//        if (id == oUsuarioBeanSession.getId()) {
+//            return (UsuarioBean) super.get(id, expand);
+//        } else {
+//            throw new Exception("Error en Dao get de " + ob + ": No autorizado");
+//        }
+//
+//    }
 
     
     @Override

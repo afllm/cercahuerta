@@ -12,8 +12,8 @@ moduloFiltros
                     return "";
                 }
 
-                if (input.length > 100) {
-                    return input.substr(0, 90).trim() + " ...";
+                if (input.length > 200) {
+                    return input.substr(0, 150).trim() + " ...";
 
                 } else {
                     return input;

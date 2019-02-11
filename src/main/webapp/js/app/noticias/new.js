@@ -7,7 +7,7 @@ moduleNoticias.controller("noticiasNewController", [
     "toolService",
     'sessionService',
     function ($scope, $http, $routeParams, toolService, sessionService) {
-
+        console.log("Id de sessionService: "+sessionService.getId());
         $scope.edited = true;
         $scope.logged = false;
 
@@ -45,7 +45,7 @@ moduleNoticias.controller("noticiasNewController", [
                 titulo: $scope.titulo,
                 mensaje: $scope.mensaje,
                 foto: nombreFoto,
-                id_usuario: $scope.obj_usuario.id //cambiar a usuario activo
+                id_usuario: sessionService.getId() //$scope.obj_usuario.id //cambiar a usuario activo
             }
 
             $http({
@@ -60,22 +60,22 @@ moduleNoticias.controller("noticiasNewController", [
             })
         }
 
-     $scope.usuarioRefresh = function (f, consultar) {
-            var form = f;
-            if (consultar) {
-                $http({
-                    method: 'GET',
-                    url: 'json?ob=usuario&op=get&id=' + $scope.obj_usuario.id
-                }).then(function (response) {
-                    $scope.obj_usuario = response.data.message;
-                    form.userForm.obj_usuario.$setValidity('valid', true);
-                }, function (response) {
-                    form.userForm.obj_usuario.$setValidity('valid', false);
-                });
-            } else {
-                form.userForm.obj_usuario.$setValidity('valid', true);
-            }
-        }
+//     $scope.usuarioRefresh = function (f, consultar) {
+//            var form = f;
+//            if (consultar) {
+//                $http({
+//                    method: 'GET',
+//                    url: 'json?ob=usuario&op=get&id=' + $scope.obj_usuario.id
+//                }).then(function (response) {
+//                    $scope.obj_usuario = response.data.message;
+//                    form.userForm.obj_usuario.$setValidity('valid', true);
+//                }, function (response) {
+//                    form.userForm.obj_usuario.$setValidity('valid', false);
+//                });
+//            } else {
+//                form.userForm.obj_usuario.$setValidity('valid', true);
+//            }
+//        }
 
         $scope.back = function () {
             window.history.back();

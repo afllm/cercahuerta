@@ -15,6 +15,7 @@ import net.daw.service.specificServiceImplementation_1.UsuarioService_1;
 import net.daw.service.specificServiceImplementation_2.CarritoService_2;
 import net.daw.service.specificServiceImplementation_2.FacturaService_2;
 import net.daw.service.specificServiceImplementation_2.LineaService_2;
+import net.daw.service.specificServiceImplementation_2.NoticiasService_2;
 import net.daw.service.specificServiceImplementation_2.ProductoService_2;
 import net.daw.service.specificServiceImplementation_2.TipoproductoService_2;
 import net.daw.service.specificServiceImplementation_2.TipousuarioService_2;
@@ -404,6 +405,23 @@ public class ServiceFactory {
                                 break;
                             case "buy":
                                 oReplyBean = oCarritoService.buy();
+                                break;
+                            default:
+                                oReplyBean = new ReplyBean(500, "Operation doesn't exist");
+                                break;
+                        }
+                        break;
+                        case "noticias":
+                        NoticiasService_2 oNoticiasService = new NoticiasService_2(oRequest);
+                        switch (op) {
+                            case "get":
+                                oReplyBean = oNoticiasService.get();
+                                break;
+                            case "getcount":
+                                oReplyBean = oNoticiasService.getcount();
+                                break;
+                            case "getpage":
+                                oReplyBean = oNoticiasService.getpage();
                                 break;
                             default:
                                 oReplyBean = new ReplyBean(500, "Operation doesn't exist");

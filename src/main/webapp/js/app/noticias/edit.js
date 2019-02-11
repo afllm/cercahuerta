@@ -81,23 +81,23 @@ moduleNoticias.controller("noticiasEditController", [
             })
         }
 
-        $scope.usuarioRefresh = function (f, consultar) {
-            var form = f;
-            if (consultar) {
-                $http({
-                    method: 'GET',
-                    url: 'json?ob=usuario&op=get&id=' + $scope.obj_usuario.id
-                }).then(function (response) {
-                    $scope.obj_usuario = response.data.message;
-                    form.userForm.obj_usuario.$setValidity('valid', true);
-                }, function (response) {
-                    //$scope.status = response.status;
-                    form.userForm.obj_usuario.$setValidity('valid', false);
-                });
-            } else {
-                form.userForm.obj_usuario.$setValidity('valid', true);
-            }
-        }
+//        $scope.usuarioRefresh = function (f, consultar) {
+//            var form = f;
+//            if (consultar) {
+//                $http({
+//                    method: 'GET',
+//                    url: 'json?ob=usuario&op=get&id=' + $scope.obj_usuario.id
+//                }).then(function (response) {
+//                    $scope.obj_usuario = response.data.message;
+//                    form.userForm.obj_usuario.$setValidity('valid', true);
+//                }, function (response) {
+//                    //$scope.status = response.status;
+//                    form.userForm.obj_usuario.$setValidity('valid', false);
+//                });
+//            } else {
+//                form.userForm.obj_usuario.$setValidity('valid', true);
+//            }
+//        }
 
         $scope.back = function () {
             $window.history.back();

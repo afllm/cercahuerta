@@ -23,7 +23,7 @@ body {
     /*margin-bottom: 60px;*/
 }
 footer, .footer {
-/*    position: fixed;*/
+    /*    position: fixed;*/
     margin-bottom: 0;
     width: 100vw;
     /* Set the fixed height of the footer here */
@@ -107,7 +107,7 @@ header-component{
 }
 
 .noticias article{
-    
+
     /*background-color: rgba(30, 130, 76, 0.2);*/
     flex: 0 0 200px;
     margin: 5px;
@@ -115,24 +115,25 @@ header-component{
     min-width: 49%;
 }
 .noticias article:first-child{
-   
+
     min-width: 100%;
 }
 
-
-
-
 .noticias article img{
     min-width: 100px;
-    max-width: 100%;
+    width: 100%;
     min-height: 328px;
 }
-
 
 .noticias article .texto{
     background-image:  linear-gradient(to top, rgba(0,150,136, 0.1) 0px, rgba(0, 0, 0, 0.1) 100%);
     padding: 0 20px 20px;
 }
+
+.angular-with-newlines {
+    white-space: pre-line; /*pre-wrap*/
+}
+
 /* Custom page CSS
 -------------------------------------------------- */
 /* Not required for template or sticky footer method. */

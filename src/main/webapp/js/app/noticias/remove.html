@@ -4,7 +4,7 @@
         <div class="col-12">
             <div class="row mt-5">
                 <div class="col-5 mx-auto">
-                    <h4 class="text-center mb-3"><i class="fas fa-trash-alt fa-1x"></i> Borrar producto</h4>
+                    <h4 class="text-center mb-3"><i class="fas fa-trash-alt fa-1x"></i> Borrar noticia</h4>
                 </div>
             </div>
             <div class="row">
@@ -19,7 +19,7 @@
                                     <th>Titulo</th><td>{{ajaxData.titulo}}</td>
                                 </tr>
                                 <tr>
-                                    <th>Mensaje</th><td>{{ajaxData.mensaje}}</td>
+                                    <th>Mensaje</th><td>{{ajaxData.mensaje|clipString}}</td>
                                 </tr>
                                 <tr>
                                     <th>Foto </th><td>{{ajaxData.foto}}</td>

@@ -56,36 +56,6 @@ public class ProductoService_2 extends GenericServiceImplementation implements S
 //        return oReplyBean;
 //    }
 
-    public ReplyBean loadimage() throws Exception {
-        ReplyBean oReplyBean = null;
-        String name = "";
-        String strMessage = "";
-        HashMap<String, String> hash = new HashMap<>();
-        if (ServletFileUpload.isMultipartContent(oRequest)) {
-            try {
-                List<FileItem> multiparts = new ServletFileUpload(new DiskFileItemFactory()).parseRequest(oRequest);
-                for (FileItem item : multiparts) {
-                    if (!item.isFormField()) {
-                        name = new File(item.getName()).getName();
-                        item.write(new File(".//..//webapps//imagenes//" + name));
-                    } else {
-                        hash.put(item.getFieldName(), item.getString());
-                    }
-                }
-                strMessage = "File upload";
-                Gson oGson = new Gson();
-                oReplyBean = new ReplyBean(200, oGson.toJson(strMessage));
-            } catch (Exception ex) {
-                strMessage = "Failed to upload file";
-                oReplyBean = new ReplyBean(500, "ERROR: " + EncodingHelper.escapeQuotes(EncodingHelper.escapeLine(ex.getMessage())) + strMessage);
-            }
-        } else {
-            strMessage = "File no upload";
-            oReplyBean = new ReplyBean(500, "ERROR: " + EncodingHelper.escapeQuotes(EncodingHelper.escapeLine(strMessage)));
-        }
 
-        return oReplyBean;
-
-    }
 
 }

@@ -17,14 +17,14 @@ public class TipousuarioDao_2 extends GenericDaoImplementation implements DaoInt
 
     }
 
-    @Override
-    public BeanInterface get(int id, Integer expand) throws Exception {
-        if (id == oUsuarioBeanSession.getObj_tipoUsuario().getId()) {
-            return (TipousuarioBean) super.get(id, expand);
-        } else {
-            throw new Exception("Error en Dao get de " + ob + ": No autorizado");
-        }
-    }
+//    @Override
+//    public BeanInterface get(int id, Integer expand) throws Exception {
+//        if (id == oUsuarioBeanSession.getObj_tipoUsuario().getId()) {
+//            return (TipousuarioBean) super.get(id, expand);
+//        } else {
+//            throw new Exception("Error en Dao get de " + ob + ": No autorizado");
+//        }
+//    }
 
     @Override
     public int remove(int id) throws Exception {
