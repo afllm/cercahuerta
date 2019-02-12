@@ -6,12 +6,10 @@ moduleCarrito.controller('carritoPlistController', ['$scope', '$http', '$locatio
         $scope.totalPages = 1;
         $scope.conectado = false;
 
-//        if (sessionService.getUserName() !== "") {
-//            $scope.loggeduser = sessionService.getUserName();
-//            $scope.loggeduserid = sessionService.getId();
-//            $scope.logged = true;
-//            $scope.tipousuarioID = sessionService.getTypeUserID();
-//        }
+        if (sessionService.getUserName() !== "") {
+            $scope.id_tiposusario = sessionService.getTypeUserID();
+            $scope.conectado = true;
+        }
 
 
         $http({
@@ -83,16 +81,16 @@ moduleCarrito.controller('carritoPlistController', ['$scope', '$http', '$locatio
                 $scope.status = response.status;
                 $scope.ajaxDataAdd = response.data.message || 'Request failed';
             });
-            
+
             //animacion
-            
+
 //            https://css-tricks.com/animations-the-angular-way/
-            
-            
-            
-            
-            
-            
+
+
+
+
+
+
         };
 
         $scope.reduce = function (id) {
@@ -112,7 +110,7 @@ moduleCarrito.controller('carritoPlistController', ['$scope', '$http', '$locatio
 
 
         $scope.resetOrder = function () {
-            $location.url(`producto/plist/` + $scope.rpp + `/` + $scope.page);
+            $location.url(`carrito/plist/` + $scope.rpp + `/` + $scope.page);
         }
 
 
@@ -124,7 +122,7 @@ moduleCarrito.controller('carritoPlistController', ['$scope', '$http', '$locatio
                 $scope.orderURLServidor = $scope.orderURLServidor + "-" + order + "," + align;
                 $scope.orderURLCliente = $scope.orderURLCliente + "-" + order + "," + align;
             }
-            $location.url(`producto/plist/` + $scope.rpp + `/` + $scope.page + `/` + $scope.orderURLCliente);
+            $location.url(`carrito/plist/` + $scope.rpp + `/` + $scope.page + `/` + $scope.orderURLCliente);
         }
 
         //getcount

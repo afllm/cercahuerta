@@ -95,18 +95,21 @@ public class DaoFactory {
                     case "tipousuario":
                         oDao = new TipousuarioDao_0(oConnection, ob, oUsuarioBeanSession);
                         break;
-//                    case "tipoproducto":
-//                        oDao = new TipoproductoDao_2(oConnection, ob, oUsuarioBeanSession);
-//                        break;
-//                    case "producto":
-//                        oDao = new ProductoDao_2(oConnection, ob, oUsuarioBeanSession);
-//                        break;
+                    case "tipoproducto":
+                        oDao = new TipoproductoDao_2(oConnection, ob, oUsuarioBeanSession);
+                        break;
+                    case "producto":
+                        oDao = new ProductoDao_2(oConnection, ob, oUsuarioBeanSession);
+                        break;
                     case "factura":
                         oDao = new FacturaDao_0(oConnection, ob, oUsuarioBeanSession);
                         break;
 //                    case "linea":
 //                        oDao = new LineaDao_2(oConnection, ob, oUsuarioBeanSession);
 //                        break;
+                    case "noticias":
+                        oDao = new NoticiasDao_1(oConnection, ob, oUsuarioBeanSession);
+                        break;
                 }
                 break;
             default:

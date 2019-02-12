@@ -4,9 +4,7 @@
     <div class="d-flex justify-content-between flex-wrap align-items-center pt-3 pb-2 mb-3 border-bottom row">
         <h1>Productos disponibles</h1>
         <div class="btn-toolbar mb-2 mb-md-0">
-
-            <a href="carrito/carrito" class="btn-lg btn-dark-green fas fa-shopping-cart red-bar" role="button" ng-if="ajaxDataAdd != 'Carrito vacio'" ng-if="showRed"></a>
-
+            <a href="carrito/carrito" ng-show="id_tiposusario == 1 || id_tiposusario == 2" class="btn-lg btn-dark-green fas fa-shopping-cart red-bar" role="button" ng-if="ajaxDataAdd != 'Carrito vacio'" ng-if="showRed"></a>
         </div>
         <div class="btn-toolbar mb-2 mb-md-0">
 
@@ -32,7 +30,7 @@
                     <h4>{{fila.nombre}}</h4><hr>
                     <p>{{fila.desc}}</p>
                 </div>
-                <div class="d-flex justify-content-center">
+                <div ng-if="id_tiposusario == 1 || id_tiposusario == 2" class="d-flex justify-content-center">
                     <a href="producto/view/{{fila.id}}" title="Ver información del producto" class="btn btn-dark-green icon far fa-eye" role="button"></a>
                     <button type="button" title="Añade productos al carrito" ng-click="add(fila.id)" ng-click="showRed = true" class="btn btn-dark-green icon far fa-plus-square" ng-disabled="fila.existencias === existencias(fila.id)"></button>
                     <button type="button" title="Quita productos del carrito" ng-click="reduce(fila.id)" class="btn btn-dark-green icon far fa-minus-square" ng-disabled="existencias(fila.id) === 0"></button>
@@ -65,7 +63,9 @@
             </ul>
         </nav>
     </div>
-    
+    <div ng-show="!conectado" class="row d-flex flex-wrap align-items-center justify-content-center">
+        <a href="usuario/registro" class="btn btn-amber">¡Regístrate!</a>
+    </div>
 </div>
 
 <footer class="footer" ng-include="'js/app/footer.html'"></footer>

@@ -15,7 +15,6 @@ import net.daw.bean.beanImplementation.ReplyBean;
 import net.daw.bean.beanImplementation.UsuarioBean;
 import net.daw.connection.publicinterface.ConnectionInterface;
 import net.daw.constant.ConnectionConstants;
-import net.daw.dao.publicDaoInterface.DaoInterface;
 import net.daw.dao.specificDaoImplementation_0.UsuarioDao_0;
 import net.daw.factory.ConnectionFactory;
 import net.daw.factory.DaoFactory;

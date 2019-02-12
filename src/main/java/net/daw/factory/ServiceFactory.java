@@ -4,7 +4,10 @@ import javax.servlet.http.HttpServletRequest;
 
 import net.daw.bean.beanImplementation.ReplyBean;
 import net.daw.bean.beanImplementation.UsuarioBean;
+import net.daw.service.specificServiceImplementation_0.CarritoService_0;
+import net.daw.service.specificServiceImplementation_0.NoticiasService_0;
 import net.daw.service.specificServiceImplementation_0.UsuarioService_0;
+import net.daw.service.specificServiceImplementation_1.CarritoService_1;
 import net.daw.service.specificServiceImplementation_1.FacturaService_1;
 import net.daw.service.specificServiceImplementation_1.LineaService_1;
 import net.daw.service.specificServiceImplementation_1.NoticiasService_1;
@@ -228,6 +231,29 @@ public class ServiceFactory {
                                 break;
                         }
                         break;
+                    case "carrito":
+                        CarritoService_1 oCarritoService = new CarritoService_1(oRequest);
+                        switch (op) {
+                            case "add":
+                                oReplyBean = oCarritoService.add();
+                                break;
+                            case "empty":
+                                oReplyBean = oCarritoService.empty();
+                                break;
+                            case "reduce":
+                                oReplyBean = oCarritoService.reduce();
+                                break;
+                            case "show":
+                                oReplyBean = oCarritoService.show();
+                                break;
+                            case "buy":
+                                oReplyBean = oCarritoService.buy();
+                                break;
+                            default:
+                                oReplyBean = new ReplyBean(500, "Operation doesn't exist");
+                                break;
+                        }
+                        break;
                     case "noticias":
                         NoticiasService_1 oNoticiasService = new NoticiasService_1(oRequest);
                         switch (op) {
@@ -411,7 +437,7 @@ public class ServiceFactory {
                                 break;
                         }
                         break;
-                        case "noticias":
+                    case "noticias":
                         NoticiasService_2 oNoticiasService = new NoticiasService_2(oRequest);
                         switch (op) {
                             case "get":
@@ -449,6 +475,68 @@ public class ServiceFactory {
                                 break;
                             case "activar":
                                 oReplyBean = oUsuarioService.activar();
+                                break;
+                            default:
+                                oReplyBean = new ReplyBean(500, "Operation doesn't exist");
+                                break;
+                        }
+                        break;
+                    case "producto":
+                        ProductoService_2 oProductoService = new ProductoService_2(oRequest);
+                        switch (op) {
+                            case "get":
+                                oReplyBean = oProductoService.get();
+                                break;
+                            case "getcount":
+                                oReplyBean = oProductoService.getcount();
+                                break;
+                            case "getpage":
+                                oReplyBean = oProductoService.getpage();
+                                break;
+                            default:
+                                oReplyBean = new ReplyBean(500, "Operation doesn't exist");
+                                break;
+                        }
+                        break;
+                    case "tipoproducto":
+                        TipoproductoService_2 oTipoproductoService = new TipoproductoService_2(oRequest);
+                        switch (op) {
+                            case "get":
+                                oReplyBean = oTipoproductoService.get();
+                                break;
+                            case "getcount":
+                                oReplyBean = oTipoproductoService.getcount();
+                                break;
+                            case "getpage":
+                                oReplyBean = oTipoproductoService.getpage();
+                                break;
+                            default:
+                                oReplyBean = new ReplyBean(500, "Operation doesn't exist");
+                                break;
+                        }
+                        break;
+                    case "carrito":
+                        CarritoService_0 oCarritoService = new CarritoService_0(oRequest);
+                        switch (op) {
+                            case "show":
+                                oReplyBean = oCarritoService.show();
+                                break;
+                            default:
+                                oReplyBean = new ReplyBean(500, "Operation doesn't exist");
+                                break;
+                        }
+                        break;
+                    case "noticias":
+                        NoticiasService_0 oNoticiasService = new NoticiasService_0(oRequest);
+                        switch (op) {
+                            case "get":
+                                oReplyBean = oNoticiasService.get();
+                                break;
+                            case "getcount":
+                                oReplyBean = oNoticiasService.getcount();
+                                break;
+                            case "getpage":
+                                oReplyBean = oNoticiasService.getpage();
                                 break;
                             default:
                                 oReplyBean = new ReplyBean(500, "Operation doesn't exist");

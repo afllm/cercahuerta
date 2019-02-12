@@ -1,10 +1,8 @@
 <header-component></header-component>
 <div class="contenedor-noticias content">
     <div ng-show="id_tiposusario == 1" class=" noticias-titulo d-flex justify-content-between flex-wrap align-items-center pt-3 pb-2 mb-3 border-bottom row">
-
         <div class="pb-5">
-            <a href="noticias/new/" class="btn btn-outline-elegant btn-sm float-right" role="button" aria-pressed="true"><i class="fas fa-plus-circle fa-1x"></i> Nueva noticia</a>
-
+            <a href="noticias/new/"  class="btn btn-outline-elegant btn-sm float-right" role="button" aria-pressed="true"><i class="fas fa-plus-circle fa-1x"></i> Nueva noticia</a>
         </div>
         <div class="btn-toolbar mb-2 mb-md-0">
 
@@ -13,7 +11,7 @@
 
     <div class="noticias-main">
         <section class="noticias row">
-            <article ng-repeat="fila in ajaxData"  class="border border-secundary rounded">
+            <article ng-repeat="fila in ajaxData"  class="border border-secundary rounded article-noticias">
                 <img src="http://localhost:8081/images_server/noticias/{{fila.foto}}" alt="foto noticia {{fila.id}}">
                 <div class="texto">
                     <div>
@@ -50,6 +48,9 @@
                     </li>
                 </ul>
             </nav>
+        </div>
+        <div ng-show="!conectado" class="row d-flex flex-wrap align-items-center justify-content-center">
+            <a href="usuario/registro" class="btn btn-amber">¡Regístrate!</a>
         </div>
     </div> 
 </div>

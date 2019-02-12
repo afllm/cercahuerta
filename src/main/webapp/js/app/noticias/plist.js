@@ -6,12 +6,11 @@ moduleNoticias.controller('noticiasPlistController', ['$scope', '$http', '$locat
         $scope.totalPages = 1;
         $scope.conectado = false;
         
-        console.log("usuario name: "+sessionService.getUserName());
-        console.log("usuario idType: "+sessionService.getTypeUserID());
         if (sessionService.getUserName() !== "") {
             $scope.id_tiposusario = sessionService.getTypeUserID();
+            $scope.conectado = true;
         }
-        console.log("usuario idType del scope: "+$scope.id_tiposusario);
+        
         if (!$routeParams.order) {
             $scope.orderURLServidor = "&order=id,desc";
             $scope.orderURLCliente = "";

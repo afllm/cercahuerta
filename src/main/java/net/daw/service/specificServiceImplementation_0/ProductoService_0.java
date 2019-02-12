@@ -1,15 +1,15 @@
-package net.daw.service.specificServiceImplementation_2;
+package net.daw.service.specificServiceImplementation_0;
 
 import javax.servlet.http.HttpServletRequest;
 import net.daw.service.genericServiceImplementation.GenericServiceImplementation;
 import net.daw.service.publicServiceInterface.ServiceInterface;
 
-public class ProductoService_2 extends GenericServiceImplementation implements ServiceInterface {
+public class ProductoService_0 extends GenericServiceImplementation implements ServiceInterface {
 
     HttpServletRequest oRequest;
     String ob = null;
 
-    public ProductoService_2(HttpServletRequest oRequest) {
+    public ProductoService_0(HttpServletRequest oRequest) {
         super(oRequest);
         ob = oRequest.getParameter("ob");
     }

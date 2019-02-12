@@ -4,12 +4,10 @@ moduleNoticias.controller("noticiasViewController", ['$scope', '$http', '$routeP
     function ($scope, $http, $routeParams, $window, sessionService, $location) {
 
         $scope.ob = "noticias";
-//     if (sessionService.getUserName() !== "") {
-//            $scope.loggeduser = sessionService.getUserName();
-//            $scope.loggeduserid = sessionService.getId();
-//            $scope.logged = true;
-//            $scope.tipousuarioID = sessionService.getTypeUserID();
-//        }
+
+        if (sessionService.getUserName() !== "") {
+            $scope.id_tiposusario = sessionService.getTypeUserID();
+        }
 
 
         if (!$routeParams.id) {
@@ -17,7 +15,7 @@ moduleNoticias.controller("noticiasViewController", ['$scope', '$http', '$routeP
         } else {
             $scope.id = $routeParams.id;
         }
-        
+
         if (!$routeParams.page) {
             $scope.page = 1;
         } else {
@@ -42,7 +40,7 @@ moduleNoticias.controller("noticiasViewController", ['$scope', '$http', '$routeP
 
 
         $scope.volver = function () {
-            $location.path("noticias/plist/"+$scope.page);
+            $location.path("noticias/plist/" + $scope.page);
         };
 
         $scope.editar = function () {
@@ -50,7 +48,7 @@ moduleNoticias.controller("noticiasViewController", ['$scope', '$http', '$routeP
         };
 
         $scope.eliminar = function () {
-            $location.path('noticias/remove/' + $scope.id+"/"+$scope.page);
+            $location.path('noticias/remove/' + $scope.id + "/" + $scope.page);
         };
 
 

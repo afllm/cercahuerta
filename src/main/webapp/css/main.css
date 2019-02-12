@@ -63,21 +63,21 @@ principal {
 }
 header-component{
     grid-area: header;
+    
 }
 .footer {
     grid-area: footer;
 }
-.contenedor,  .contenedor-noticias { 
+.contenedor,  .contenedor-noticias, .contenedor-home { 
     grid-area: contenedor;
     margin-bottom: 100px; 
-    margin-top: 150px;
+    margin-top: 134px;
     height: 100%;
     width: 100%;
     min-height: 80vh;
 }
-.contenedor-home{
-    grid-area: contenedor;
-}
+
+/*Noticias*/
 .contenedor-noticias{
     display: grid;
     grid-template-areas: 
@@ -106,7 +106,7 @@ header-component{
     max-width: 1024px;
 }
 
-.noticias article{
+.noticias .article-noticias{
 
     /*background-color: rgba(30, 130, 76, 0.2);*/
     flex: 0 0 200px;
@@ -114,15 +114,28 @@ header-component{
     box-shadow: 2px 2px 6px 0px rgba(0,0,0,0.3);
     min-width: 49%;
 }
-.noticias article:first-child{
+.noticias .article-home{
+
+    /*background-color: rgba(30, 130, 76, 0.2);*/
+    flex: 0 0 200px;
+    margin: 5px;
+    box-shadow: 2px 2px 6px 0px rgba(0,0,0,0.3);
+    min-width: 33%;
+}
+.noticias .article-noticias:first-child{
 
     min-width: 100%;
+}
+
+.noticias article:first-child img{
+
+    height: 100%;
 }
 
 .noticias article img{
     min-width: 100px;
     width: 100%;
-    min-height: 328px;
+    height: 328px;
 }
 
 .noticias article .texto{
@@ -130,7 +143,7 @@ header-component{
     padding: 0 20px 20px;
 }
 
-.angular-with-newlines {
+.saltos-linea {
     white-space: pre-line; /*pre-wrap*/
 }
 
@@ -142,10 +155,10 @@ body > .container {
     padding: 60px 0;
 }
 
-.footer > .container {
+/*.footer > .container {
     padding-right: 0px;
     padding-left: 0px;
-}
+}*/
 
 code {
     font-size: 80%;
@@ -276,6 +289,10 @@ th {
     justify-content: center;
     color: floralwhite;
 
+}
+
+#noticia-home{
+    width:33%;
 }
 
 /*Fuentes*/
@@ -434,7 +451,9 @@ select{
     .card{
         width: 70%;
     }
-
+    .noticias article{
+        min-width: 100%;
+    }
 
 }
 
@@ -446,7 +465,10 @@ select{
     .card{
         width: 100%;
     }
-
+    
+    .noticias article{
+        min-width: 100%;
+    }
 
 }
 
