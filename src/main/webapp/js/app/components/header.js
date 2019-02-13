@@ -21,8 +21,8 @@ function js(toolService, sessionService, $http, $route, $window) {
     self.endOfDocumentTop = 134;
     self.size = 0;
 
-     $window.onscroll = function () {
-         setTimeout(growShrinkLogo(), 2000);
+    $window.onscroll = function () {
+        setTimeout(growShrinkLogo(), 2000);
     };
 
     // var Logo = document.getElementById("Logo");
@@ -34,9 +34,14 @@ function js(toolService, sessionService, $http, $route, $window) {
 
         if (size === 0 && scroll > endOfDocumentTop) {
             document.getElementById("Logo").className = 'smallLogo';
+            document.getElementById("log-btn").className = 'fas fa-power-off  btn-amber rounded';
+            document.getElementById("log-btn").innerHTML = "";
             size = 1;
         } else if (size === 1 && scroll <= endOfDocumentTop) {
             document.getElementById("Logo").className = 'largeLogo';
+            document.getElementById("log-btn").className = 'btn btn-amber';
+            document.getElementById("log-btn").innerHTML = "Iniciar sesion";
+            /*html("Hello JQuery!") innerHTML = htmlString*/
             size = 0;
         }
     }
