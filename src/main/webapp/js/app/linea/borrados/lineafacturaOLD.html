@@ -6,12 +6,7 @@
 
             <form name="userForm" style="margin-bottom: 50px;" ng-show="!mensaje">
                 <h3 style="text-align: center">Editar Linea</h3>
-                <div class="form-group">
-                    
-                    ID
-                    <label>ID</label>
-                    <input type="text" class="form-control" id="id" name="id" ng-disabled="true" ng-model="ajaxDatoTipoUsuario.id" />
-                </div>
+                
                 
                 CANTIDAD
                 <div class="form-group" ng-class="{ 'has-error' : userForm.cantidad.$invalid && !userForm.cantidad.$pristine }">

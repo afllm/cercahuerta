@@ -221,7 +221,7 @@ th {
 
 }
 
-/*Content*/
+/*Productos*/
 
 .producto-carrito{
     display: flex;
@@ -444,10 +444,10 @@ select{
     .card{
         width: 70%;
     }
-    .noticias article{
-        width: 100%;
+    .noticias .article-noticias{
+        min-width: 100%;
     }
-    .noticias article img{
+    .noticias .article-noticias img{
         height: 100%;
     }
 
@@ -462,10 +462,10 @@ select{
         width: 100%;
     }
 
-    .noticias article{
-        width: 100%;
+    .noticias .article-noticias{
+        min-width: 100%;
     }
-    .noticias article img{
+    .noticias .article-noticias img{
         height: 100%;
     }
 

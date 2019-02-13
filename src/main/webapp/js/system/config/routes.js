@@ -158,8 +158,8 @@ cercahuerta.config(['$routeProvider', function ($routeProvider) {
 
         //CARRITO
         $routeProvider.when('/carrito/plist/:rpp?/:page?/:order?', {templateUrl: 'js/app/carrito/plist.html', controller: 'carritoPlistController', resolve: {auth: autenticacionCualquiera}});
-        $routeProvider.when('/carrito/carrito/:rpp?/:page?/:order?', {templateUrl: 'js/app/carrito/carrito.html', controller: 'carritoCarritoController', resolve: {auth: autenticacionUsuario}});
-        $routeProvider.when('/carrito/facturacarrito/:id?', {templateUrl: 'js/app/carrito/facturacarrito.html', controller: 'facturaCarritoController', resolve: {auth: autenticacionUsuario}});
+        $routeProvider.when('/carrito/carrito/:rpp?/:page?/:order?', {templateUrl: 'js/app/carrito/carrito.html', controller: 'carritoCarritoController', resolve: {auth: autenticacionCualquieraLogueado}});
+        $routeProvider.when('/carrito/facturacarrito/:id?', {templateUrl: 'js/app/carrito/facturacarrito.html', controller: 'facturaCarritoController', resolve: {auth: autenticacionCualquieraLogueado}});
 
         //NOTICIAS
         $routeProvider.when('/noticias/plist/:rpp?/:page?/:order?', {templateUrl: 'js/app/noticias/plist.html', controller: 'noticiasPlistController', resolve: {auth: autenticacionCualquiera}});

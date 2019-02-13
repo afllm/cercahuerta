@@ -18,6 +18,7 @@ moduleCarrito.controller('carritoPlistController', ['$scope', '$http', '$locatio
         }).then(function (response) {
             $scope.status = response.status;
             $scope.ajaxDataAdd = response.data.message;
+            console.log("$scope.ajaxDataAdd: "+$scope.ajaxDataAdd);
         }, function (response) {
             $scope.status = response.status;
             $scope.ajaxDataAdd = response.data.message || 'Request failed';
@@ -35,6 +36,7 @@ moduleCarrito.controller('carritoPlistController', ['$scope', '$http', '$locatio
                 $scope.status = response.status;
                 $scope.ajaxDataAdd = response.data.message || 'Request failed';
             });
+            console.log("$scope.ajaxDataAdd: "+$scope.ajaxDataAdd)
         }
 
         if (!$routeParams.order) {

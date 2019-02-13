@@ -11,10 +11,6 @@
                 <div class="col-5 mx-auto formulario">
                     <ng-form name="userForm" class="form" ng-show="result == null">
                         <div class="form-group">
-                            <label>ID</label>
-                            <input type="text" class="form-control" id="id" name="id" ng-disabled="true" ng-model="id" />
-                        </div>
-                        <div class="form-group">
                             <label>Codigo</label>
                             <input type="text" class="form-control" id="codigo" name="codigo" ng-model="codigo" ng-required="true" placeholder="Codigo"/>
                             <div ng-show="!userForm.codigo.$valid && !userForm.codigo.$pristine" class="alert alert-danger" role="alert">

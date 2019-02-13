@@ -2,14 +2,14 @@
 <div class="contenedor content">
 
     <div class="d-flex justify-content-between flex-wrap align-items-center pt-3 pb-2 mb-3 border-bottom row">
-        <h1>Productos disponibles</h1>
+        <h1>La cosecha</h1>
         <div class="btn-toolbar mb-2 mb-md-0">
-            <a href="carrito/carrito" ng-show="id_tiposusario == 1 || id_tiposusario == 2" class="btn-lg btn-dark-green fas fa-shopping-cart red-bar" role="button" ng-if="ajaxDataAdd != 'Carrito vacio'" ng-if="showRed"></a>
+            <a href="carrito/carrito" ng-show="id_tiposusario == 1 || id_tiposusario == 2" class="btn-lg btn-dark-green fas fa-shopping-cart red-bar" role="button" ng-if="ajaxDataAdd != 'Carrito vacio'"></a>
         </div>
         <div class="btn-toolbar mb-2 mb-md-0">
 
             <div class="btn-group" style="width:400px;">
-                <p class="mt-2" style="width:200px;">Selecciona RPP: </p>
+                <p class="mt-2" style="width:200px;">Productos por pagina: </p>
                 <select class="form-control" 
                         ng-change="update()" 
                         ng-model="rpp">

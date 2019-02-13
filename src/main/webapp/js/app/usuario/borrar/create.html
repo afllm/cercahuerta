@@ -5,11 +5,6 @@
         
     <form name="userForm" style="margin-bottom: 50px;" ng-show="!mensaje">
         <h3 style="text-align: center">Editar usuario</h3>
-        <div class="form-group">
-            <!--ID-->
-            <label>ID</label>
-            <input type="text" class="form-control" id="id" name="id" ng-disabled="true" ng-model="ajaxDatoUsuario.id" />
-        </div>
         <!--DNI-->
         <div class="form-group" ng-class="{ 'has-error' : userForm.dni.$invalid && !userForm.dni.$pristine }">
             <label>DNI</label>

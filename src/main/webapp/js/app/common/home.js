@@ -58,7 +58,7 @@ moduleCommon.controller('homeController', ['$scope', '$http', '$location', 'tool
                 $scope.page = $scope.totalPages;
                 $scope.update();
             }
-            pagination2();
+            
         }, function (response) {
             $scope.ajaxDataGoodsNum = response.data.message || 'Request failed';
             $scope.status = response.status;

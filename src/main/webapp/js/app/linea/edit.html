@@ -12,10 +12,6 @@
 
                     <form name="userForm">
                         <div class="form-group">
-                            <label>ID</label>
-                            <input type="text" class="form-control" id="id" name="id" ng-disabled="true" ng-model="id" />
-                        </div>
-                        <div class="form-group">
                             <label>Cantidad</label>
                             <input type="text" class="form-control" id="cantidad" name="cantidad" ng-model="cantidad" ng-required="true" placeholder="Cantidad"/>
                             <div ng-show="!userForm.cantidad.$valid && !userForm.cantidad.$pristine" class="alert alert-danger" role="alert">
