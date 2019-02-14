@@ -1,9 +1,9 @@
 'use strict'
 //http://localhost:8081/json?ob=usuario&op=login&user=ddd&pass=pass
-moduleUsuario.controller('usuarioPlistController', ['$scope', '$http', '$location', 'toolService', '$routeParams','sessionService', "$window",
-    function ($scope, $http, $location, toolService, $routeParams,sessionService, $window) {
-        
-        $scope.ob="usuario";
+moduleUsuario.controller('usuarioPlistController', ['$scope', '$http', '$location', 'toolService', '$routeParams', 'sessionService', "$window",
+    function ($scope, $http, $location, toolService, $routeParams, sessionService, $window) {
+
+        $scope.ob = "usuario";
         $scope.totalPages = 1;
 
 //         if (sessionService.getUserName() !== "") {
@@ -14,7 +14,7 @@ moduleUsuario.controller('usuarioPlistController', ['$scope', '$http', '$locatio
 //        }
 
         $scope.isActive = toolService.isActive;
-        
+
         if (!$routeParams.order) {
             $scope.orderURLServidor = "";
             $scope.orderURLCliente = "";
@@ -41,38 +41,43 @@ moduleUsuario.controller('usuarioPlistController', ['$scope', '$http', '$locatio
 
 
         $scope.resetOrder = function () {
-            $location.url($scope.ob +`/plist/` + $scope.rpp + `/` + $scope.page);
+            $location.url($scope.ob + `/plist/` + $scope.rpp + `/` + $scope.page);
         }
 
         $scope.view = function (id) {
-            $location.url($scope.ob +`/view/${id}`);
+            $location.url($scope.ob + `/view/${id}`);
         }
         $scope.factura = function (id) {
             $location.url(`factura/plistxusuario/10/1/${id}`);
         }
-        $scope.remove= function (id) {
-            $location.url($scope.ob +`/remove/${id}`);
+        $scope.remove = function (id) {
+            $location.url($scope.ob + `/remove/${id}`);
         }
 
-        $scope.edit= function (id) {
-            $location.url($scope.ob +`/edit/${id}`);
+        $scope.edit = function (id) {
+            $location.url($scope.ob + `/edit/${id}`);
         }
 
         $scope.ordena = function (order, align) {
-            if ($scope.orderURLServidor == "") {
-                $scope.orderURLServidor = "&order=" + order + "," + align;
-                $scope.orderURLCliente = order + "," + align;
-            } else {
-                $scope.orderURLServidor = $scope.orderURLServidor + "-" + order + "," + align;
-                $scope.orderURLCliente = $scope.orderURLCliente + "-" + order + "," + align;
-            }
-            $location.url($scope.ob +`/plist/` + $scope.rpp + `/` + $scope.page + `/` + $scope.orderURLCliente);
+            $scope.orderURLServidor = "&order=" + order + "," + align;
+            $scope.orderURLCliente = order + "," + align;
+            $scope.order=order;
+            $scope.align=align;
+
+//            if ($scope.orderURLServidor == "") {
+//                $scope.orderURLServidor = "&order=" + order + "," + align;
+//                $scope.orderURLCliente = order + "," + align;
+//            } else {
+//                $scope.orderURLServidor = $scope.orderURLServidor + "-" + order + "," + align;
+//                $scope.orderURLCliente = $scope.orderURLCliente + "-" + order + "," + align;
+//            }
+            $location.url($scope.ob + `/plist/` + $scope.rpp + `/` + $scope.page + `/` + $scope.orderURLCliente);
         }
 
         //getcount
         $http({
             method: 'GET',
-            url: 'json?ob='+$scope.ob+'&op=getcount'
+            url: 'json?ob=' + $scope.ob + '&op=getcount'
         }).then(function (response) {
             $scope.status = response.status;
             $scope.ajaxDataUsuariosNumber = response.data.message;
@@ -89,7 +94,7 @@ moduleUsuario.controller('usuarioPlistController', ['$scope', '$http', '$locatio
 
         $http({
             method: 'GET',
-            url: 'json?ob='+$scope.ob+'&op=getpage&rpp=' + $scope.rpp + '&page=' + $scope.page + $scope.orderURLServidor
+            url: 'json?ob=' + $scope.ob + '&op=getpage&rpp=' + $scope.rpp + '&page=' + $scope.page + $scope.orderURLServidor
         }).then(function (response) {
             $scope.status = response.status;
             $scope.ajaxDataUsuarios = response.data.message;
@@ -100,7 +105,7 @@ moduleUsuario.controller('usuarioPlistController', ['$scope', '$http', '$locatio
 
 
         $scope.update = function () {
-            $location.url($scope.ob +`/plist/` + $scope.rpp + `/` + $scope.page + '/' + $scope.orderURLCliente);
+            $location.url($scope.ob + `/plist/` + $scope.rpp + `/` + $scope.page + '/' + $scope.orderURLCliente);
         }
 
         //paginacion neighbourhood

@@ -183,6 +183,8 @@ th {
     color: #F79135;
     border-color: #F79135;
 }*/
+
+/*Botones*/
 .btn.btn-dark-green {
     height: 2em;
     width: 2.5em;
@@ -220,7 +222,9 @@ th {
     color:red;
 
 }
-
+.btn-orden{
+    padding: 0.1em;
+}
 /*Productos*/
 
 .producto-carrito{
@@ -359,17 +363,6 @@ input:focus{
     margin-left: 15px;
     margin-right: 5px;
 }
-
-/*.login_btn{
-    color: black;
-    background-color: #FFC312;
-    width: auto;
-}*/
-
-/*.login_btn:hover{
-    color: #ffa000;
-    background-color: white;
-}*/
 
 .links{
     color: white;

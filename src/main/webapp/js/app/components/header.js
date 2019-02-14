@@ -34,7 +34,7 @@ function js(toolService, sessionService, $http, $route, $window) {
 
         if (size === 0 && scroll > endOfDocumentTop) {
             document.getElementById("Logo").className = 'smallLogo';
-            document.getElementById("log-btn").className = 'fas fa-power-off  btn-amber rounded';
+            document.getElementById("log-btn").className = 'fas fa-power-off fa-2x  btn-amber rounded';
             document.getElementById("log-btn").innerHTML = "";
             size = 1;
         } else if (size === 1 && scroll <= endOfDocumentTop) {

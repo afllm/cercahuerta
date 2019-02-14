@@ -17,8 +17,8 @@
                         </select>
                     </div>
 
-                    <button title="Orden por defecto" type="button" class="btn btn-outline-dark-green  ml-3" ng-click="resetOrder()">
-                        <i class="fas fa-sort-alpha-down"></i>
+                    <button title="Orden por defecto" type="button" class="btn-orden btn btn-outline-elegant  ml-3" ng-click="resetOrder()">
+                        <i class="fas fa-sort-alpha-down fa-2x"></i>
                     </button>
                 </div>
             </div>
@@ -28,19 +28,19 @@
                     <nav aria-label="paginacion">
                         <ul class="pagination pg-amber">
                             <li class="page-item">
-                                <a class="page-link  bg-light" ng-show="page > 2" href="{{ob}}/plist/{{rpp}}/1/{{order}}/{{align}}">First</a>
+                                <a class="page-link  bg-light" ng-show="page > 2" href="{{ob}}/plist/{{rpp}}/1/{{orderURLCliente}}">First</a>
                             </li>
                             <li class="page-item">
-                                <a class="page-link  bg-light" ng-show="page > 1" href="{{ob}}/plist/{{rpp}}/{{page - 1}}/{{order}}/{{align}}">Previous</a>
+                                <a class="page-link  bg-light" ng-show="page > 1" href="{{ob}}/plist/{{rpp}}/{{page - 1}}/{{orderURLCliente}}">Previous</a>
                             </li>
                             <li class="page-item" ng-class="{'active':(p == page), 'disabled': p === '...'}" ng-repeat="p in list2 track by $index">
-                                <a class="page-link " href="{{ob}}/plist/{{rpp}}/{{p}}/{{order}}/{{align}}">{{p}}</a>
+                                <a class="page-link " href="{{ob}}/plist/{{rpp}}/{{p}}/{{orderURLCliente}}">{{p}}</a>
                             </li>
                             <li class="page-item">
-                                <a class="page-link  bg-light" ng-show="page != totalPages" href="{{ob}}/plist/{{rpp}}/{{page--1}}/{{order}}/{{align}}">Next</a>
+                                <a class="page-link  bg-light" ng-show="page != totalPages" href="{{ob}}/plist/{{rpp}}/{{page--1}}/{{orderURLCliente}}">Next</a>
                             </li>
                             <li class="page-item">
-                                <a class="page-link  bg-light" ng-show="page != totalPages - 1 && page != totalPages" href="{{ob}}/plist/{{rpp}}/{{totalPages}}/{{order}}/{{align}}">Last</a>
+                                <a class="page-link  bg-light" ng-show="page != totalPages - 1 && page != totalPages" href="{{ob}}/plist/{{rpp}}/{{totalPages}}/{{orderURLCliente}}">Last</a>
                             </li>
                         </ul>
                     </nav>
@@ -148,7 +148,7 @@
                             </button>-->
 
                             <div class="btn-group">
-                                <button title="click para ver acciones disponibles" class="btn btn-dark-green btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true"
+                                <button title="click para ver acciones disponibles" class="btn btn-outline-dark-green btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true"
                                         aria-expanded="false">
                                     
                                 </button>

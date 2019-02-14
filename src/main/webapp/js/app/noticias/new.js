@@ -7,7 +7,6 @@ moduleNoticias.controller("noticiasNewController", [
     "toolService",
     'sessionService',
     function ($scope, $http, $routeParams, toolService, sessionService) {
-        console.log("Id de sessionService: "+sessionService.getId());
         $scope.edited = true;
         $scope.logged = false;
 
@@ -45,7 +44,7 @@ moduleNoticias.controller("noticiasNewController", [
                 titulo: $scope.titulo,
                 mensaje: $scope.mensaje,
                 foto: nombreFoto,
-                id_usuario: sessionService.getId() //$scope.obj_usuario.id //cambiar a usuario activo
+                id_usuario: sessionService.getId()
             }
 
             $http({
