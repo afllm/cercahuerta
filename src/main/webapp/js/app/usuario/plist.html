@@ -26,7 +26,7 @@
             <div class="col-md-12 ml-sm-auto col-lg-12">
                 <div class="row d-flex justify-content-between flex-wrap align-items-center">
                     <nav aria-label="paginacion">
-                        <ul class="pagination pg-amber">
+                        <ul class="pagination pg-amber pagination-circle">
                             <li class="page-item">
                                 <a class="page-link  bg-light" ng-show="page > 2" href="{{ob}}/plist/{{rpp}}/1/{{orderURLCliente}}">First</a>
                             </li>
@@ -59,48 +59,32 @@
                     <tr>
                         <th>
                             ID
-                            <button type="button" class="btn btn-outline-dark-green icon" ng-click="ordena('id', 'asc')">
-                                <i class="fas fa-long-arrow-alt-up"></i>
-                            </button>
-                            <button type="button" class="btn btn-outline-dark-green icon" ng-click="ordena('id', 'desc')">
-                                <i class="fas fa-long-arrow-alt-down"></i>
-                            </button>
+                            <button type="button" class="btn btn-outline-dark-green icon" ng-click="ordena('id')">
+                                <i class="fas fa-sort"></i>
+                            </button>                           
                         </th>
                         <th>
                             DNI
-                            <button type="button" class="btn btn-outline-dark-green icon" ng-click="ordena('dni', 'asc')">
-                                <i class="fas fa-long-arrow-alt-up"></i>
-                            </button>
-                            <button type="button" class="btn btn-outline-dark-green icon" ng-click="ordena('dni', 'desc')">
-                                <i class="fas fa-long-arrow-alt-down"></i>
+                           <button type="button" class="btn btn-outline-dark-green icon" ng-click="ordena('dni')">
+                                <i class="fas fa-sort"></i>
                             </button>
                         </th>
                         <th>
                             Nombre
-                            <button type="button" class="btn btn-outline-dark-green icon" ng-click="ordena('nombre', 'asc')">
-                                <a class="fas fa-long-arrow-alt-up" ></a>
-
-                            </button>
-                            <button type="button" class="btn btn-outline-dark-green icon" ng-click="ordena('nombre', 'desc')">
-                                <i class="fas fa-long-arrow-alt-down"></i>
+                            <button type="button" class="btn btn-outline-dark-green icon" ng-click="ordena('nombre')">
+                                <i class="fas fa-sort"></i>
                             </button>
                         </th>
                         <th>
                             Primer apellido
-                            <button type="button" class="btn btn-outline-dark-green icon" ng-click="ordena('ape1', 'asc')">
-                                <i class="fas fa-long-arrow-alt-up"></i>
-                            </button>
-                            <button type="button" class="btn btn-outline-dark-green icon" ng-click="ordena('ape1', 'desc')">
-                                <i class="fas fa-long-arrow-alt-down"></i>
+                            <button type="button" class="btn btn-outline-dark-green icon" ng-click="ordena('ape1')">
+                                <i class="fas fa-sort"></i>
                             </button>
                         </th>
                         <th>
                             Segundo apellido
-                            <button type="button" class="btn btn-outline-dark-green icon" ng-click="ordena('ape2', 'asc')">
-                                <i class="fas fa-long-arrow-alt-up"></i>
-                            </button>
-                            <button type="button" class="btn btn-outline-dark-green icon" ng-click="ordena('ape2', 'desc')">
-                                <i class="fas fa-long-arrow-alt-down"></i>
+                            <button type="button" class="btn btn-outline-dark-green icon" ng-click="ordena('ape2')">
+                                <i class="fas fa-sort"></i>
                             </button>
                         </th>
                         <!--                        <th>
@@ -114,12 +98,9 @@
                                                 </th>-->
                         <th>
                             Tipo de usuario
-                            <button type="button" class="btn btn-outline-dark-green icon" ng-click="ordena('id_tipoUsuario', 'asc')">
-                                <i class="fas fa-long-arrow-alt-up"></i>
-                            </button>
-                            <button type="button" class="btn btn-outline-dark-green icon" ng-click="ordena('id_tipoUsuario', 'desc')">
-                                <i class="fas fa-long-arrow-alt-down"></i>
-                            </button>
+                            <button type="button" class="btn btn-outline-dark-green icon" ng-click="ordena('id_tipoUsuario')">
+                                <i class="fas fa-sort"></i>
+                            </button>                           
                         </th>
 
                         <th>    

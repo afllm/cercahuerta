@@ -1,26 +1,23 @@
-//window.addEventListener('load', function () {
-//    console.log('All assets are loaded');
-//    window.onscroll = function () {
-//         setTimeout(growShrinkLogo(), 2000);
-//    };
-//
-//    // var Logo = document.getElementById("Logo");
-//    var endOfDocumentTop = 134;
-//    var size = 0;
-//
-//    function growShrinkLogo() {
-//        var scroll = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
-//
-//        if (size === 0 && scroll > endOfDocumentTop) {
-//            document.getElementById("Logo").className = 'smallLogo';
-//            size = 1;
-//        } else if (size === 1 && scroll <= endOfDocumentTop) {
-//            document.getElementById("Logo").className = 'largeLogo';
-//            size = 0;
-//        }
-//    }
-//});
-
-
-
-
+$(document).ready(function() {
+    
+    /* Every time the window is scrolled ... */
+    $(window).scroll( function(){
+    
+        /* Check the location of each desired element */
+        $('.ocultar').each( function(i){
+            
+            var bottom_of_object = $(this).position().top + $(this).outerHeight();
+            var bottom_of_window = $(window).scrollTop() + $(window).height();
+            
+            /* If the object is completely visible in the window, fade it it */
+            if( bottom_of_window > (bottom_of_object+200) ){
+                
+                $(this).animate({'opacity':'1'},3000);
+                    
+            }
+            
+        }); 
+    
+    });
+    
+});

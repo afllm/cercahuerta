@@ -18,9 +18,13 @@ moduleUsuario.controller('usuarioPlistController', ['$scope', '$http', '$locatio
         if (!$routeParams.order) {
             $scope.orderURLServidor = "";
             $scope.orderURLCliente = "";
+            $scope.align = "asc";
+            console.log("align con el order vacio: " + $scope.align)
         } else {
             $scope.orderURLServidor = "&order=" + $routeParams.order;
             $scope.orderURLCliente = $routeParams.order;
+            $scope.align = $routeParams.order.split(',')[1];
+            console.log("split del order: " + $scope.align)
         }
 
         if (!$routeParams.rpp) {
@@ -58,19 +62,17 @@ moduleUsuario.controller('usuarioPlistController', ['$scope', '$http', '$locatio
             $location.url($scope.ob + `/edit/${id}`);
         }
 
-        $scope.ordena = function (order, align) {
-            $scope.orderURLServidor = "&order=" + order + "," + align;
-            $scope.orderURLCliente = order + "," + align;
-            $scope.order=order;
-            $scope.align=align;
+        $scope.ordena = function (order) {
+            
+            if ($scope.align == "desc") {
+                $scope.align = "asc";
 
-//            if ($scope.orderURLServidor == "") {
-//                $scope.orderURLServidor = "&order=" + order + "," + align;
-//                $scope.orderURLCliente = order + "," + align;
-//            } else {
-//                $scope.orderURLServidor = $scope.orderURLServidor + "-" + order + "," + align;
-//                $scope.orderURLCliente = $scope.orderURLCliente + "-" + order + "," + align;
-//            }
+            } else {
+                $scope.align = "desc";
+            }
+
+            $scope.orderURLServidor = "&order=" + order + "," + $scope.align;
+            $scope.orderURLCliente = order + "," + $scope.align;
             $location.url($scope.ob + `/plist/` + $scope.rpp + `/` + $scope.page + `/` + $scope.orderURLCliente);
         }
 

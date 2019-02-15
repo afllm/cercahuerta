@@ -423,6 +423,10 @@ select{
 .largeLogo{width: 100px;}
 .smallLogo{width: 50px;}
 
+.ocultar{
+    opacity:0;
+}
+
 /*Responsive*/
 
 @media screen and (min-width: 769px){

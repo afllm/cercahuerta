@@ -18,8 +18,8 @@ function js(toolService, sessionService, $http, $route, $window) {
     self.isActive = toolService.isActive;
     self.limpiar = sessionService.isSessionActive();
 
-    self.endOfDocumentTop = 134;
-    self.size = 0;
+    //self.endOfDocumentTop = 134;
+    //self.size = 0;
 
     $window.onscroll = function () {
         setTimeout(growShrinkLogo(), 2000);
@@ -41,7 +41,6 @@ function js(toolService, sessionService, $http, $route, $window) {
             document.getElementById("Logo").className = 'largeLogo';
             document.getElementById("log-btn").className = 'btn btn-amber';
             document.getElementById("log-btn").innerHTML = "Iniciar sesion";
-            /*html("Hello JQuery!") innerHTML = htmlString*/
             size = 0;
         }
     }
