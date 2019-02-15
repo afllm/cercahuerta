@@ -54,55 +54,27 @@
 
 
 
-            <div class="table-responsive" style="text-align: center;">
+            <div class="table-responsive">
                 <table class="table table-hover table-sm tabla">
                     <tr>
                         <th>
-                            ID
-                            <button type="button" class="btn btn-outline-dark-green icon" ng-click="ordena('id')">
-                                <i class="fas fa-sort"></i>
-                            </button>                           
+                            <i style="padding: 0; margin: 0;" class="fas fa-sort" ng-click="ordena('id')">ID</i>
                         </th>
                         <th>
-                            DNI
-                           <button type="button" class="btn btn-outline-dark-green icon" ng-click="ordena('dni')">
-                                <i class="fas fa-sort"></i>
-                            </button>
+                            <i class="fas fa-sort" ng-click="ordena('dni')">DNI</i>
                         </th>
                         <th>
-                            Nombre
-                            <button type="button" class="btn btn-outline-dark-green icon" ng-click="ordena('nombre')">
-                                <i class="fas fa-sort"></i>
-                            </button>
+                            <i class="fas fa-sort" ng-click="ordena('nombre')">Nombre</i>
                         </th>
                         <th>
-                            Primer apellido
-                            <button type="button" class="btn btn-outline-dark-green icon" ng-click="ordena('ape1')">
-                                <i class="fas fa-sort"></i>
-                            </button>
+                            <i class="fas fa-sort" ng-click="ordena('ape1')">Primer apellido</i>
                         </th>
                         <th>
-                            Segundo apellido
-                            <button type="button" class="btn btn-outline-dark-green icon" ng-click="ordena('ape2')">
-                                <i class="fas fa-sort"></i>
-                            </button>
+                            <i class="fas fa-sort" ng-click="ordena('ape2')">Segundo apellido</i>
                         </th>
-                        <!--                        <th>
-                                                    Nombre usuario
-                                                    <button type="button" class="btn btn-outline-dark-green icon" ng-click="ordena('login', 'asc')">
-                                                        <i class="fas fa-long-arrow-alt-up"></i>
-                                                    </button>
-                                                    <button type="button" class="btn btn-outline-dark-green icon" ng-click="ordena('login', 'desc')">
-                                                        <i class="fas fa-long-arrow-alt-down"></i>
-                                                    </button>
-                                                </th>-->
                         <th>
-                            Tipo de usuario
-                            <button type="button" class="btn btn-outline-dark-green icon" ng-click="ordena('id_tipoUsuario')">
-                                <i class="fas fa-sort"></i>
-                            </button>                           
+                            <i class="fas fa-sort" ng-click="ordena('id_tipoUsuario')">Tipo de usuario</i>
                         </th>
-
                         <th>    
                             <p>Acciones</p>                        
                         </th>
@@ -117,21 +89,10 @@
 
                         <td><a href="tipousuario/view/{{fila.obj_tipoUsuario.id}}">{{fila.obj_tipoUsuario.desc}}</a></td>
                         <td>
-<!--                            <button type="button" class="btn btn-outline-dark-green icon" ng-click="factura(fila.id)" ng-disabled="{{fila.link_factura}}== 0">{{fila.link_factura}}</button>
-                            <button type="button" class="btn btn-outline-dark-green icon" ng-click="view(fila.id)" >
-                                <i class="fas fa-eye"></i>
-                            </button>
-                            <button type="button" class="btn btn-outline-dark-green icon" ng-click="edit(fila.id)">
-                                <i class="fas fa-edit"></i>
-                            </button>
-                            <button type="button" class="btn btn-outline-dark-green icon" ng-click="remove(fila.id)">
-                                <i class="fas fa-trash-alt"></i>
-                            </button>-->
-
                             <div class="btn-group">
                                 <button title="click para ver acciones disponibles" class="btn btn-outline-dark-green btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true"
                                         aria-expanded="false">
-                                    
+
                                 </button>
                                 <div class="dropdown-menu menu-acciones">
                                     <button title="Ver facturas del usuario" type="button" class="dropdown-item btn btn-dark-green icon" ng-click="factura(fila.id)" ng-disabled="{{fila.link_factura}}== 0">{{fila.link_factura}}</button>

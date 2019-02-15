@@ -465,6 +465,10 @@ select{
     .noticias .article-noticias img{
         height: 100%;
     }
+    
+    .contenedor,  .contenedor-noticias, .contenedor-home{
+        margin-top: 300px;
+    }
 
 }
 

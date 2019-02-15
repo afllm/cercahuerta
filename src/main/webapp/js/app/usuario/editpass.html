@@ -1,14 +1,14 @@
 <header-component></header-component>
 <div class="contenedor container-fluid mb-5">
-    <div class="row" style="margin-top: 80px">
-        <div class="col-12">
+    
+        <div class="col-auto">
             <div class="row">
-                <div class="mx-auto col-5 text-center">
+                <div class="mx-auto col-auto text-center">
                     <h3>Editar contraseña</h3>
                 </div>
             </div>
             <div class="row" ng-show="edited">
-                <div class="col-5 mx-auto formulario">
+                <div class="col-auto mx-auto formulario">
                     <ng-form name="userForm" class="form" ng-show="result == null">
                         <label>Nueva contraseña</label>
                         <input type="password" class="form-control" 
@@ -38,25 +38,25 @@
                 </div>
             </div>
             <div class="row" ng-show="!edited">
-                <div class="col-5 mx-auto">
+                <div class="col-auto mx-auto">
                     <div class="alert alert-success" role="alert">
                         <p class="text-center mt-2"> Contraseña modificada correctamente.<p> 
                     </div>
                 </div>
             </div>
             <div class="row" ng-show="!error && edited">
-                <div class="col-5 mx-auto">
+                <div class="col-auto mx-auto">
                     <div class="alert alert-danger" role="alert">
                         <p class="text-center mt-2"> Error en la entrada de la contraseña.<p> 
                     </div>
                 </div>
             </div>
             <div class="row">
-                <div class="col-5 mx-auto">
+                <div class="col-auto mx-auto">
                     <button type="button" class="btn btn-outline-elegant btn-block mt-2" onclick="window.history.back()">Volver</button>     
                 </div>
             </div>
         </div>
-    </div>
+    
 </div>
 <footer class="footer" ng-include="'js/app/footer.html'"></footer>

@@ -1,14 +1,14 @@
 <header-component></header-component>
 <div class="contenedor container-fluid mb-5">
-    <div class="row" style="margin-top: 80px">
-        <div class="col-12">
+    
+        <div class="col-auto">
             <div class="row">
-                <div class="mx-auto col-4 text-center">
+                <div class="mx-auto col-auto text-center">
                     <h3>Editar usuario</h3>
                 </div>
             </div>
             <div class="row" ng-show="edited">
-                <div class="col-4 mx-auto">
+                <div class="col-auto mx-auto">
                     <ng-form name="userForm" class="form" ng-show="result == null">
                         <div class="form-group" ng-class="{ 'has-error' : userForm.dni.$invalid && !userForm.dni.$pristine }">
                             <label>DNI</label>
@@ -120,6 +120,6 @@
                 </div>
             </div>
         </div>
-    </div>
+   
 </div>
 <footer class="footer" ng-include="'js/app/footer.html'"></footer>
