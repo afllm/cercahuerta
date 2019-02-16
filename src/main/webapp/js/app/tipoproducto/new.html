@@ -3,12 +3,12 @@
     <div class="row" style="margin-top: 70px">
         <div class="col-12">
             <div class="row">
-                <div class="mx-auto col-5 text-center">
+                <div class="mx-auto col-auto text-center">
                     <h4><i class="fas fa-plus-circle fa-1x"></i> Crear Tipo producto</h4>
                 </div>
             </div>
             <div class="row">
-                <div class="col-5 mx-auto formulario">
+                <div class="col-auto mx-auto formulario">
                     <div class="alert alert-success" role="alert" ng-show="(visualizar)">
                         Tipo Producto creado correctamente.
                     </div>
@@ -20,7 +20,7 @@
                                 Descripción obligatoria
                             </div>
                         </div>
-                        <button ng-click="update()" type="button" class="btn btn-amber btn-block" ng-disabled="userForm.$invalid">Crear tipo producto</button>
+                        <button ng-click="update()" type="button" class="btn btn-amber btn-block" ng-disabled="userForm.$invalid">Crear</button>
                     </form>  
                     <div class="alert alert-danger" role="alert" ng-show="(error)">
                         Error al crear el producto.

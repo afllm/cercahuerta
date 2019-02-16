@@ -48,7 +48,7 @@ public class GenericServiceImplementation implements ServiceInterface {
             oConnectionPool = ConnectionFactory.getConnection(ConnectionConstants.connectionPool);
             oConnection = oConnectionPool.newConnection();
             DaoInterface oDao = DaoFactory.getDao(oConnection, ob, oUsuarioBeanSession);
-            BeanInterface oBean = oDao.get(id, 1);
+            BeanInterface oBean = oDao.get(id, 2);
             Gson oGson = (new GsonBuilder()).excludeFieldsWithoutExposeAnnotation().create();
             oReplyBean = new ReplyBean(200, oGson.toJson(oBean));
         } catch (Exception ex) {

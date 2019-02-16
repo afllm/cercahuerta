@@ -78,6 +78,14 @@ header-component{
     justify-items: center;
 }
 
+.contenedor-login { 
+    grid-area: contenedor;
+    height: 600px;
+    width: 100%;
+    min-height: 80vh;
+    justify-items: center;
+}
+
 .contenedor-home .contenedor-noticias, .contenedor-home .contenedor{
     margin: 0;
 }
@@ -297,7 +305,7 @@ th {
     font-family: 'Kaushan Script', cursive;
 }
 /*login*/
-.contenedor-login{
+.login-form{
     height: 400px;
     align-content: center;
 }

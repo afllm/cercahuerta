@@ -65,7 +65,7 @@ moduleNoticias.controller('noticiasPlistController', ['$scope', '$http', '$locat
             $scope.totalPages = Math.ceil($scope.ajaxDataNum / $scope.rpp);
             if ($scope.page > $scope.totalPages) {
                 $scope.page = $scope.totalPages;
-                $scope.update();
+                //$scope.update();
             }
             pagination2();
         }, function (response) {
