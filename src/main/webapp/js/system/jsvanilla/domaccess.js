@@ -4,7 +4,7 @@ $(document).ready(function() {
     $(window).scroll( function(){
     
        
-        $('.ocultar').each( function(i){
+        $('.mostrar').each( function(i){
             
             var bottom_of_object = $(this).position().top + $(this).outerHeight();
             var bottom_of_window = $(window).scrollTop() + $(window).height();

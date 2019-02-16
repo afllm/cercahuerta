@@ -11,7 +11,7 @@ moduleUsuario.controller("usuarioRegistroController", [
     function ($scope, $http, $routeParams, toolService, sessionService, $window, $location) {
         $scope.edited = true;
         $scope.logged = false;
-
+        
 //        $scope.obj_tipoUsuario = {
 //            id: null,
 //            desc: null

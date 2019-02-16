@@ -20,7 +20,7 @@
         <div class="noticias-main">
             <section class="noticias row">
                 <article ng-repeat="fila in ajaxDataNews"  class="border border-secundary rounded article-noticias">
-                    <a href="noticias/plist"><img ng-src="http://localhost:8081/images_server/noticias/{{fila.foto}}" alt="foto noticia {{fila.id}}"></a>
+                    <a href="noticias/plist"><img class="mostrar" ng-src="http://localhost:8081/images_server/noticias/{{fila.foto}}" alt="foto noticia {{fila.id}}"></a>
                     <div class="texto">
                         <div>
                             <h4>{{fila.titulo}}</h4>
@@ -32,7 +32,7 @@
 
                 </article>
             </section>
-            <div ng-show="!conectado" class=" ocultar row d-flex flex-wrap align-items-center justify-content-around default-color-dark rounded">
+            <div ng-show="!conectado" class=" ocultar mostrar row d-flex flex-wrap align-items-center justify-content-around default-color-dark rounded">
                 <span class="titulos h4 text-light">Forma parte de Cerca de la Huerta </span>
                 <a href="usuario/registro" class="btn btn-amber">¡Regístrate!</a>
             </div>

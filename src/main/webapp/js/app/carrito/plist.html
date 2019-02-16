@@ -24,7 +24,7 @@
 
     <section class="producto-carrito row">
         <article ng-repeat="fila in ajaxData"  class="border border-secundary rounded">
-            <img ng-src="http://localhost:8081/images_server/productos/{{fila.foto}}"  width="640" height="400" alt="producto 1">
+            <img class="mostrar" ng-src="http://localhost:8081/images_server/productos/{{fila.foto}}"  width="640" height="400" alt="producto 1">
             <div class="texto">
                 <div>
                     <h4>{{fila.nombre}}</h4><hr>

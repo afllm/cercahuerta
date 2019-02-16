@@ -126,15 +126,16 @@ header-component{
     margin: 5px;
     box-shadow: 2px 2px 6px 0px rgba(0,0,0,0.3);
     min-width: 49%;
+
 }
 
 .pagina-noticias .noticias .article-noticias:first-child{
-
+    
     min-width: 100%;
 }
 
 .pagina-noticias .noticias .article-noticias:first-child img{
-
+    opacity: 1;
     height: 100%;
 }
 
@@ -142,6 +143,7 @@ header-component{
     min-width: 100px;
     width: 100%;
     height: 328px;
+    opacity: 0.5;
 }
 
 .noticias article .texto{
@@ -233,7 +235,7 @@ th {
 .btn-orden{
     padding: 0.1em 0.5em;
 }
-/*Productos*/
+/*Carrito*/
 
 .producto-carrito{
     display: flex;
@@ -253,6 +255,11 @@ th {
     margin: 5px;
     box-shadow: 2px 2px 6px 0px rgba(0,0,0,0.3);
     filter: grayscale(50%);
+
+}
+
+.producto-carrito article:nth-child(1n+4) img{
+    opacity: 0.5;
 
 }
 
@@ -473,7 +480,7 @@ select{
     .noticias .article-noticias img{
         height: 100%;
     }
-    
+
     .contenedor,  .contenedor-noticias, .contenedor-home{
         margin-top: 300px;
     }

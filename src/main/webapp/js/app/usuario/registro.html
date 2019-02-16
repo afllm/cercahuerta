@@ -52,7 +52,7 @@
                             <div ng-show="userForm.login2.$error.minlength" class="alert alert-danger" role="alert">
                                 La longitud del login es demasiado corta
                             </div>
-                            <div ng-show="!userForm.login2.$valid  && !userForm.login2.$pristine" class="alert alert-danger" role="alert">
+                            <div ng-show="!userForm.login2.$valid && !userForm.login2.$pristine" class="alert alert-danger" role="alert">
                                 Login obligatorio
                             </div>
                         </div>
@@ -66,17 +66,18 @@
                         </div> 
                         <div class="d-flex justify-content-between flex-wrap">
                             <button ng-click="update()" type="button" class="btn btn-amber btn-block" ng-disabled="userForm.$invalid">Nuevo</button>
-                            
+
                         </div>
-                        
+
                     </ng-form>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-4 mx-auto">
-                    <button type="button" class="btn btn-outline-elegant btn-block mt-2" onclick="window.history.back()">Volver</button>     
+                <div class="row">
+                    <div class="col-4 mx-auto">
+                        <button type="button" class="btn btn-outline-elegant btn-block mt-2" onclick="window.history.back()">Volver</button>     
+                    </div>
                 </div>
             </div>
+
             <div class="row" ng-show="!edited">
                 <div class="col-4 mx-auto">
                     <div class="alert alert-success" role="alert">
