@@ -1,17 +1,19 @@
 
 'use strict'
 
-moduleTipoproducto.controller('tipoproductoPlistController', ['$scope', '$http', '$location', 'toolService', '$routeParams','sessionService',
-    function ($scope, $http, $location, toolService, $routeParams,sessionService) {
+moduleTipoproducto.controller('tipoproductoPlistController', ['$scope', '$http', '$location', 'toolService', '$routeParams', 'sessionService',
+    function ($scope, $http, $location, toolService, $routeParams, sessionService) {
         $scope.ob = "tipoproducto";
         $scope.totalPages = 1;
 
         if (!$routeParams.order) {
             $scope.orderURLServidor = "";
             $scope.orderURLCliente = "";
+            $scope.align = "asc";
         } else {
             $scope.orderURLServidor = "&order=" + $routeParams.order;
             $scope.orderURLCliente = $routeParams.order;
+            $scope.align = $routeParams.order.split(',')[1];
         }
 //        if (sessionService.getUserName() !== "") {
 //            $scope.loggeduser = sessionService.getUserName();
@@ -36,14 +38,17 @@ moduleTipoproducto.controller('tipoproductoPlistController', ['$scope', '$http',
         }
 
 
-        $scope.ordena = function (order, align) {
-            if ($scope.orderURLServidor == "") {
-                $scope.orderURLServidor = "&order=" + order + "," + align;
-                $scope.orderURLCliente = order + "," + align;
+        $scope.ordena = function (order) {
+
+            if ($scope.align == "desc") {
+                $scope.align = "asc";
+
             } else {
-                $scope.orderURLServidor = $scope.orderURLServidor + "-" + order + "," + align;
-                $scope.orderURLCliente = $scope.orderURLCliente + "-" + order + "," + align;
+                $scope.align = "desc";
             }
+
+            $scope.orderURLServidor = "&order=" + order + "," + $scope.align;
+            $scope.orderURLCliente = order + "," + $scope.align;
             $location.url($scope.ob + `/plist/` + $scope.rpp + `/` + $scope.page + `/` + $scope.orderURLCliente);
         }
 
@@ -114,7 +119,7 @@ moduleTipoproducto.controller('tipoproductoPlistController', ['$scope', '$http',
             $location.url($scope.ob + `/edit/${id}`);
         }
         $scope.isActive = toolService.isActive;
-        
+
     }
 
 

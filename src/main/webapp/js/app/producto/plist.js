@@ -14,14 +14,16 @@ moduleProducto.controller('productoPlistController', ['$scope', '$http', '$locat
         $scope.miFormato = function (valor) {
             return isNaN(valor) ? valor : parseFloat(valor).toFixed(2);
         };
-        
-        
+
+
         if (!$routeParams.order) {
             $scope.orderURLServidor = "";
             $scope.orderURLCliente = "";
+            $scope.align = "asc";
         } else {
             $scope.orderURLServidor = "&order=" + $routeParams.order;
             $scope.orderURLCliente = $routeParams.order;
+            $scope.align = $routeParams.order.split(',')[1];
         }
 
         if (!$routeParams.rpp) {
@@ -41,14 +43,17 @@ moduleProducto.controller('productoPlistController', ['$scope', '$http', '$locat
         }
 
 
-        $scope.ordena = function (order, align) {
-            if ($scope.orderURLServidor == "") {
-                $scope.orderURLServidor = "&order=" + order + "," + align;
-                $scope.orderURLCliente = order + "," + align;
+        $scope.ordena = function (order) {
+
+            if ($scope.align == "desc") {
+                $scope.align = "asc";
+
             } else {
-                $scope.orderURLServidor = $scope.orderURLServidor + "-" + order + "," + align;
-                $scope.orderURLCliente = $scope.orderURLCliente + "-" + order + "," + align;
+                $scope.align = "desc";
             }
+
+            $scope.orderURLServidor = "&order=" + order + "," + $scope.align;
+            $scope.orderURLCliente = order + "," + $scope.align;
             $location.url($scope.ob + `/plist/` + $scope.rpp + `/` + $scope.page + `/` + $scope.orderURLCliente);
         }
 

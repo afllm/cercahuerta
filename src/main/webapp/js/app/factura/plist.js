@@ -5,8 +5,8 @@ moduleFactura.controller('facturaPlistController', ['$scope', '$http', '$locatio
 
         $scope.ob = "factura";
         $scope.totalPages = 1;
-        
-        
+
+
 //       if (sessionService.getUserName() !== "") {
 //            $scope.loggeduser = sessionService.getUserName();
 //            $scope.loggeduserid = sessionService.getId();
@@ -16,9 +16,11 @@ moduleFactura.controller('facturaPlistController', ['$scope', '$http', '$locatio
         if (!$routeParams.order) {
             $scope.orderURLServidor = "";
             $scope.orderURLCliente = "";
+            $scope.align = "asc";
         } else {
             $scope.orderURLServidor = "&order=" + $routeParams.order;
             $scope.orderURLCliente = $routeParams.order;
+            $scope.align = $routeParams.order.split(',')[1];
         }
 
         if (!$routeParams.rpp) {
@@ -54,14 +56,17 @@ moduleFactura.controller('facturaPlistController', ['$scope', '$http', '$locatio
             $location.url($scope.ob + `/edit/${id}`);
         }
 
-        $scope.ordena = function (order, align) {
-            if ($scope.orderURLServidor == "") {
-                $scope.orderURLServidor = "&order=" + order + "," + align;
-                $scope.orderURLCliente = order + "," + align;
+        $scope.ordena = function (order) {
+
+            if ($scope.align == "desc") {
+                $scope.align = "asc";
+
             } else {
-                $scope.orderURLServidor = $scope.orderURLServidor + "-" + order + "," + align;
-                $scope.orderURLCliente = $scope.orderURLCliente + "-" + order + "," + align;
+                $scope.align = "desc";
             }
+
+            $scope.orderURLServidor = "&order=" + order + "," + $scope.align;
+            $scope.orderURLCliente = order + "," + $scope.align;
             $location.url($scope.ob + `/plist/` + $scope.rpp + `/` + $scope.page + `/` + $scope.orderURLCliente);
         }
 
@@ -77,20 +82,21 @@ moduleFactura.controller('facturaPlistController', ['$scope', '$http', '$locatio
                 $scope.page = $scope.totalPages;
                 $scope.update();
             }
+            console.log("$scope.totalPages: " + $scope.totalPages);
             pagination2();
         }, function (response) {
             $scope.ajaxDataUsuariosNumber = response.data.message || 'Request failed';
             $scope.status = response.status;
         });
-        
-     
-        
-        
-        
+
+
+
+
+
         $http({
             method: 'GET',
- 
-           url: 'json?ob=' + $scope.ob + '&op=getpage&rpp=' + $scope.rpp + '&page=' + $scope.page + $scope.orderURLServidor
+
+            url: 'json?ob=' + $scope.ob + '&op=getpage&rpp=' + $scope.rpp + '&page=' + $scope.page + $scope.orderURLServidor
         }).then(function (response) {
             $scope.status = response.status;
             $scope.ajaxDataUsuarios = response.data.message;
@@ -132,7 +138,7 @@ moduleFactura.controller('facturaPlistController', ['$scope', '$http', '$locatio
 
         }
 
-       
+
 
     }
 ]);
