@@ -80,7 +80,7 @@ public class NoticiasService_1 extends GenericServiceImplementation implements S
             oConnection = oConnectionPool.newConnection();
             String[] titulo1 = {"La huerta", "El campo", "La cosecha", "El clima"};
             String[] titulo2 = {"de hoy", "este año", "mejora", "empeora", "en la ciudad"};
-            String mensaje = lorem.getParagraphs(3, 3);
+            String mensaje = lorem.getParagraphs(3, 4);
             String[] foto = {"noticias1.jpeg", "noticias2.jpeg", "noticias3.jpeg", "noticias4.jpeg", "noticias5.jpeg"};
             int[] id_usuario = {52, 53, 54, 55, 56};
 

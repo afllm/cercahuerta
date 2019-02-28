@@ -82,6 +82,9 @@ public class ServiceFactory {
                             case "update":
                                 oReplyBean = oUsuarioService.update();
                                 break;
+                            case "updatepass":
+                                oReplyBean = oUsuarioService.updatePass();
+                                break;
                             case "remove":
                                 oReplyBean = oUsuarioService.remove();
                                 break;
@@ -318,7 +321,9 @@ public class ServiceFactory {
                             case "update":
                                 oReplyBean = oUsuarioService.update();
                                 break;
-
+                            case "updatepass":
+                                oReplyBean = oUsuarioService.updatePass();
+                                break;
 //                            case "login":
 //                                oReplyBean = oUsuarioService.login();
 //                                break;

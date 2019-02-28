@@ -8,10 +8,10 @@
             <div class="mb-2 d-flex">
 
                 <button type="button" class="btn btn-elegant ml-auto mr-1" ng-click="buy()" ng-disabled="(alert)">Comprar</button>
-                <button type="button" class="btn btn-blue-grey mr-1" ng-click="empty()" ng-disabled="(alert)">Vaciar carrito</button>
+                <button type="button" class="btn btn-blue-grey mr-1" ng-click="empty()" ng-disabled="(alert)">Vaciar cesta</button>
                 <button type="button" class="btn btn-blue-grey mr-1" ng-click="volver()">Volver</button>
             </div>  
-            <div class="alert alert-success" role="alert" ng-show="(alert)"> Carrito vacio</div>
+            <div class="alert alert-success" role="alert" ng-show="(alert)"> Cesta vacía</div>
             <div class="alert alert-success" role="alert" ng-show="(factura)">{{msg_factura}}</div>
             <div class="table-responsive" style="text-align: center;" ng-if="ajaxData !== 'Carrito vacio'">
 
@@ -46,7 +46,7 @@
                         <td>{{fila.obj_producto.nombre}}</td>
                         <td>{{fila.obj_producto.existencias}}</td>
                         <td>{{miFormato(fila.obj_producto.precio)}}</td>
-                        <td><image style="width:50xp;height:50px" src="http://localhost:8081/images_server/productos/{{fila.obj_producto.foto}}"/></td>
+                        <td><image style="width:50xp;height:50px" ng-src="http://localhost:8081/images_server/productos/{{fila.obj_producto.foto}}"/></td>
                         <td><a href="./tipoproducto/view/{{fila.obj_producto.obj_tipoProducto.id}}" >{{fila.obj_producto.obj_tipoProducto.desc}}</a></td>
                         <td>
                             <a href="producto/view/{{fila.obj_producto.id}}" class="btn btn-dark-green far fa-eye" role="button"></a>

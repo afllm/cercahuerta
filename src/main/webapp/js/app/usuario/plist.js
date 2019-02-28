@@ -19,12 +19,12 @@ moduleUsuario.controller('usuarioPlistController', ['$scope', '$http', '$locatio
             $scope.orderURLServidor = "";
             $scope.orderURLCliente = "";
             $scope.align = "asc";
-            console.log("align con el order vacio: " + $scope.align)
+            //console.log("align con el order vacio: " + $scope.align)
         } else {
             $scope.orderURLServidor = "&order=" + $routeParams.order;
             $scope.orderURLCliente = $routeParams.order;
             $scope.align = $routeParams.order.split(',')[1];
-            console.log("split del order: " + $scope.align)
+            //console.log("split del order: " + $scope.align)
         }
 
         if (!$routeParams.rpp) {

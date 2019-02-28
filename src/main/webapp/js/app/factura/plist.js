@@ -82,7 +82,7 @@ moduleFactura.controller('facturaPlistController', ['$scope', '$http', '$locatio
                 $scope.page = $scope.totalPages;
                 $scope.update();
             }
-            console.log("$scope.totalPages: " + $scope.totalPages);
+            //console.log("$scope.totalPages: " + $scope.totalPages);
             pagination2();
         }, function (response) {
             $scope.ajaxDataUsuariosNumber = response.data.message || 'Request failed';

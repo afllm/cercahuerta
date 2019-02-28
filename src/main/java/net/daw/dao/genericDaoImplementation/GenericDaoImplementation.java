@@ -215,40 +215,11 @@ public class GenericDaoImplementation implements DaoInterface {
 
     @Override
     public int getcountX(int idajena) throws Exception {//hacer private, consultar desde el pojo y no poder preguntar desde fuera del servidor
-        //String strSQL = "";
-//        if ("factura".equals(ob)) {
-//            strSQL_getcount = "SELECT COUNT(id) FROM " + ob + " WHERE id_usuario=" + idajena;
-//        } else if ("linea".equals(ob)) {
-//            strSQL_getcount = "SELECT COUNT(id) from " + ob + " where id_factura=" + idajena;
-//        } else {
-//            throw new Exception("Error en Dao getcountX SQL de " + ob);
-//        }
+
 
         //se cambia la query y se llama al getcount normal para devolverlo
         return this.getcount();
-        /*
-        int res = 0;
-        ResultSet oResultSet = null;
-        PreparedStatement oPreparedStatement = null;
-        try {
-            oPreparedStatement = oConnection.prepareStatement(strSQL);
-            oPreparedStatement.setInt(1, idajena);
-            oResultSet = oPreparedStatement.executeQuery();
-            if (oResultSet.next()) {
-                res = oResultSet.getInt(1);
-            }
-        } catch (SQLException e) {
-            throw new Exception("Error en Dao getcountX de " + ob, e);
-        } finally {
-            if (oResultSet != null) {
-                oResultSet.close();
-            }
-            if (oPreparedStatement != null) {
-                oPreparedStatement.close();
-            }
-        }
-        return res;
-         */
+        
     }
 
     @Override
@@ -256,13 +227,7 @@ public class GenericDaoImplementation implements DaoInterface {
         String strSQL = "SELECT * FROM " + ob;
         ArrayList<BeanInterface> alOBean;
         if (iRpp > 0 && iRpp < 100000 && iPage > 0 && iPage < 100000000) {
-//            if ("factura".equals(ob)) {
-//                strSQL += " WHERE id_usuario=?";
-//            } else if ("linea".equals(ob)) {
-//                strSQL += " WHERE id_factura=?";
-//            } else {
-//                throw new Exception("Error en Dao getpageX (if objeto) SQL de " + ob);
-//            }
+
             strSQL += strSQL_WhereGetpagex;
             strSQL += SqlBuilder.buildSqlOrder(hmOrder);
             strSQL += " LIMIT " + (iPage - 1) * iRpp + ", " + iRpp;
@@ -295,6 +260,11 @@ public class GenericDaoImplementation implements DaoInterface {
         }
         return alOBean;
 
+    }
+
+    @Override
+    public int updatePass(BeanInterface oBean) throws Exception {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

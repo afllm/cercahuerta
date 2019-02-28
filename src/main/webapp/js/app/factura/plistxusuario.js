@@ -94,8 +94,13 @@ moduleFactura.controller('facturaplistxusuarioController', ['$scope', '$http', '
             
             $scope.totalPages = Math.ceil($scope.ajaxDataUsuariosNumber / $scope.rpp);
             if ($scope.page > $scope.totalPages) {
-                $scope.page = $scope.totalPages;
-                $scope.update();
+                if($scope.totalPages>0){
+                    $scope.page = $scope.totalPages;
+                }else{
+                   $scope.page =1; 
+                }
+                
+               // $scope.update();
             }
             pagination2();
         }, function (response) {

@@ -271,7 +271,7 @@ public class CarritoService_1 {
             oConnection.commit();
 
             carrito.clear();
-            sesion.setAttribute("carrito", carrito);
+            sesion.setAttribute("carrito", null);
 
             oReplyBean = new ReplyBean(200, oGson.toJson(id_factura));
 

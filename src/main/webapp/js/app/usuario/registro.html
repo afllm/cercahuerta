@@ -3,12 +3,12 @@
     <div class="row" style="margin-top: 80px">
         <div class="col-12">
             <div class="row">
-                <div class="mx-auto col-4 text-center">
+                <div class="mx-auto col-auto text-center">
                     <h3>Nuevo usuario</h3>
                 </div>
             </div>
-            <div class="row" ng-show="edited">
-                <div class=" formulario col-4 mx-auto">
+            <div class="row" ng-show="!edited && !cargando">
+                <div class=" formulario col-auto mx-auto">
                     <ng-form name="userForm" class="form" ng-show="result == null">
                         <div class="form-group" ng-class="{ 'has-error' : userForm.dni.$invalid && !userForm.dni.$pristine }">
                             <label>DNI</label>
@@ -66,19 +66,18 @@
                         </div> 
                         <div class="d-flex justify-content-between flex-wrap">
                             <button ng-click="update()" type="button" class="btn btn-amber btn-block" ng-disabled="userForm.$invalid">Nuevo</button>
-
+                            <button type="button" class="btn btn-outline-elegant btn-block mt-2" onclick="window.history.back()">Volver</button>
                         </div>
 
                     </ng-form>
                 </div>
-                <div class="row">
-                    <div class="col-4 mx-auto">
-                        <button type="button" class="btn btn-outline-elegant btn-block mt-2" onclick="window.history.back()">Volver</button>     
-                    </div>
+            </div>
+            <div class="row" ng-show="cargando">
+                <div class="col-auto mx-auto">
+                    <img src="./images/cargando.gif" alt="Cargando..." id="cargando"/> 
                 </div>
             </div>
-
-            <div class="row" ng-show="!edited">
+            <div class="row" ng-show="edited && !cargando">
                 <div class="col-4 mx-auto">
                     <div class="alert alert-success" role="alert">
                         <p class="text-center mt-2"> Usuario registrado correctamente.<p>

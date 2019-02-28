@@ -17,14 +17,13 @@ import net.daw.bean.publicBeanInterface.BeanInterface;
 import net.daw.dao.genericDaoImplementation.GenericDaoImplementation;
 import net.daw.dao.publicDaoInterface.DaoInterface;
 
-
 public class UsuarioDao_2 extends GenericDaoImplementation implements DaoInterface {
 
     public UsuarioDao_2(Connection oConnection, String ob, UsuarioBean oUsuarioBeanSession) {
         super(oConnection, ob, oUsuarioBeanSession);
 
     }
-    
+
 //    @Override
 //    public BeanInterface get(int id, Integer expand) throws Exception {
 //
@@ -35,28 +34,24 @@ public class UsuarioDao_2 extends GenericDaoImplementation implements DaoInterfa
 //        }
 //
 //    }
-
-    
     @Override
     public int remove(int id) throws Exception {
         throw new Exception("Error en Dao remove de " + ob + ": No autorizado");
     }
-    
+
     @Override
     public int getcount() throws Exception {
         throw new Exception("Error en Dao getcount de " + ob + ": No autorizado");
     }
 
-    
     @Override
     public UsuarioBean create(BeanInterface oBean) throws Exception {
         throw new Exception("Error en Dao create de " + ob + ": No autorizado");
     }
 
-    
     @Override
     public int update(BeanInterface oBean) throws Exception {
-        int id=oBean.getId();
+        int id = oBean.getId();
         if (id == oUsuarioBeanSession.getId()) {
             return super.update(oBean);
         } else {
@@ -65,9 +60,36 @@ public class UsuarioDao_2 extends GenericDaoImplementation implements DaoInterfa
     }
 
     @Override
+    public int updatePass(BeanInterface oBean) throws Exception {
+
+        int id = oBean.getId();
+        if (id == oUsuarioBeanSession.getId()) {
+            int iResult = 0;
+            strSQL_update = "UPDATE " + ob + " SET ";
+            strSQL_update += oBean.getPairsPass();
+            PreparedStatement oPreparedStatement = null;
+            try {
+                oPreparedStatement = oConnection.prepareStatement(strSQL_update);
+                iResult = oPreparedStatement.executeUpdate();
+
+            } catch (SQLException e) {
+                throw new Exception("Error en Dao updatePass de " + ob + ": " + e.getMessage(), e);
+            } finally {
+                if (oPreparedStatement != null) {
+                    oPreparedStatement.close();
+                }
+            }
+            return iResult;
+        } else {
+            throw new Exception("Error en Dao update de " + ob + ": No autorizado");
+        }
+
+    }
+
+    @Override
     public ArrayList<BeanInterface> getpage(int iRpp, int iPage, HashMap<String, String> hmOrder, Integer expand) throws Exception {
         throw new Exception("Error en Dao getpage de " + ob + ": No autorizado");
 
     }
-   
+
 }

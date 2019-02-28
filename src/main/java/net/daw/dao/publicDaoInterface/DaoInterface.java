@@ -22,6 +22,8 @@ public interface DaoInterface {
     public BeanInterface create(BeanInterface oBean) throws Exception;
 
     public int update(BeanInterface oBean) throws Exception;
+    
+    public int updatePass(BeanInterface oBean) throws Exception;
 
     public ArrayList<BeanInterface> getpage(int iRpp, int iPage, HashMap<String, String> hmOrder, Integer expand) throws Exception;
     

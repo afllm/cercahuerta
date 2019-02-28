@@ -220,7 +220,17 @@ public class UsuarioBean extends GenericBeanImplementation implements BeanInterf
         strPairs += "ape2=" + EncodingHelper.quotate(ape2) + ",";
         strPairs += "email=" + EncodingHelper.quotate(email) + ",";
         strPairs += "login=" + EncodingHelper.quotate(login) + ",";
+        //strPairs += "pass=" + EncodingHelper.quotate(pass) + ",";
         strPairs += "id_tipoUsuario=" + id_tipoUsuario;
+        strPairs += " WHERE id=" + id;
+        return strPairs;
+
+    }
+    
+    @Override
+    public String getPairsPass() {
+        String strPairs = "";
+        strPairs += "pass=" + EncodingHelper.quotate(pass);
         strPairs += " WHERE id=" + id;
         return strPairs;
 

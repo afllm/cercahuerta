@@ -25,7 +25,7 @@ body {
 footer, .footer {
     /*    position: fixed;*/
     margin-bottom: 0;
-    width: 100vw;
+    width: 100%;
     /* Set the fixed height of the footer here */
     height: 100px;
     line-height: 1px; /* Vertically center the text there */
@@ -51,9 +51,9 @@ principal {
     grid-template-rows: auto auto 70px;  
     grid-template-columns: 100%;
     grid-row-gap: 10px;
-    grid-column-gap: 10px;
+    /*grid-column-gap: 10px;*/
     min-height: 100%;
-    min-width: 100vw;
+    min-width: 100%;
     margin: 0;
     justify-items: center;
 }
@@ -75,8 +75,9 @@ header-component{
     height: 100%;
     width: 100%;
     min-height: 80vh;
-    justify-items: center;
+    justify-items: center;    
 }
+
 
 .contenedor-login { 
     grid-area: contenedor;
@@ -130,7 +131,7 @@ header-component{
 }
 
 .pagina-noticias .noticias .article-noticias:first-child{
-    
+
     min-width: 100%;
 }
 
@@ -174,6 +175,14 @@ code {
 
 th {
     cursor:pointer;
+}
+
+a{
+    color: #00695c;
+}
+
+a:hover{
+    color: #ffa000;
 }
 
 /*.btn{
@@ -235,38 +244,57 @@ th {
 .btn-orden{
     padding: 0.1em 0.5em;
 }
+
+#user-div{
+    cursor:pointer;
+    box-shadow: 0 2px 5px rgba(255,255,255,0.1);
+    position: relative;
+    top: 0;
+    transition: all .1s ease-in;
+}
+
+#user-div:hover{
+    top: -2px;
+    box-shadow: 0 4px 5px rgba(255,255,255,0.2);
+}
+
+.btn-cta{
+    color: #00695c!important;
+    font-weight: bold;
+}
 /*Carrito*/
 
 .producto-carrito{
     display: flex;
     flex-flow: row wrap;
-    align-items: center;
+    align-items: stretch;
     justify-content: center;
-    width: 100vw;
+    width: 100%;
     margin-bottom: 20px;
 }
 
 
 .producto-carrito article{
     background-image:  linear-gradient(to top, rgba(0,150,136, 0.1) 0px, rgba(0, 0, 0, 0.1) 100%);
-    background-color: rgba(30, 130, 76, 0.2);
-    filter: grayscale(50%);
     flex: 0 0 200px;
-    margin: 5px;
-    box-shadow: 2px 2px 6px 0px rgba(0,0,0,0.3);
-    filter: grayscale(50%);
-
+    margin: 0.3em;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    position: relative;
+    top: 0;
+    transition: all .1s ease-in;
 }
 
-.producto-carrito article:nth-child(1n+4) img{
-    opacity: 0.5;
-
+.producto-carrito article:hover {
+    top: -2px;
+    box-shadow: 0 4px 5px rgba(0,0,0,0.2);
 }
 
-.producto-carrito article:hover{
-    margin: 1px;
-    padding: 4px;
-    filter: grayscale(0%);
+.producto-carrito article:hover img{
+    filter: contrast(100%);
+
 }
 
 
@@ -275,13 +303,21 @@ th {
     max-width: 320px;
     min-height: 64px;
     max-height: 205px;
+    filter: contrast(80%);
 }
 
-
+.txt-btn{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;    
+}
 .producto-carrito article .texto{
     padding: 0 20px 20px;
 }
-
+.producto-carrito article .botones{
+    padding: 0 20px 20px;
+}
 /*home*/
 .home-img, .login-img{
     background-size: cover !important;
@@ -432,7 +468,7 @@ select{
 
 
 
-#Logo, #log-btn{
+#Logo, #log-btn, #user-name, #user-initial{
     transition: all 0.3s;
 }
 .largeLogo{width: 100px;}
@@ -441,7 +477,9 @@ select{
 .ocultar{
     opacity:0;
 }
-
+.deshabilitar{
+    display: none;
+}
 /*Responsive*/
 
 @media screen and (min-width: 769px){
@@ -482,7 +520,7 @@ select{
     }
 
     .contenedor,  .contenedor-noticias, .contenedor-home{
-        margin-top: 300px;
+        margin-top: 160px;
     }
 
 }

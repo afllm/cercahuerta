@@ -9,9 +9,9 @@ moduleUsuario.controller("usuarioRegistroController", [
     "$window",
     "$location",
     function ($scope, $http, $routeParams, toolService, sessionService, $window, $location) {
-        $scope.edited = true;
+        $scope.edited = false;
         $scope.logged = false;
-        
+        $scope.cargando=false;
 //        $scope.obj_tipoUsuario = {
 //            id: null,
 //            desc: null
@@ -34,7 +34,7 @@ moduleUsuario.controller("usuarioRegistroController", [
         $scope.isActive = toolService.isActive;
 
         $scope.update = function () {
-
+            $scope.cargando=true;
             var json = {
                 id: null,
                 dni: $scope.dni,
@@ -52,7 +52,8 @@ moduleUsuario.controller("usuarioRegistroController", [
                 url: 'json?ob=usuario&op=create',
                 params: {json: JSON.stringify(json)}
             }).then(function () {
-                $scope.edited = false;
+                $scope.cargando=false;
+                $scope.edited = true;
             })
         }
 

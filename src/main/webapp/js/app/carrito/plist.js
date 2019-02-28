@@ -5,6 +5,7 @@ moduleCarrito.controller('carritoPlistController', ['$scope', '$http', '$locatio
 
         $scope.totalPages = 1;
         $scope.conectado = false;
+        $scope.carritoVacio = true;
 
         if (sessionService.getUserName() !== "") {
             $scope.id_tiposusario = sessionService.getTypeUserID();
@@ -18,7 +19,10 @@ moduleCarrito.controller('carritoPlistController', ['$scope', '$http', '$locatio
         }).then(function (response) {
             $scope.status = response.status;
             $scope.ajaxDataAdd = response.data.message;
-            console.log("$scope.ajaxDataAdd: "+$scope.ajaxDataAdd);
+            //console.log("$scope.ajaxDataAdd: " + $scope.ajaxDataAdd);
+            if ($scope.ajaxDataAdd != "Carrito vacio" || $scope.ajaxDataAdd != "" ||$scope.ajaxDataAdd != null){
+                
+            }
         }, function (response) {
             $scope.status = response.status;
             $scope.ajaxDataAdd = response.data.message || 'Request failed';
@@ -36,7 +40,7 @@ moduleCarrito.controller('carritoPlistController', ['$scope', '$http', '$locatio
                 $scope.status = response.status;
                 $scope.ajaxDataAdd = response.data.message || 'Request failed';
             });
-            console.log("$scope.ajaxDataAdd: "+$scope.ajaxDataAdd)
+            //console.log("$scope.ajaxDataAdd: " + $scope.ajaxDataAdd)
         }
 
         if (!$routeParams.order) {

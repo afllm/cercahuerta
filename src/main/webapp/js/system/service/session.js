@@ -3,52 +3,52 @@
 
 
 moduleService.service('sessionService', ['$location', function ($location) {
-        var isSessionActive = false;
+var isSessionActive = false;
         var userName = "";
         var idUserLogged = "";
         var tipoUsuarioID = "";
         var sesion = "";
 
         return {
-            getUserName: function () {
-                return userName;
-            },
-            setId: function (id) {
+        getUserName: function () {
+        return userName;
+        },
+                setId: function (id) {
                 idUserLogged = id;
-            },
-            getId: function () {
+                },
+                getId: function () {
                 return idUserLogged;
-            },
-            setUserName: function (name) {
+                },
+                setUserName: function (name) {
                 userName = name;
-            },
-            isSessionActive: function () {
+                },
+                isSessionActive: function () {
                 return isSessionActive;
-            },
-            setSessionActive: function () {
+                },
+                setSessionActive: function () {
                 isSessionActive = true;
-            },
-            setTypeUserID: function (id) {
+                },
+                setTypeUserID: function (id) {
                 tipoUsuarioID = id;
-            },
-            getTypeUserID: function () {
+                },
+                getTypeUserID: function () {
                 return tipoUsuarioID;
-            },
-            setSessionInactive: function () {
+                },
+                setSessionInactive: function () {
                 isSessionActive = false;
-                userName = "";
-                idUserLogged = "";
-                tipoUsuarioID = "";
-                sesion = "";
+                        userName = "";
+                        idUserLogged = "";
+                        tipoUsuarioID = "";
+                        sesion = "";
 
 
-            },
-            setSesion: function (data) {
+                },
+                setSesion: function (data) {
                 sesion = data;
-            },
-            getSesion: function () {
+                },
+                getSesion: function () {
                 return sesion;
-            }
+                }
         }
 
-    }]);
+        }]);

@@ -4,7 +4,7 @@
     <div class="d-flex justify-content-between flex-wrap align-items-center pt-3 pb-2 mb-3 border-bottom row">
         <h1>La cosecha</h1>
         <div class="btn-toolbar mb-2 mb-md-0">
-            <a href="carrito/carrito" ng-show="id_tiposusario == 1 || id_tiposusario == 2" class="btn-lg btn-dark-green fas fa-shopping-cart red-bar" role="button" ng-if="ajaxDataAdd != 'Carrito vacio'"></a>
+            <a href="carrito/carrito" title="Ver la cesta de la compra" ng-show="id_tiposusario == 1 || id_tiposusario == 2" class="btn-lg btn-dark-green fas fa-shopping-basket red-bar" role="button" ng-if="ajaxDataAdd != 'Carrito vacio'"></a>
         </div>
         <div class="btn-toolbar mb-2 mb-md-0">
 
@@ -24,18 +24,22 @@
 
     <section class="producto-carrito row">
         <article ng-repeat="fila in ajaxData"  class="border border-secundary rounded">
-            <img class="mostrar" ng-src="http://localhost:8081/images_server/productos/{{fila.foto}}"  width="640" height="400" alt="producto 1">
-            <div class="texto">
-                <div>
+            <img ng-src="http://localhost:8081/images_server/productos/{{fila.foto}}"  width="640" height="400" alt="producto 1">
+            <div class="txt-btn">
+                <div class="texto">
+
                     <h4>{{fila.nombre}}</h4><hr>
                     <p>{{fila.desc}}</p>
+
+
                 </div>
-                <div ng-if="id_tiposusario == 1 || id_tiposusario == 2" class="d-flex justify-content-center">
+                <div ng-if="id_tiposusario == 1 || id_tiposusario == 2" class="botones d-flex justify-content-center">
                     <a href="producto/view/{{fila.id}}" title="Ver información del producto" class="btn btn-dark-green icon far fa-eye" role="button"></a>
                     <button type="button" title="Añade productos al carrito" ng-click="add(fila.id)" ng-click="showRed = true" class="btn btn-dark-green icon far fa-plus-square" ng-disabled="fila.existencias === existencias(fila.id)"></button>
                     <button type="button" title="Quita productos del carrito" ng-click="reduce(fila.id)" class="btn btn-dark-green icon far fa-minus-square" ng-disabled="existencias(fila.id) === 0"></button>
                     <span class="btn btn-dark-green icon" title="Tienes en el carrito {{existencias(fila.id)}} unidades" ng-style="fila.existencias===existencias(fila.id) && {'background-color':'#dc3545'}">{{existencias(fila.id)}}</span>
-                </div>
+                    <a href="carrito/carrito" title="Ver la cesta de la compra" ng-show="id_tiposusario == 1 || id_tiposusario == 2" class="btn btn-dark-green icon" role="button" ng-if="ajaxDataAdd != 'Carrito vacio'"><i class="fas fa-shopping-basket"></i></a>
+                </div> 
             </div>
 
         </article>
