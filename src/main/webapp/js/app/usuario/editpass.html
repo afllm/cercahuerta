@@ -7,6 +7,7 @@
                     <h3>Editar contraseña</h3>
                 </div>
             </div>
+            <div ng-show="permitido">
             <div class="row" ng-show="edited">
                 <div class="col-auto mx-auto formulario">
                     <ng-form name="userForm" class="form" ng-show="result == null">
@@ -47,10 +48,15 @@
             <div class="row" ng-show="!error && edited">
                 <div class="col-auto mx-auto">
                     <div class="alert alert-danger" role="alert">
-                        <p class="text-center mt-2"> Error en la entrada de la contraseña.<p> 
+                        <p class="text-center mt-2"> Error en la contraseña.<p> 
                     </div>
                 </div>
             </div>
+                </div>
+            <div class="mx-auto col-12 alert alert-danger" ng-show="!permitido" role="alert">
+                        <p>No está autorizado para ver esta información</p>
+                        <p>Si considera que es un error, por favor ponganse en contacto con el administrador</p>
+                    </div>
             <div class="row">
                 <div class="col-auto mx-auto">
                     <button type="button" class="btn btn-outline-elegant btn-block mt-2" onclick="window.history.back()">Volver</button>     

@@ -3,6 +3,7 @@
 moduleCarrito.controller('carritoPlistController', ['$scope', '$http', '$location', 'toolService', '$routeParams', 'sessionService',
     function ($scope, $http, $location, toolService, $routeParams, sessionService) {
 
+        $scope.ob = "carrito";
         $scope.totalPages = 1;
         $scope.conectado = false;
         $scope.carritoVacio = true;

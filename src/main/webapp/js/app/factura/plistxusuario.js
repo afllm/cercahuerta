@@ -5,7 +5,7 @@ moduleFactura.controller('facturaplistxusuarioController', ['$scope', '$http', '
 
         $scope.ob = "factura";
         $scope.totalPages = 1;
-        
+        $scope.permitido = false;
         
 //          if (sessionService.getUserName() !== "") {
 //            $scope.loggeduser = sessionService.getUserName();
@@ -81,59 +81,69 @@ moduleFactura.controller('facturaplistxusuarioController', ['$scope', '$http', '
         
         
         $scope.vacio=false;
-        //getcount
-        $http({
-            method: 'GET',
-           url: 'json?ob=factura&op=getcountx&idajena=' + $routeParams.id
-        }).then(function (response) {
-            $scope.status = response.status;
-            $scope.ajaxDataUsuariosNumber = response.data.message;
+        
+        if (sessionService.getUserName() !== "") {
+            $scope.id_usuario = sessionService.getId();
+            $scope.id_tiposusario = sessionService.getTypeUserID();
+
+            if ($scope.id_usuario == $scope.id || $scope.id_tiposusario == 1) {
+                $scope.permitido = true;
+                //getcount
+                $http({
+                    method: 'GET',
+                    url: 'json?ob=factura&op=getcountx&idajena=' + $routeParams.id
+                }).then(function (response) {
+                    $scope.status = response.status;
+                    $scope.ajaxDataUsuariosNumber = response.data.message;
 //            if ($scope.ajaxDataUsuariosNumber === 0) {
 //                $scope.vacio=true;
 //            }
-            
-            $scope.totalPages = Math.ceil($scope.ajaxDataUsuariosNumber / $scope.rpp);
-            if ($scope.page > $scope.totalPages) {
-                if($scope.totalPages>0){
-                    $scope.page = $scope.totalPages;
-                }else{
-                   $scope.page =1; 
-                }
-                
-               // $scope.update();
-            }
-            pagination2();
-        }, function (response) {
-            $scope.ajaxDataUsuariosNumber = response.data.message || 'Request failed';
-            $scope.status = response.status;
-        });
-        
-     
-        
-        
-        
-        $http({
-            method: 'GET',
-            url: 'json?ob=factura&op=getpagex&idajena=' + $routeParams.id + '&rpp=' + $scope.rpp + '&page=' + $scope.page + $scope.orderURLServidor
-        }).then(function (response) {
-            $scope.status = response.status;
-            $scope.ajaxDataUsuarios = response.data.message;
-        }, function (response) {
-            $scope.status = response.status;
-            $scope.ajaxDataUsuarios = response.data.message || 'Request failed';
-        });
 
-        $http({
-            method: 'GET',
-            url: 'json?ob=usuario&op=get&id=' + $scope.id
-        }).then(function (response) {
-            $scope.status = response.status;
-            $scope.nombre2 = response.data.message.nombre;
-            $scope.ape1 = response.data.message.ape1;
-        }, function (response) {
-            $scope.status = response.status;
-            
-        });
+                    $scope.totalPages = Math.ceil($scope.ajaxDataUsuariosNumber / $scope.rpp);
+                    if ($scope.page > $scope.totalPages) {
+                        if ($scope.totalPages > 0) {
+                            $scope.page = $scope.totalPages;
+                        } else {
+                            $scope.page = 1;
+                        }
+
+                        // $scope.update();
+                    }
+                    pagination2();
+                }, function (response) {
+                    $scope.ajaxDataUsuariosNumber = response.data.message || 'Request failed';
+                    $scope.status = response.status;
+                });
+
+
+
+
+
+                $http({
+                    method: 'GET',
+                    url: 'json?ob=factura&op=getpagex&idajena=' + $routeParams.id + '&rpp=' + $scope.rpp + '&page=' + $scope.page + $scope.orderURLServidor
+                }).then(function (response) {
+                    $scope.status = response.status;
+                    $scope.ajaxDataUsuarios = response.data.message;
+                }, function (response) {
+                    $scope.status = response.status;
+                    $scope.ajaxDataUsuarios = response.data.message || 'Request failed';
+                });
+
+                $http({
+                    method: 'GET',
+                    url: 'json?ob=usuario&op=get&id=' + $scope.id
+                }).then(function (response) {
+                    $scope.status = response.status;
+                    $scope.nombre2 = response.data.message.nombre;
+                    $scope.ape1 = response.data.message.ape1;
+                }, function (response) {
+                    $scope.status = response.status;
+
+                });
+
+            }
+        }
 
         $scope.update = function () {
              $location.url($scope.ob + `/plistxusuario/` + $scope.rpp + `/` + $scope.page + `/` + $scope.id + `/` + $scope.orderURLCliente);

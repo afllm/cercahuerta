@@ -7,13 +7,25 @@ moduleUsuario.controller("usuarioEditpassController", [
     "toolService",
     "sessionService",
     function ($scope, $http, $routeParams, toolService, sessionService) {
+        
         $scope.edited = true;
         $scope.error = true;
-        $scope.logged = false;        
+        $scope.logged = false;
+        $scope.permitido = false;
+               
         if (!$routeParams.id) {
             $scope.id = 1;
         } else {
             $scope.id = $routeParams.id;
+        }
+        
+        if (sessionService.getUserName() !== "") {
+            $scope.id_usuario = sessionService.getId();
+            $scope.id_tiposusario = sessionService.getTypeUserID();
+
+            if ($scope.id_usuario == $scope.id || $scope.id_tiposusario == 1) {
+                $scope.permitido = true;
+            }
         }
 
         $scope.mostrar = false;

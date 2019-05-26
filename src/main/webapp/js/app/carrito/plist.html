@@ -47,26 +47,32 @@
 
 
     <div class="row d-flex flex-wrap align-items-center justify-content-center">
-        <nav aria-label="paginacion">
-            <ul class="pagination pg-amber">
-                <li class="page-item">
-                    <a class="page-link" ng-show="page > 2" href="carrito/plist/{{rpp}}/1/{{order}}/{{align}}">First</a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link" ng-show="page > 1" href="carrito/plist/{{rpp}}/{{page - 1}}/{{order}}/{{align}}">Previous</a>
-                </li>
-                <li class="page-item" ng-class="{'active':(p == page), 'disabled': p === '...'}" ng-repeat="p in list2 track by $index">
-                    <a class="page-link" href="carrito/plist/{{rpp}}/{{p}}/{{order}}/{{align}}">{{p}}</a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link" ng-show="page != totalPages" href="carrito/plist/{{rpp}}/{{page--1}}/{{order}}/{{align}}">Next</a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link" ng-show="page != totalPages - 1 && page != totalPages" href="carrito/plist/{{rpp}}/{{totalPages}}/{{order}}/{{align}}">Last</a>
-                </li>
-            </ul>
-        </nav>
+         <div class="col-md-12 ml-sm-auto col-lg-12">
+                <div ng-show="totalPages>1" class="row d-flex justify-content-center flex-wrap align-items-center">
+                    <nav aria-label="paginacion">
+                        <ul class="pagination pg-amber pagination-circle">
+                            <li class="page-item">
+                                <a class="page-link  bg-light" ng-show="page > 2" href="{{ob}}/plist/{{rpp}}/1/{{orderURLCliente}}"><i class="fas fa-angle-double-left"></i></a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link  bg-light" ng-show="page > 1" href="{{ob}}/plist/{{rpp}}/{{page - 1}}/{{orderURLCliente}}"><i class="fas fa-angle-left"></i></a>
+                            </li>
+                            <li class="page-item" ng-class="{'active':(p == page), 'disabled': p === '...'}" ng-repeat="p in list2 track by $index">
+                                <a class="page-link " href="{{ob}}/plist/{{rpp}}/{{p}}/{{orderURLCliente}}">{{p}}</a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link  bg-light" ng-show="page != totalPages" href="{{ob}}/plist/{{rpp}}/{{page--1}}/{{orderURLCliente}}"><i class="fas fa-angle-right"></i></a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link  bg-light" ng-show="page != totalPages - 1 && page != totalPages" href="{{ob}}/plist/{{rpp}}/{{totalPages}}/{{orderURLCliente}}"><i class="fas fa-angle-double-right"></i></a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
     </div>
+    
+
     <div ng-show="!conectado" class="row d-flex flex-wrap align-items-center justify-content-center">
         <a href="usuario/registro" class="btn btn-amber">¡Regístrate!</a>
     </div>

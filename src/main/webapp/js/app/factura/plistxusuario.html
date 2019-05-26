@@ -2,6 +2,7 @@
 <div class="container-fluid contenedor">
     <div class="row">
         <main role="main" class="col-md-12 ml-sm-auto col-lg-12 px-4" style="margin-top: 50px">
+            <div ng-show="permitido">
             <div class="d-flex justify-content-between flex-wrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                 <h1 class="h2"><i class="fas far fa-file fa-1x"></i> {{nombre2}} {{ape1}}</h1>
                 <div class="btn-toolbar mb-2 mb-md-0">
@@ -33,23 +34,23 @@
             </div>
 
             <div class="col-md-12 ml-sm-auto col-lg-12">
-                <div class="row d-flex justify-content-between flex-wrap align-items-center">
+                <div ng-show="totalPages>1" class="row d-flex justify-content-between flex-wrap align-items-center">
                     <nav aria-label="paginacion">
-                        <ul class="pagination pg-amber">
+                        <ul class="pagination pg-amber pagination-circle">
                             <li class="page-item ">
-                                <a class="page-link  bg-light" ng-show="page > 2" href="{{ob}}/plistxusuario/{{rpp}}/1/{{id}}/{{order}}/{{align}}">First</a>
+                                <a class="page-link  bg-light" ng-show="page > 2" href="{{ob}}/plistxusuario/{{rpp}}/1/{{id}}/{{order}}/{{align}}"><i class="fas fa-angle-double-left"></i></a>
                             </li>
                             <li class="page-item">
-                                <a class="page-link  bg-light" ng-show="page > 1" href="{{ob}}/plistxusuario/{{rpp}}/{{id}}/{{page - 1}}/{{order}}/{{align}}">Previous</a>
+                                <a class="page-link  bg-light" ng-show="page > 1" href="{{ob}}/plistxusuario/{{rpp}}/{{page - 1}}/{{id}}/{{order}}/{{align}}"><i class="fas fa-angle-left"></i></a>
                             </li>
                             <li class="page-item" ng-class="{'active':(p == page), 'disabled': p === '...'}" ng-repeat="p in list2 track by $index">
                                 <a class="page-link " href="{{ob}}/plistxusuario/{{rpp}}/{{p}}/{{id}}/{{order}}/{{align}}">{{p}}</a>
                             </li>
                             <li class="page-item">
-                                <a class="page-link  bg-light" ng-show="page != totalPages" href="{{ob}}/plistxusuario/{{rpp}}/{{page--1}}/{{id}}/{{order}}/{{align}}">Next</a>
+                                <a class="page-link  bg-light" ng-show="page != totalPages" href="{{ob}}/plistxusuario/{{rpp}}/{{page--1}}/{{id}}/{{order}}/{{align}}"><i class="fas fa-angle-right"></i></a>
                             </li>
                             <li class="page-item">
-                                <a class="page-link  bg-light" ng-show="page != totalPages - 1 && page != totalPages" href="{{ob}}/plistxusuario/{{rpp}}/{{totalPages}}/{{id}}/{{order}}/{{align}}">Last</a>
+                                <a class="page-link  bg-light" ng-show="page != totalPages - 1 && page != totalPages" href="{{ob}}/plistxusuario/{{rpp}}/{{totalPages}}/{{id}}/{{order}}/{{align}}"><i class="fas fa-angle-double-right"></i></a>
                             </li>
                         </ul>
                     </nav>
@@ -119,12 +120,18 @@
                         </tr>
                     </tbody>
                 </table>
+                </div>
+                </div>
+                <div class="mx-auto col-12 alert alert-danger" ng-show="!permitido" role="alert">
+                        <p>No está autorizado para ver esta información</p>
+                        <p>Si considera que es un error, por favor ponganse en contacto con el administrador</p>
+                    </div>
                 <div class="col-md-auto ml-sm-auto col-lg-auto mr-3">
-
+                    
                     <button type="button" class="btn btn-elegant mt-2 mb-5 mr-5" onclick="window.history.back()">Volver</button>
 
                 </div>
-            </div>
+            
         </main>
     </div>
 </div>

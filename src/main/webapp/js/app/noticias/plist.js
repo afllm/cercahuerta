@@ -3,6 +3,7 @@
 moduleNoticias.controller('noticiasPlistController', ['$scope', '$http', '$location', 'toolService', '$routeParams', 'sessionService',
     function ($scope, $http, $location, toolService, $routeParams, sessionService) {
 
+        $scope.ob = 'noticias';
         $scope.totalPages = 1;
         $scope.conectado = false;
         

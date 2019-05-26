@@ -17,13 +17,13 @@
                                     <label>Fecha</label>
                                 </div>
                                 <div class="col-12">
-                                    <md-datepicker ng-model="myDate" md-placeholder="Enter date"></md-datepicker>
+                                    <md-datepicker ng-model="myDate" md-placeholder="Fecha"></md-datepicker>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <label>IVA</label>
-                            <input type="text" class="form-control" id="iva" name="iva" ng-model="iva" ng-required="true" placeholder="IVA" />
+                            <input type="number" class="form-control" id="iva" name="iva" ng-model="iva" ng-required="true" placeholder="IVA" />
                             <div ng-show="!userForm.iva.$valid && !userForm.iva.$pristine" class="alert alert-danger" role="alert">
                                 IVA obligatorio
                             </div>
@@ -58,10 +58,12 @@
                                            maxlength="3" />
                                     <div class="input-group-append">
                                         <span class="input-group-text">
-                                            <a href="../cercahuerta/usuario/view/{{obj_usuario.id}}">
+                                            <!--<a href="../cercahuerta/usuario/view/{{obj_usuario.id}}">-->
+                                            <span>
                                                 <span class="p-2 bd-highlight"><i class="fas fa-user"></i></span>
-                                                Usuario: {{obj_usuario.nombre}}
-                                            </a>
+                                                Usuario: {{obj_usuario.nombre}} {{obj_usuario.ape1}} {{obj_usuario.ape2}}
+                                            </span>
+                                            <!--</a>-->
                                         </span>
                                     </div>
                                 </div>

@@ -33,14 +33,14 @@
                         </div>
                         <div class="form-group">
                             <label>Existencias</label>
-                            <input type="text" class="form-control" id="existencias" name="existencias" ng-model="existencias" ng-required="true" placeholder="Existencias"/>
+                            <input type="number" class="form-control" id="existencias" name="existencias" ng-model="existencias" ng-required="true" placeholder="Existencias"/>
                             <div ng-show="!userForm.existencias.$valid && !userForm.existencias.$pristine" class="alert alert-danger" role="alert">
                                 existencias obligatoria
                             </div>
                         </div>
                         <div class="form-group">
                             <label>Precio</label>
-                            <input type="text" class="form-control" id="precio" name="precio" ng-model="precio" ng-required="true" placeholder="Precio"/>
+                            <input type="number" class="form-control" id="precio" name="precio" ng-model="precio" ng-required="true" placeholder="Precio"/>
                             <div ng-show="!userForm.precio.$valid && !userForm.precio.$pristine" class="alert alert-danger" role="alert">
                                 precio obligatorio
                             </div>
@@ -87,10 +87,12 @@
                                            maxlength="2" />
                                     <div class="input-group-append">
                                         <span class="input-group-text">
-                                            <a href="../cercahuerta/tipoproducto/view/{{obj_tipoproducto.id}}">
+                                            <!--<a href="../cercahuerta/tipoproducto/view/{{obj_tipoproducto.id}}">-->
+                                            <span>
                                                 <span class="p-2 bd-highlight"><i class="fas fa-users fa-1x"></i></span>
                                                 Tipo de producto: {{obj_tipoproducto.desc}}
-                                            </a>
+                                                </span>
+                                            <!--</a>-->
                                         </span>
                                     </div>
                                 </div>
