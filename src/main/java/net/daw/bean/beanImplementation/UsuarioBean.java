@@ -147,27 +147,38 @@ public class UsuarioBean extends GenericBeanImplementation implements BeanInterf
 
     @Override
     public UsuarioBean fill(ResultSet oResultSet, Connection oConnection, Integer expand, UsuarioBean oUsuarioBeanSession) throws Exception {
-        this.setId(oResultSet.getInt("id"));
-        this.setDni(oResultSet.getString("dni"));
-        this.setNombre(oResultSet.getString("nombre"));
-        this.setApe1(oResultSet.getString("ape1"));
-        this.setApe2(oResultSet.getString("ape2"));
-        this.setEmail(oResultSet.getString("email"));
-        this.setLogin(oResultSet.getString("login"));
-        this.setPass(oResultSet.getString("pass"));
-        this.setToken(oResultSet.getString("token"));
-        this.setActivo(oResultSet.getInt("activo"));
+        if (oUsuarioBeanSession != null) {
+            if (oResultSet.getInt("id") == oUsuarioBeanSession.getId() || oUsuarioBeanSession.getId() == 1) {
+                this.setId(oResultSet.getInt("id"));
+                this.setDni(oResultSet.getString("dni"));
+                this.setNombre(oResultSet.getString("nombre"));
+                this.setApe1(oResultSet.getString("ape1"));
+                this.setApe2(oResultSet.getString("ape2"));
+                this.setEmail(oResultSet.getString("email"));
+                this.setLogin(oResultSet.getString("login"));
+                this.setPass(oResultSet.getString("pass"));
+                this.setToken(oResultSet.getString("token"));
+                this.setActivo(oResultSet.getInt("activo"));
 
-        DaoInterface oFacturaDao = DaoFactory.getDao(oConnection, "factura", oUsuarioBeanSession);
-        this.setLink_factura(oFacturaDao.getcountX(oResultSet.getInt("id")));
+                DaoInterface oFacturaDao = DaoFactory.getDao(oConnection, "factura", oUsuarioBeanSession);
+                this.setLink_factura(oFacturaDao.getcountX(oResultSet.getInt("id")));
 
+                if (expand > 0) {
+                    DaoInterface otipousuarioDao = DaoFactory.getDao(oConnection, "tipousuario", oUsuarioBeanSession);
+                    this.setObj_tipoUsuario((TipousuarioBean) otipousuarioDao.get(oResultSet.getInt("id_tipoUsuario"), expand - 1));
+                } else {
+                    this.setId_tipoUsuario(oResultSet.getInt("id_tipoUsuario"));
+                }
+            } else {
+                this.setNombre(oResultSet.getString("nombre"));
+                this.setApe1(oResultSet.getString("ape1"));
+            }
+        }else {
+                this.setNombre(oResultSet.getString("nombre"));
+                this.setApe1(oResultSet.getString("ape1"));
+            }
 
-        if (expand > 0) {
-            DaoInterface otipousuarioDao = DaoFactory.getDao(oConnection, "tipousuario", oUsuarioBeanSession);
-            this.setObj_tipoUsuario((TipousuarioBean) otipousuarioDao.get(oResultSet.getInt("id_tipoUsuario"), expand - 1));
-        } else {
-            this.setId_tipoUsuario(oResultSet.getInt("id_tipoUsuario"));
-        }
+       
 
         return this;
 }
