@@ -147,8 +147,7 @@ public class UsuarioBean extends GenericBeanImplementation implements BeanInterf
 
     @Override
     public UsuarioBean fill(ResultSet oResultSet, Connection oConnection, Integer expand, UsuarioBean oUsuarioBeanSession) throws Exception {
-        if (oUsuarioBeanSession != null) {
-            if (oResultSet.getInt("id") == oUsuarioBeanSession.getId() || oUsuarioBeanSession.getId() == 1) {
+
                 this.setId(oResultSet.getInt("id"));
                 this.setDni(oResultSet.getString("dni"));
                 this.setNombre(oResultSet.getString("nombre"));
@@ -169,16 +168,6 @@ public class UsuarioBean extends GenericBeanImplementation implements BeanInterf
                 } else {
                     this.setId_tipoUsuario(oResultSet.getInt("id_tipoUsuario"));
                 }
-            } else {
-                this.setNombre(oResultSet.getString("nombre"));
-                this.setApe1(oResultSet.getString("ape1"));
-            }
-        }else {
-                this.setNombre(oResultSet.getString("nombre"));
-                this.setApe1(oResultSet.getString("ape1"));
-            }
-
-       
 
         return this;
 }

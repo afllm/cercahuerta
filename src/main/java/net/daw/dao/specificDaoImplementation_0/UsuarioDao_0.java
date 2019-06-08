@@ -140,31 +140,7 @@ public class UsuarioDao_0 extends GenericDaoImplementation implements DaoInterfa
         }
         return oBean;
     }
-    //Esto tiene que ser un get, para pasarle campos a sendConfirmationEmail - Corregir    
-//    public int comprobarToken(String token) throws Exception {
-//        strSQL_getcount = "SELECT COUNT(id) FROM " + ob + " WHERE token=?";
-//        int res = 0;
-//        ResultSet oResultSet = null;
-//        PreparedStatement oPreparedStatement = null;
-//        try {
-//            oPreparedStatement = oConnection.prepareStatement(strSQL_getcount);
-//            oPreparedStatement.setString(1, token);
-//            oResultSet = oPreparedStatement.executeQuery();
-//            if (oResultSet.next()) {
-//                res = oResultSet.getInt(1);
-//            }
-//        } catch (SQLException e) {
-//            throw new Exception("Error en Dao comprobarToken de " + ob + ": " + e.getMessage(), e);
-//        } finally {
-//            if (oResultSet != null) {
-//                oResultSet.close();
-//            }
-//            if (oPreparedStatement != null) {
-//                oPreparedStatement.close();
-//            }
-//        }
-//        return res;
-//    }
+   
 
     public int activarUsuario(String token) throws Exception {
         int iResult = 0;
