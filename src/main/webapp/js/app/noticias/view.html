@@ -37,69 +37,16 @@
  <div class="contenedor container-fluid">
      <div class="table-responsive mb-5" style="text-align: center;">
          <h4>Comentarios</h4>
-                <table class="table table-hover table-sm tabla">
-                    <tr>
-                        <th>Apodo</th>
-                        <td>
-                            <p>
-                                Eleifendhabitasse maximus ut sadipscing rhoncus tempus. 
-                                Appeteregraeco altera iriure repudiandae adolescens ocurreret cras cursus lacinia 
-                                torquent fusce. Auctoratqui iuvaret mutat a mus theophrastus proin salutatus turpis 
-                                ac id laoreet delenit salutatus inceptos sollicitudin eum.
-                            </p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>Apodo</th>
-                        <td>
-                            <p>
-                                Eleifendhabitasse maximus ut sadipscing rhoncus tempus. 
-                                Appeteregraeco altera iriure repudiandae adolescens ocurreret cras cursus lacinia 
-                                torquent fusce. Auctoratqui iuvaret mutat a mus theophrastus proin salutatus turpis 
-                                ac id laoreet delenit salutatus inceptos sollicitudin eum.
-                            </p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>Apodo</th>
-                        <td>
-                            <p>
-                                Eleifendhabitasse maximus ut sadipscing rhoncus tempus. 
-                                Appeteregraeco altera iriure repudiandae adolescens ocurreret cras cursus lacinia 
-                                torquent fusce. Auctoratqui iuvaret mutat a mus theophrastus proin salutatus turpis 
-                                ac id laoreet delenit salutatus inceptos sollicitudin eum.
-                            </p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>Apodo</th>
-                        <td>
-                            <p>
-                                Eleifendhabitasse maximus ut sadipscing rhoncus tempus. 
-                                Appeteregraeco altera iriure repudiandae adolescens ocurreret cras cursus lacinia 
-                                torquent fusce. Auctoratqui iuvaret mutat a mus theophrastus proin salutatus turpis 
-                                ac id laoreet delenit salutatus inceptos sollicitudin eum.
-                            </p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>Apodo</th>
-                        <td>
-                            <p>
-                                Eleifendhabitasse maximus ut sadipscing rhoncus tempus. 
-                                Appeteregraeco altera iriure repudiandae adolescens ocurreret cras cursus lacinia 
-                                torquent fusce. Auctoratqui iuvaret mutat a mus theophrastus proin salutatus turpis 
-                                ac id laoreet delenit salutatus inceptos sollicitudin eum.
-                            </p>
-                        </td>
-                    </tr>
+         <table class="table table-hover table-sm tabla" ng-show="!noComments">
                     <tr ng-repeat="fila in ajaxDataComments">
                         <th>{{fila.obj_Usuario.login}}</th>
                         <td>{{fila.texto}}</td>
                     </tr>
                 </table>
+         <h5 ng-show="noComments && canComment">¡Haz el primer comentario!</h5>
+         <h5 ng-show="noComments && !canComment">Todavía no hay comentarios en esta noticia</h5>
             </div>
-    <div class="row">
+     <div class="row" ng-show="canComment">
         <div class="col-12">
             <div class="row">
                 <div class="col-auto mx-auto formulario">
@@ -119,5 +66,10 @@
             </div>
         </div>
     </div>
+     <div class="col-12 mx-auto" ng-show="!noComments">
+         <button type="button" class="btn btn-outline-elegant btn-sm" ng-click="volver()">Volver</button>
+         <button ng-show="id_tiposusario == 1" type="button" class="btn btn-outline-elegant btn-sm" ng-click="editar()">Editar noticia</button>
+         <button ng-show="id_tiposusario == 1" type="button" class="btn btn-outline-elegant btn-sm" ng-click="eliminar()">Eliminar noticia</button>
+     </div>  
 </div>
 <footer class="footer" ng-include="'js/app/footer.html'"></footer>

@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletRequest;
 import net.daw.bean.beanImplementation.ReplyBean;
 import net.daw.bean.beanImplementation.UsuarioBean;
 import net.daw.service.specificServiceImplementation_0.CarritoService_0;
+import net.daw.service.specificServiceImplementation_0.ComentariosService_0;
 import net.daw.service.specificServiceImplementation_0.NoticiasService_0;
 import net.daw.service.specificServiceImplementation_0.UsuarioService_0;
 import net.daw.service.specificServiceImplementation_1.CarritoService_1;
@@ -17,6 +18,7 @@ import net.daw.service.specificServiceImplementation_1.TipoproductoService_1;
 import net.daw.service.specificServiceImplementation_1.TipousuarioService_1;
 import net.daw.service.specificServiceImplementation_1.UsuarioService_1;
 import net.daw.service.specificServiceImplementation_2.CarritoService_2;
+import net.daw.service.specificServiceImplementation_2.ComentariosService_2;
 import net.daw.service.specificServiceImplementation_2.FacturaService_2;
 import net.daw.service.specificServiceImplementation_2.LineaService_2;
 import net.daw.service.specificServiceImplementation_2.NoticiasService_2;
@@ -293,7 +295,7 @@ public class ServiceFactory {
                                 break;
                         }
                         break;
-                        case "comentarios":
+                    case "comentarios":
                         ComentariosService_1 oComentariosService = new ComentariosService_1(oRequest);
                         switch (op) {
                             case "get":
@@ -492,6 +494,38 @@ public class ServiceFactory {
                                 break;
                         }
                         break;
+                    case "comentarios":
+                        ComentariosService_2 oComentariosService = new ComentariosService_2(oRequest);
+                        switch (op) {
+                            case "get":
+                                oReplyBean = oComentariosService.get();
+                                break;
+                            case "create":
+                                oReplyBean = oComentariosService.create();
+                                break;
+                            case "update":
+                                oReplyBean = oComentariosService.update();
+                                break;
+                            case "remove":
+                                oReplyBean = oComentariosService.remove();
+                                break;
+                            case "getcount":
+                                oReplyBean = oComentariosService.getcount();
+                                break;
+                            case "getpage":
+                                oReplyBean = oComentariosService.getpage();
+                                break;
+                            case "getpagex":
+                                oReplyBean = oComentariosService.getpageX();
+                                break;
+                            case "getcountx":
+                                oReplyBean = oComentariosService.getcountX();
+                                break;
+                            default:
+                                oReplyBean = new ReplyBean(500, "Operation doesn't exist");
+                                break;
+                        }
+                        break;
                     default:
                         oReplyBean = new ReplyBean(500, "Object doesn't exist");
                         break;
@@ -581,7 +615,23 @@ public class ServiceFactory {
                                 break;
                         }
                         break;
-
+                    case "comentarios":
+                        ComentariosService_0 oComentariosService = new ComentariosService_0(oRequest);
+                        switch (op) {
+                            case "get":
+                                oReplyBean = oComentariosService.get();
+                                break;
+                            case "getpagex":
+                                oReplyBean = oComentariosService.getpageX();
+                                break;
+                            case "getcountx":
+                                oReplyBean = oComentariosService.getcountX();
+                                break;
+                            default:
+                                oReplyBean = new ReplyBean(500, "Operation doesn't exist");
+                                break;
+                        }
+                        break;
                     default:
                         oReplyBean = new ReplyBean(500, "Object doesn't exist");
                         break;

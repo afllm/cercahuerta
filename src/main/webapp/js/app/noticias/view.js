@@ -6,10 +6,15 @@ moduleNoticias.controller("noticiasViewController", ['$scope', '$http', '$routeP
         $scope.ob = "noticias";
         $scope.comentario = "";
         $scope.totalPages = 1;
+        $scope.canComment = false;
+        $scope.noComments=false;
 
         if (sessionService.getUserName() !== "") {
             $scope.id_tiposusario = sessionService.getTypeUserID();
             $scope.id_usuario = sessionService.getId();
+            if($scope.id_tiposusario==1 || $scope.id_tiposusario==2){
+                $scope.canComment = true;
+            }
         }
         
          if (!$routeParams.id) {
@@ -66,7 +71,6 @@ moduleNoticias.controller("noticiasViewController", ['$scope', '$http', '$routeP
         };
         
         $scope.newComment = function(){
-            console.log($scope.comentario);
             $scope.saveComment();
             $scope.comentario = "";
             $scope.resetForm('commentForm');
@@ -94,7 +98,6 @@ moduleNoticias.controller("noticiasViewController", ['$scope', '$http', '$routeP
                 url: 'json?ob=comentarios&op=create',
                 params: {json: JSON.stringify(json)}
             }).then(function () {
-                $scope.success = true;
                 $scope.getComments();
             })
         };
@@ -111,6 +114,11 @@ moduleNoticias.controller("noticiasViewController", ['$scope', '$http', '$routeP
                     $scope.page = $scope.totalPages;
                     $scope.update();
                 }
+                if($scope.ajaxDataCommentsNumber==0){
+                    $scope.noComments=true;
+                }else{
+                  $scope.noComments=false;  
+                }
                 pagination2();
             }, function (response) {
                 $scope.ajaxDataCommentsNumber = response.data.message || 'Request failed';
@@ -119,11 +127,10 @@ moduleNoticias.controller("noticiasViewController", ['$scope', '$http', '$routeP
 
             $http({
                 method: 'GET',
-                url: 'json?ob=comentarios&op=getpagex&rpp=' + $scope.rpp + '&page=' + $scope.page + '&idajena=' + $scope.id + $scope.orderURLServidor
+                url: 'json?ob=comentarios&op=getpagex&rpp=' + $scope.rpp + '&page=1&idajena=' + $scope.id + $scope.orderURLServidor
             }).then(function (response) {
                 $scope.status = response.status;
                 $scope.ajaxDataComments = response.data.message;
-                console.log($scope.ajaxDataComments);
                 $scope.update();
 
             }, function (response) {

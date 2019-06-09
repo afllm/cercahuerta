@@ -14,13 +14,17 @@ import net.daw.dao.specificDaoImplementation_1.TipoproductoDao_1;
 import net.daw.dao.specificDaoImplementation_1.TipousuarioDao_1;
 import net.daw.dao.specificDaoImplementation_1.UsuarioDao_1;
 import net.daw.dao.publicDaoInterface.DaoInterface;
+import net.daw.dao.specificDaoImplementation_0.ComentariosDao_0;
 import net.daw.dao.specificDaoImplementation_0.FacturaDao_0;
+import net.daw.dao.specificDaoImplementation_0.NoticiasDao_0;
 import net.daw.dao.specificDaoImplementation_0.TipousuarioDao_0;
 import net.daw.dao.specificDaoImplementation_0.UsuarioDao_0;
 import net.daw.dao.specificDaoImplementation_1.ComentariosDao_1;
 import net.daw.dao.specificDaoImplementation_1.NoticiasDao_1;
+import net.daw.dao.specificDaoImplementation_2.ComentariosDao_2;
 import net.daw.dao.specificDaoImplementation_2.FacturaDao_2;
 import net.daw.dao.specificDaoImplementation_2.LineaDao_2;
+import net.daw.dao.specificDaoImplementation_2.NoticiasDao_2;
 import net.daw.dao.specificDaoImplementation_2.ProductoDao_2;
 import net.daw.dao.specificDaoImplementation_2.TipoproductoDao_2;
 import net.daw.dao.specificDaoImplementation_2.TipousuarioDao_2;
@@ -87,7 +91,10 @@ public class DaoFactory {
                         oDao = new LineaDao_2(oConnection, ob, oUsuarioBeanSession);
                         break;
                     case "noticias":
-                        oDao = new NoticiasDao_1(oConnection, ob, oUsuarioBeanSession);
+                        oDao = new NoticiasDao_2(oConnection, ob, oUsuarioBeanSession);
+                        break;
+                    case "comentarios":
+                        oDao = new ComentariosDao_2(oConnection, ob, oUsuarioBeanSession);
                         break;
                 }
                 break;
@@ -112,7 +119,10 @@ public class DaoFactory {
 //                        oDao = new LineaDao_2(oConnection, ob, oUsuarioBeanSession);
 //                        break;
                     case "noticias":
-                        oDao = new NoticiasDao_1(oConnection, ob, oUsuarioBeanSession);
+                        oDao = new NoticiasDao_0(oConnection, ob, oUsuarioBeanSession);
+                        break;
+                    case "comentarios":
+                        oDao = new ComentariosDao_0(oConnection, ob, oUsuarioBeanSession);
                         break;
                 }
                 break;

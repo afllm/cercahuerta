@@ -43,7 +43,8 @@ moduleUsuario.controller("usuarioLoginController", [
                     $scope.loggeduser = sessionService.getUserName();
                     $scope.loggeduserid = sessionService.setId(response.data.message.id);
                     sessionService.setTypeUserID(response.data.message.obj_tipoUsuario.id);
-                    $location.url('/home');
+                    //$location.url('/home');
+                    $scope.volver();
                 } else {
                     $scope.failedlogin = true;
                     if(response.data.message !=null){
