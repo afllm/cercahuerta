@@ -17,6 +17,7 @@ import net.daw.dao.publicDaoInterface.DaoInterface;
 import net.daw.dao.specificDaoImplementation_0.FacturaDao_0;
 import net.daw.dao.specificDaoImplementation_0.TipousuarioDao_0;
 import net.daw.dao.specificDaoImplementation_0.UsuarioDao_0;
+import net.daw.dao.specificDaoImplementation_1.ComentariosDao_1;
 import net.daw.dao.specificDaoImplementation_1.NoticiasDao_1;
 import net.daw.dao.specificDaoImplementation_2.FacturaDao_2;
 import net.daw.dao.specificDaoImplementation_2.LineaDao_2;
@@ -59,6 +60,9 @@ public class DaoFactory {
                         break;
                     case "noticias":
                         oDao = new NoticiasDao_1(oConnection, ob, oUsuarioBeanSession);
+                        break;
+                        case "comentarios":
+                        oDao = new ComentariosDao_1(oConnection, ob, oUsuarioBeanSession);
                         break;
                 }
                 break;

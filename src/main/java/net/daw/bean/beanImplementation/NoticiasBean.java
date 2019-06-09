@@ -32,6 +32,8 @@ public class NoticiasBean extends GenericBeanImplementation implements BeanInter
     private int id_usuario;
     @Expose(deserialize = false)
     private UsuarioBean obj_usuario;
+    @Expose
+    private int link_comentarios;
     
 //    public int getId() {
 //        return id;
@@ -81,8 +83,15 @@ public class NoticiasBean extends GenericBeanImplementation implements BeanInter
     public void setObj_usuario(UsuarioBean obj_usuario) {
         this.obj_usuario = obj_usuario;
     }
-    
 
+    public int getLink_comentarios() {
+        return link_comentarios;
+    }
+
+    public void setLink_comentarios(int link_comentarios) {
+        this.link_comentarios = link_comentarios;
+    }
+    
     @Override
     public NoticiasBean fill(ResultSet oResultSet, Connection oConnection, Integer expand, UsuarioBean oUsuarioBeanSession) throws Exception {
 
@@ -98,6 +107,8 @@ public class NoticiasBean extends GenericBeanImplementation implements BeanInter
         } else {
             this.setId_usuario(oResultSet.getInt("id_usuario"));
         }
+        DaoInterface oComentariosDao = DaoFactory.getDao(oConnection, "comentarios", oUsuarioBeanSession);
+        this.setLink_comentarios(oComentariosDao.getcountX(oResultSet.getInt("id")));
         return this;
     }
 
