@@ -23,8 +23,8 @@ public class UserActivationEmail {
         String to = email;
         String from = "info.cercahuerta@gmail.com";
         String pass = "cercahuerta2019";
-        String link = "http://localhost:8081/cercahuerta/json?ob=usuario&op=activar&token=" + token;//No se puede acceder desde el email
-        String linkTexto = "http://localhost:8081/cercahuerta/json?ob=usuario&op=activar&token=" + token;
+        String link = "http://localhost:8081/cercahuerta/usuario/registro/" + token;
+        String linkTexto = "http://localhost:8081/cercahuerta/usuario/registro/" + token;
         //http://localhost:8081/cercahuerta/json?ob=usuario&op=activar&token=jNjbOwfLIqW84bNfEyFVhxnr4cuJUehwa6r0SoyhouRVlIVrrpLKBxee0ztt48KK4OR0yVt6mk8DyPKvbpLSX0PdSgD7HGsQlRMI78iamJBz9zp2UItSvj1HT6P9XMhNvAC2iCs3J5I9RZoHOLdjEnkruuZMNlIA1845mpvY5gQDt8yHjEN09wZliAQT4XVGrAhQsKXtdEMEjT6S5cQcWO8ehdmDACfDuvsvdLluEANOzf88jpdSWiieiuuSwUQW
         //http://localhost:8081/cercahuerta/json?ob=usuario&op=check
         Properties properties = new Properties();

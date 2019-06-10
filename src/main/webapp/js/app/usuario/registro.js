@@ -12,6 +12,9 @@ moduleUsuario.controller("usuarioRegistroController", [
         $scope.edited = false;
         $scope.logged = false;
         $scope.cargando=false;
+        $scope.esperar=false;
+        $scope.activado=false;
+        $scope.activacionfallida=false;
 //        $scope.obj_tipoUsuario = {
 //            id: null,
 //            desc: null
@@ -28,6 +31,24 @@ moduleUsuario.controller("usuarioRegistroController", [
         $scope.result = null;
         $scope.title = "Registro de usuario";
         $scope.icon = "fa-file-text-o";
+        
+        if ($routeParams.token) {
+            $scope.esperar=true;
+            $scope.token = $routeParams.token;
+            $http({
+                method: 'GET', //http://localhost:8081/cercahuerta/json?ob=usuario&op=activar&token=" + token
+                url: 'json?ob=' + $scope.ob + '&op=activar&token=' + $scope.token
+            }).then(function (response) {
+                $scope.status = response.status;
+                $scope.ajaxData = response.data.message;
+                $scope.esperar=false;
+                $scope.activado=true;
+            }, function (response) {
+                $scope.activacionfallida=true;
+                $scope.status = response.status;
+                $scope.ajaxData = response.data.message || 'Request failed';
+            });
+        }
 
 
 
@@ -57,24 +78,6 @@ moduleUsuario.controller("usuarioRegistroController", [
             })
         }
 
-//        $scope.tipoUsuarioRefresh = function (f, consultar) {
-//            var form = f;
-//            if (consultar) {
-//                $http({
-//                    method: 'GET',
-//                    url: 'json?ob=tipousuario&op=get&id=' + $scope.obj_tipoUsuario.id
-//                }).then(function (response) {
-//                    $scope.obj_tipoUsuario = response.data.message;
-//                    form.userForm.obj_tipousuario.$setValidity('valid', true);
-//                }, function (response) {
-//                    //$scope.status = response.status;
-//                    form.userForm.obj_tipousuario.$setValidity('valid', false);
-//                });
-//            } else {
-//                form.userForm.obj_tipousuario.$setValidity('valid', true);
-//            }
-//        }
-
         $scope.back = function () {
             $window.history.back();
         };
@@ -84,16 +87,7 @@ moduleUsuario.controller("usuarioRegistroController", [
         $scope.plist = function () {
             $location.path('/' + $scope.ob + '/plist');
         };
-
-
-//         if (sessionService.getUserName() !== "") {
-//            $scope.loggeduser = sessionService.getUserName();
-//            $scope.loggeduserid = sessionService.getId();
-//            $scope.logged = true;
-//            $scope.tipousuarioID = sessionService.getTypeUserID();
-//        }
         
-
-
     }
+    
 ]);

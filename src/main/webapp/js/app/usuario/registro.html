@@ -1,7 +1,7 @@
 <header-component></header-component>
 <div class="contenedor container-fluid mb-5">
     <div class="row" style="margin-top: 80px">
-        <div class="col-12">
+        <div class="col-12" ng-show="!token">
             <div class="row">
                 <div class="mx-auto col-auto text-center">
                     <h3>Nuevo usuario</h3>
@@ -82,6 +82,31 @@
                     <div class="alert alert-success" role="alert">
                         <p class="text-center mt-2"> Usuario registrado correctamente.<p>
                         <p class="text-center mt-2"> Le enviaremos un email con el enlace de activación de la cuenta<p>    
+                    </div>
+                    <button type="button" class="btn btn-outline-elegant btn-block mt-2" onclick="window.history.back()">Volver</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-12" ng-show="token">
+            <div class="row" ng-show="esperar">
+                <div class="col-auto mx-auto">
+                    <img src="./images/cargando.gif" alt="Activando..." id="cargando"/> 
+                </div>
+            </div>
+            <div class="row" ng-show="activado && !esperar">
+                <div class="col-4 mx-auto">
+                    <div class="alert alert-success" role="alert">
+                        <p class="text-center mt-2"> Su cuenta ha sido activada<p>
+                        <p class="text-center mt-2"> Le enviaremos un email de confirmación<p>    
+                    </div>
+                    <button type="button" class="btn btn-outline-elegant btn-block mt-2" onclick="window.history.back()">Volver</button>
+                </div>
+            </div>
+             <div class="row" ng-show="activacionfallida">
+                <div class="col-4 mx-auto">
+                    <div class="alert alert-success" role="alert">
+                        <p class="text-center mt-2">Ha ocurrido un error<p>
+                        <p class="text-center mt-2">Inténtelo más tarde o póngase en contacto con nosotros<p>    
                     </div>
                     <button type="button" class="btn btn-outline-elegant btn-block mt-2" onclick="window.history.back()">Volver</button>
                 </div>
