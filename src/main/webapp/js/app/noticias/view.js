@@ -8,6 +8,8 @@ moduleNoticias.controller("noticiasViewController", ['$scope', '$http', '$routeP
         $scope.totalPages = 1;
         $scope.canComment = false;
         $scope.noComments=false;
+        
+        
 
         if (sessionService.getUserName() !== "") {
             $scope.id_tiposusario = sessionService.getTypeUserID();
@@ -32,7 +34,7 @@ moduleNoticias.controller("noticiasViewController", ['$scope', '$http', '$routeP
         }
         
          if (!$routeParams.rpp) {
-            $scope.rpp = "100";
+            $scope.rpp = "10";
         } else {
             $scope.rpp = $routeParams.rpp;
         }
@@ -44,6 +46,16 @@ moduleNoticias.controller("noticiasViewController", ['$scope', '$http', '$routeP
                 $scope.page = $routeParams.page;
             } else {
                 $scope.page = 1;
+            }
+        }
+        
+         if (!$routeParams.pageComments) {
+            $scope.pageComments = 1;
+        } else {
+            if ($routeParams.page >= 1) {
+                $scope.pageComments = $routeParams.pageComments;
+            } else {
+                $scope.pageComments = 1;
             }
         }
 
@@ -98,7 +110,8 @@ moduleNoticias.controller("noticiasViewController", ['$scope', '$http', '$routeP
                 url: 'json?ob=comentarios&op=create',
                 params: {json: JSON.stringify(json)}
             }).then(function () {
-                $scope.getComments();
+                //$scope.getComments();
+                $location.path($scope.ob + `/view/` + $scope.id + `/` + $scope.page + `/1`);
             })
         };
 
@@ -109,9 +122,12 @@ moduleNoticias.controller("noticiasViewController", ['$scope', '$http', '$routeP
             }).then(function (response) {
                 $scope.status = response.status;
                 $scope.ajaxDataCommentsNumber = response.data.message;
-                $scope.totalPages = Math.ceil($scope.ajaxDataUsuariosNumber / $scope.rpp);
-                if ($scope.page > $scope.totalPages) {
-                    $scope.page = $scope.totalPages;
+                console.log('$scope.totalPages: ' + $scope.totalPages);
+                console.log('$scope.ajaxDataCommentsNumber: ' + $scope.ajaxDataCommentsNumber);
+                $scope.totalPages = Math.ceil($scope.ajaxDataCommentsNumber / $scope.rpp);
+                console.log('$scope.totalPages: ' + $scope.totalPages);
+                if ($scope.pageComments > $scope.totalPages) {
+                    $scope.pageComments = $scope.totalPages;
                     $scope.update();
                 }
                 if($scope.ajaxDataCommentsNumber==0){
@@ -124,10 +140,12 @@ moduleNoticias.controller("noticiasViewController", ['$scope', '$http', '$routeP
                 $scope.ajaxDataCommentsNumber = response.data.message || 'Request failed';
                 $scope.status = response.status;
             });
-
+            var urlprueba= 'json?ob=comentarios&op=getpagex&rpp=' + $scope.rpp + '&page=' + $scope.pageComments  + '&idajena=' + $scope.id + '&order=id,desc';
+            
+                console.log('urlprueba: ' + urlprueba);
             $http({
                 method: 'GET',
-                url: 'json?ob=comentarios&op=getpagex&rpp=' + $scope.rpp + '&page=1&idajena=' + $scope.id + $scope.orderURLServidor
+                url: 'json?ob=comentarios&op=getpagex&rpp=' + $scope.rpp + '&page=' + $scope.pageComments  + '&idajena=' + $scope.id + '&order=id,desc'
             }).then(function (response) {
                 $scope.status = response.status;
                 $scope.ajaxDataComments = response.data.message;
@@ -147,22 +165,23 @@ moduleNoticias.controller("noticiasViewController", ['$scope', '$http', '$routeP
             $scope.list2 = [];
             $scope.neighborhood = 3;
             for (var i = 1; i <= $scope.totalPages; i++) {
-                if (i === $scope.page) {
+                if (i === $scope.pageComments) {
                     $scope.list2.push(i);
-                } else if (i <= $scope.page && i >= ($scope.page - $scope.neighborhood)) {
+                } else if (i <= $scope.pageComments && i >= ($scope.pageComments - $scope.neighborhood)) {
                     $scope.list2.push(i);
-                } else if (i >= $scope.page && i <= ($scope.page - -$scope.neighborhood)) {
+                } else if (i >= $scope.pageComments && i <= ($scope.pageComments - -$scope.neighborhood)) {
                     $scope.list2.push(i);
-                } else if (i === ($scope.page - $scope.neighborhood) - 1) {
+                } else if (i === ($scope.pageComments - $scope.neighborhood) - 1) {
                     $scope.list2.push("...");
-                } else if (i === ($scope.page - -$scope.neighborhood) + 1) {
+                } else if (i === ($scope.pageComments - -$scope.neighborhood) + 1) {
                     $scope.list2.push("...");
                 }
             }
         }
         
         $scope.update = function () {
-           $location.path($scope.ob + `/view/` + $scope.id + `/` + $scope.page);
+           $location.path($scope.ob + `/view/` + $scope.id + `/` + $scope.page + `/` + $scope.pageComments);
+           console.log('$scope.pageComments: ' + $scope.pageComments);
         }
 
     }

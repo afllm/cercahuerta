@@ -17,36 +17,63 @@
                                 <div>
                                     <p class="saltos-linea">{{ajaxData.mensaje}}</p>
                                 </div>
-                                
+
                             </div>
 
                         </article>
                     </section>
 
-                    <div class="col-12 mx-auto">
-                        <button type="button" class="btn btn-outline-elegant btn-sm" ng-click="volver()">Volver</button>
-                        <button ng-show="id_tiposusario == 1" type="button" class="btn btn-outline-elegant btn-sm" ng-click="editar()">Editar</button>
-                        <button ng-show="id_tiposusario == 1" type="button" class="btn btn-outline-elegant btn-sm" ng-click="eliminar()">Eliminar</button>
-                    </div>   
+                    <!--                    <div class="col-12 mx-auto">
+                                            <button type="button" class="btn btn-outline-elegant btn-sm" ng-click="volver()">Volver</button>
+                                            <button ng-show="id_tiposusario == 1" type="button" class="btn btn-outline-elegant btn-sm" ng-click="editar()">Editar</button>
+                                            <button ng-show="id_tiposusario == 1" type="button" class="btn btn-outline-elegant btn-sm" ng-click="eliminar()">Eliminar</button>
+                                        </div>   -->
                 </div> 
 
             </div>
         </div>
     </div>
 </div>
- <div class="contenedor container-fluid">
-     <div class="table-responsive mb-5" style="text-align: center;">
-         <h4>Comentarios</h4>
-         <table class="table table-hover table-sm tabla" ng-show="!noComments">
+<div id="comentarios"></div>
+<div class="contenedor container-fluid">
+    <div class="row">
+        <div class="col-lg-9 col-md-auto mx-auto noticias-main justify-content-center pagina-noticias">
+            <div class="table-responsive mb-5">
+                <h4>Comentarios</h4>
+                <table class="table table-hover table-sm tabla" ng-show="!noComments">
                     <tr ng-repeat="fila in ajaxDataComments">
                         <th>{{fila.obj_Usuario.login}}</th>
                         <td>{{fila.texto}}</td>
                     </tr>
                 </table>
-         <h5 ng-show="noComments && canComment">¡Haz el primer comentario!</h5>
-         <h5 ng-show="noComments && !canComment">Todavía no hay comentarios en esta noticia</h5>
+                 <nav aria-label="paginacion" ng-show="!noComments && totalPages>1">
+                        <ul class="pagination pg-amber pagination-circle">
+                            <li class="page-item "><!-- $scope.ob + `/view/` + $scope.id + `/` + $scope.page + `/` + $scope.pageComments -->
+                                <a class="page-link  bg-light" ng-show="pageComments > 2" href="{{ob}}/view/{{id}}/{{page}}/{{1}}"><i class="fas fa-angle-double-left"></i></a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link  bg-light" ng-show="pageComments > 1" href="{{ob}}/view/{{id}}/{{page}}/{{pageComments - 1}}"><i class="fas fa-angle-left"></i></a>
+                            </li>
+                            <li class="page-item" ng-class="{'active':(p == pageComments), 'disabled': p === '...'}" ng-repeat="p in list2 track by $index">
+                                <a class="page-link " href="{{ob}}/view/{{id}}/{{page}}/{{p}}">{{p}}</a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link  bg-light" ng-show="pageComments != totalPages" href="{{ob}}/view/{{id}}/{{page}}/{{pageComments--1}}"><i class="fas fa-angle-right"></i></a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link  bg-light" ng-show="pageComments != totalPages - 1 && page != totalPages" href="{{ob}}/view/{{id}}/{{page}}/{{totalPages}}"><i class="fas fa-angle-double-right"></i></a>
+                            </li>
+                        </ul>
+                    </nav>
+                <h5 ng-show="noComments && canComment">¡Haz el primer comentario!</h5>
+                <h5 ng-show="noComments && !canComment">Todavía no hay comentarios en esta noticia</h5>
             </div>
-     <div class="row" ng-show="canComment">
+            <div ng-show="totalPages>1" class="row d-flex justify-content-between flex-wrap align-items-center">
+                   
+                </div>
+        </div>
+    </div>
+    <div class="row" ng-show="canComment">
         <div class="col-12">
             <div class="row">
                 <div class="col-auto mx-auto formulario">
@@ -66,10 +93,12 @@
             </div>
         </div>
     </div>
-     <div class="col-12 mx-auto" ng-show="!noComments">
-         <button type="button" class="btn btn-outline-elegant btn-sm" ng-click="volver()">Volver</button>
-         <button ng-show="id_tiposusario == 1" type="button" class="btn btn-outline-elegant btn-sm" ng-click="editar()">Editar noticia</button>
-         <button ng-show="id_tiposusario == 1" type="button" class="btn btn-outline-elegant btn-sm" ng-click="eliminar()">Eliminar noticia</button>
-     </div>  
+    <div class="row mt-5">
+        <div class="col-12 mx-auto"><!--ng-show="!noComments"-->
+            <button type="button" class="btn btn-outline-elegant btn-sm" ng-click="volver()">Volver</button>
+            <button ng-show="id_tiposusario == 1" type="button" class="btn btn-outline-elegant btn-sm" ng-click="editar()">Editar noticia</button>
+            <button ng-show="id_tiposusario == 1" type="button" class="btn btn-outline-elegant btn-sm" ng-click="eliminar()">Eliminar noticia</button>
+        </div> 
+    </div>
 </div>
 <footer class="footer" ng-include="'js/app/footer.html'"></footer>

@@ -115,7 +115,7 @@ cercahuerta.config(['$routeProvider', function ($routeProvider) {
 
         $routeProvider.when('/usuario/login', {templateUrl: 'js/app/usuario/login.html', controller: 'usuarioLoginController', resolve: {auth: autenticacionCualquiera}});
         $routeProvider.when('/usuario/logout', {templateUrl: 'js/app/usuario/logout.html', controller: 'usuarioLogoutController', resolve: {auth: autenticacionCualquieraLogueado}});
-        $routeProvider.when('/usuario/registro', {templateUrl: 'js/app/usuario/registro.html', controller: 'usuarioRegistroController', resolve: {auth: autenticacionCualquiera}});
+        $routeProvider.when('/usuario/registro/:token?', {templateUrl: 'js/app/usuario/registro.html', controller: 'usuarioRegistroController', resolve: {auth: autenticacionCualquiera}});
 
         //TIPOUSUARIO
         $routeProvider.when('/tipousuario/plist/:rpp?/:page?/:order?', {templateUrl: 'js/app/tipousuario/plist.html', controller: 'tipousuarioPlistController', resolve: {auth: autenticacionAdministrador}});
@@ -163,7 +163,7 @@ cercahuerta.config(['$routeProvider', function ($routeProvider) {
 
         //NOTICIAS
         $routeProvider.when('/noticias/plist/:rpp?/:page?/:order?', {templateUrl: 'js/app/noticias/plist.html', controller: 'noticiasPlistController', resolve: {auth: autenticacionCualquiera}});
-        $routeProvider.when('/noticias/view/:id?/:page?', {templateUrl: 'js/app/noticias/view.html', controller: 'noticiasViewController', resolve: {auth: autenticacionCualquiera}});
+        $routeProvider.when('/noticias/view/:id?/:page?/:pageComments?', {templateUrl: 'js/app/noticias/view.html', controller: 'noticiasViewController', resolve: {auth: autenticacionCualquiera}});
         $routeProvider.when('/noticias/new', {templateUrl: 'js/app/noticias/new.html', controller: 'noticiasNewController', resolve: {auth: autenticacionAdministrador}});
         $routeProvider.when('/noticias/edit/:id', {templateUrl: 'js/app/noticias/edit.html', controller: 'noticiasEditController', resolve: {auth: autenticacionAdministrador}});
         $routeProvider.when('/noticias/remove/:id/:page?', {templateUrl: 'js/app/noticias/remove.html', controller: 'noticiasRemoveController', resolve: {auth: autenticacionAdministrador}});
