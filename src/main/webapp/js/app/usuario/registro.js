@@ -45,6 +45,7 @@ moduleUsuario.controller("usuarioRegistroController", [
                 $scope.activado=true;
             }, function (response) {
                 $scope.activacionfallida=true;
+                $scope.esperar=false;
                 $scope.status = response.status;
                 $scope.ajaxData = response.data.message || 'Request failed';
             });

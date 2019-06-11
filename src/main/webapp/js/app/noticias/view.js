@@ -82,40 +82,7 @@ moduleNoticias.controller("noticiasViewController", ['$scope', '$http', '$routeP
             $location.path('noticias/remove/' + $scope.id + "/" + $scope.page);
         };
         
-        $scope.newComment = function(){
-            $scope.saveComment();
-            $scope.comentario = "";
-            $scope.resetForm('commentForm');
-        };
-        
-        $scope.resetForm = function (formName) {
-            var form = $scope[formName];
-            form.$setUntouched();
-            form.$setPristine();
-        };
-        
-        $scope.saveComment = function(){
-            var json = {
-                id: null,
-                texto: $scope.comentario,
-                id_usuario: $scope.id_usuario,
-                id_noticia: $scope.id
-            };
-
-            $http({
-                method: 'GET',
-                header: {
-                    'Content-Type': 'application/json;charset=utf-8'
-                },
-                url: 'json?ob=comentarios&op=create',
-                params: {json: JSON.stringify(json)}
-            }).then(function () {
-                //$scope.getComments();
-                $location.path($scope.ob + `/view/` + $scope.id + `/` + $scope.page + `/1`);
-            })
-        };
-
-        $scope.getComments = function () {
+                $scope.getComments = function () {
             $http({
                 method: 'GET',
                 url: 'json?ob=comentarios&op=getcountx&idajena=' + $scope.id
@@ -159,6 +126,42 @@ moduleNoticias.controller("noticiasViewController", ['$scope', '$http', '$routeP
         };
         
          $scope.getComments();
+        
+        $scope.newComment = function(){
+            $scope.saveComment();
+            $scope.comentario = "";
+            $scope.resetForm('commentForm');
+        };
+        
+        $scope.resetForm = function (formName) {
+            var form = $scope[formName];
+            form.$setUntouched();
+            form.$setPristine();
+        };
+        
+        $scope.saveComment = function(){
+            var json = {
+                id: null,
+                texto: $scope.comentario,
+                id_usuario: $scope.id_usuario,
+                id_noticia: $scope.id
+            };
+
+            $http({
+                method: 'GET',
+                header: {
+                    'Content-Type': 'application/json;charset=utf-8'
+                },
+                url: 'json?ob=comentarios&op=create',
+                params: {json: JSON.stringify(json)}
+            }).then(function () {
+                $scope.pageComments = 1;
+                $scope.getComments();
+                //$location.path($scope.ob + `/view/` + $scope.id + `/` + $scope.page + `/1`);
+            })
+        };
+
+
 
         //paginacion neighbourhood
         function pagination2() {

@@ -73,8 +73,8 @@
                 </div>
             </div>
             <div class="row" ng-show="cargando">
-                <div class="col-auto mx-auto">
-                    <img src="./images/cargando.gif" alt="Cargando..." id="cargando"/> 
+                <div class="col-2 mx-auto">
+                    <img src="./images/cargando.gif" alt="Cargando..." id="cargando" class="img-responsive center-block"/> 
                 </div>
             </div>
             <div class="row" ng-show="edited && !cargando">
@@ -88,9 +88,9 @@
             </div>
         </div>
         <div class="col-12" ng-show="token">
-            <div class="row" ng-show="esperar">
-                <div class="col-auto mx-auto">
-                    <img src="./images/cargando.gif" alt="Activando..." id="cargando"/> 
+            <div class="row align-items-center" ng-show="esperar">
+                <div class="col-2 mx-auto">
+                    <img src="./images/cargando.gif" alt="Activando..." id="cargando" class="img-responsive center-block"/> 
                 </div>
             </div>
             <div class="row" ng-show="activado && !esperar">
@@ -104,7 +104,7 @@
             </div>
              <div class="row" ng-show="activacionfallida">
                 <div class="col-4 mx-auto">
-                    <div class="alert alert-success" role="alert">
+                    <div class="alert alert-danger" role="alert">
                         <p class="text-center mt-2">Ha ocurrido un error<p>
                         <p class="text-center mt-2">Inténtelo más tarde o póngase en contacto con nosotros<p>    
                     </div>
