@@ -21,8 +21,8 @@ public class UserActivationEmail {
     public static String sendActivationEmail(String email, String nombre, String token) throws Exception {
         // Recipient's email ID needs to be mentioned.
         String to = email;
-        String from = "info.cercahuerta@gmail.com";
-        String pass = "cercahuerta2019";
+        String from = "*********@gmail.com";//TODO: Poner cuenta real de gmail y permitir aplicaciones no seguras en la cuenta
+        String pass = "*******************";//TODO: El password de la cuenta
         String link = "http://localhost:8081/cercahuerta/usuario/registro/" + token;
         String linkTexto = "http://localhost:8081/cercahuerta/usuario/registro/" + token;
         //http://localhost:8081/cercahuerta/json?ob=usuario&op=activar&token=jNjbOwfLIqW84bNfEyFVhxnr4cuJUehwa6r0SoyhouRVlIVrrpLKBxee0ztt48KK4OR0yVt6mk8DyPKvbpLSX0PdSgD7HGsQlRMI78iamJBz9zp2UItSvj1HT6P9XMhNvAC2iCs3J5I9RZoHOLdjEnkruuZMNlIA1845mpvY5gQDt8yHjEN09wZliAQT4XVGrAhQsKXtdEMEjT6S5cQcWO8ehdmDACfDuvsvdLluEANOzf88jpdSWiieiuuSwUQW
